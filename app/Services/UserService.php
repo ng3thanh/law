@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class SlideService
+class UserService
 {
 
 }
