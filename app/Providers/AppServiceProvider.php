@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $repositories = ['Base', 'Feedbacks', 'Introduces', 'MenuNews', 'MenuProducts', 'News', 'Products', 'Slides'];
+        $repositories = ['Base', 'Feedbacks', 'Blogs', 'Services', 'Slides', 'Roles', 'Users'];
 
         foreach ($repositories as $value) {
             $this->app->singleton(

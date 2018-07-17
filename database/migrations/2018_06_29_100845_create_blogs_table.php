@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSlidesTable extends Migration
+class CreateBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 200);
+            $table->string('slug', 200);
+            $table->string('author', 50);
             $table->text('description');
             $table->text('content');
+            $table->dateTime('publish_date');
+            $table->dateTime('end_date');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +34,6 @@ class CreateSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slides');
+        Schema::dropIfExists('blogs');
     }
 }
