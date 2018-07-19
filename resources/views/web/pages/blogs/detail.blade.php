@@ -2,169 +2,191 @@
 
 @section('title', 'Blogs')
 @section('css')
-    <link href="{{ asset('web/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('web/css/blog-post.css') }}" rel="stylesheet">
+
 @endsection
 @section('content')
-    @include('web.pages.layout.navbar')
-    <!-- Page Content -->
     <div class="container">
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
-
-            <!-- Title -->
-            <h1 class="mt-4">Post Title</h1>
-
-            <!-- Author -->
-            <p class="lead">
-                by
-                <a href="#">Start Bootstrap</a>
-            </p>
-
-            <hr>
-
-            <!-- Date/Time -->
-            <p>Posted on January 1, 2018 at 12:00 PM</p>
-
-            <hr>
-
-            <!-- Preview Image -->
-            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
-
-            <hr>
-
-            <!-- Post Content -->
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
-            <blockquote class="blockquote">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in
-                    <cite title="Source Title">Source Title</cite>
-                </footer>
-            </blockquote>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
-            <hr>
-
-            <!-- Comments Form -->
-            <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+        <div class="row">
+            <!-- Latest Posts -->
+            <main class="post blog-post col-lg-8">
+                <div class="container">
+                    <div class="post-single">
+                        <div class="post-thumbnail"><img src="{{ asset('web/img/blog-post-3.jpeg') }}" alt="..." class="img-fluid"></div>
+                        <div class="post-details">
+                            <div class="post-meta d-flex justify-content-between">
+                                <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
+                            </div>
+                            <h1>Diversity in Engineering: The Effect on Questions<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+                            <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                    <div class="avatar"><img src="{{ asset('web/img/avatar-1.jpg') }}" alt="..." class="img-fluid"></div>
+                                    <div class="title"><span>John Doe</span></div></a>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <div class="date"><i class="icon-clock"></i> 2 months ago</div>
+                                    <div class="views"><i class="icon-eye"></i> 500</div>
+                                    <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                                </div>
+                            </div>
+                            <div class="post-body">
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p> <img src="{{ asset('web/img/featured-pic-3.jpeg') }}" alt="..." class="img-fluid"></p>
+                                <h3>Lorem Ipsum Dolor</h3>
+                                <p>div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus iusto voluptates deleniti similique rerum ducimus sint ex odio saepe. Sapiente quae pariatur ratione quis perspiciatis deleniti accusantium</p>
+                                <blockquote class="blockquote">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                    <footer class="blockquote-footer">Someone famous in
+                                        <cite title="Source Title">Source Title</cite>
+                                    </footer>
+                                </blockquote>
+                                <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
+                            </div>
+                            <div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
+                            <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
+                                    <div class="icon prev"><i class="fa fa-angle-left"></i></div>
+                                    <div class="text"><strong class="text-primary">Previous Post </strong>
+                                        <h6>I Bought a Wedding Dress.</h6>
+                                    </div></a><a href="#" class="next-post text-right d-flex align-items-center justify-content-end">
+                                    <div class="text"><strong class="text-primary">Next Post </strong>
+                                        <h6>I Bought a Wedding Dress.</h6>
+                                    </div>
+                                    <div class="icon next"><i class="fa fa-angle-right">   </i></div></a></div>
+                            <div class="post-comments">
+                                <header>
+                                    <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
+                                </header>
+                                <div class="comment">
+                                    <div class="comment-header d-flex justify-content-between">
+                                        <div class="user d-flex align-items-center">
+                                            <div class="image"><img src="{{ asset('web/img/user.svg') }}" alt="..." class="img-fluid rounded-circle"></div>
+                                            <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                    </div>
+                                </div>
+                                <div class="comment">
+                                    <div class="comment-header d-flex justify-content-between">
+                                        <div class="user d-flex align-items-center">
+                                            <div class="image"><img src="{{ asset('web/img/user.svg') }}" alt="..." class="img-fluid rounded-circle"></div>
+                                            <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                    </div>
+                                </div>
+                                <div class="comment">
+                                    <div class="comment-header d-flex justify-content-between">
+                                        <div class="user d-flex align-items-center">
+                                            <div class="image"><img src="{{ asset('web/img/user.svg') }}" alt="..." class="img-fluid rounded-circle"></div>
+                                            <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-comment">
+                                <header>
+                                    <h3 class="h6">Leave a reply</h3>
+                                </header>
+                                <form action="#" class="commenting-form">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" name="username" id="username" placeholder="Name" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button type="submit" class="btn btn-secondary">Submit Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </main>
+            <aside class="col-lg-4">
+                <!-- Widget [Search Bar Widget]-->
+                <div class="widget search">
+                    <header>
+                        <h3 class="h6">Search the blog</h3>
+                    </header>
+                    <form action="#" class="search-form">
+                        <div class="form-group">
+                            <input type="search" placeholder="What are you looking for?">
+                            <button type="submit" class="submit"><i class="icon-search"></i></button>
+                        </div>
                     </form>
                 </div>
-            </div>
-
-            <!-- Single Comment -->
-            <div class="media mb-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                <!-- Widget [Latest Posts Widget]        -->
+                <div class="widget latest-posts">
+                    <header>
+                        <h3 class="h6">Latest Posts</h3>
+                    </header>
+                    <div class="blog-posts"><a href="#">
+                            <div class="item d-flex align-items-center">
+                                <div class="image"><img src="{{ asset('web/img/small-thumbnail-1.jpg') }}" alt="..." class="img-fluid"></div>
+                                <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
+                                    <div class="d-flex align-items-center">
+                                        <div class="views"><i class="icon-eye"></i> 500</div>
+                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                    </div>
+                                </div>
+                            </div></a><a href="#">
+                            <div class="item d-flex align-items-center">
+                                <div class="image"><img src="{{ asset('web/img/small-thumbnail-2.jpg') }}" alt="..." class="img-fluid"></div>
+                                <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
+                                    <div class="d-flex align-items-center">
+                                        <div class="views"><i class="icon-eye"></i> 500</div>
+                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                    </div>
+                                </div>
+                            </div></a><a href="#">
+                            <div class="item d-flex align-items-center">
+                                <div class="image"><img src="{{ asset('web/img/small-thumbnail-3.jpg') }}" alt="..." class="img-fluid"></div>
+                                <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
+                                    <div class="d-flex align-items-center">
+                                        <div class="views"><i class="icon-eye"></i> 500</div>
+                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                    </div>
+                                </div>
+                            </div></a></div>
                 </div>
-            </div>
-
-            <!-- Comment with nested comments -->
-            <div class="media mb-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-                    <div class="media mt-4">
-                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-
-                    <div class="media mt-4">
-                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-
+                <!-- Widget [Categories Widget]-->
+                <div class="widget categories">
+                    <header>
+                        <h3 class="h6">Categories</h3>
+                    </header>
+                    <div class="item d-flex justify-content-between"><a href="#">Growth</a><span>12</span></div>
+                    <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
+                    <div class="item d-flex justify-content-between"><a href="#">Sales</a><span>8</span></div>
+                    <div class="item d-flex justify-content-between"><a href="#">Tips</a><span>17</span></div>
+                    <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
                 </div>
-            </div>
-
-        </div>
-
-        <!-- Sidebar Widgets Column -->
-        <div class="col-lg-4">
-
-            <!-- Search Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Search</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-              <button class="btn btn-secondary" type="button">Go!</button>
-            </span>
-                    </div>
+                <!-- Widget [Tags Cloud Widget]-->
+                <div class="widget tags">
+                    <header>
+                        <h3 class="h6">Tags</h3>
+                    </header>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
+                        <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
+                        <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
+                        <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
+                        <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+                    </ul>
                 </div>
-            </div>
-
-            <!-- Categories Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">Web Design</a>
-                                </li>
-                                <li>
-                                    <a href="#">HTML</a>
-                                </li>
-                                <li>
-                                    <a href="#">Freebies</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">JavaScript</a>
-                                </li>
-                                <li>
-                                    <a href="#">CSS</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tutorials</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Side Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
-                <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-                </div>
-            </div>
-
+            </aside>
         </div>
     </div>
-    <!-- /.container -->
 @endsection
 
 @section('script')

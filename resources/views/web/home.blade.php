@@ -2,7 +2,9 @@
 
 @section('title', 'Homepage')
 @section('css')
-    <link href="{{ asset('web/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/color/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/css/bootstrap-responsive.css') }}">
 @endsection
 @section('content')
     @include('web.partials.navbar')
