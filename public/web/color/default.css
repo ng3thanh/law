@@ -6,29 +6,29 @@ background:#e06d5e;
 }
 
 .navbar .brand a:hover {
-	color:#85888C;
+	color:#828282;
 }
 
 
 
 ul#menu-main > li > a:hover {
-	color: #85888C;
+	color: #828282;
 }
 
 
 ul#menu-main > li > a:focus,ul#menu-main > li > a:active, ul#menu-main > li > a.selected, ul#menu-main li a.selected:active    {
-	color: #85888C;
+	color: #828282;
 }
 #header-wrapper h1 span {
-	color:#85888C;
+	color:#000000;
 }
 
 #header-wrapper input[type=submit] {
-	background: #85888C !important;
+	background: #000000 !important;
 }
 
 #theme-form input[type=submit] {
-	background: #85888C !important;
+	background: #000000 !important;
 }
 
 .btn.btn-theme {
@@ -37,30 +37,30 @@ ul#menu-main > li > a:focus,ul#menu-main > li > a:active, ul#menu-main > li > a.
 
 /* blog */
 .home-post .post-meta {
-	background: #85888C;
+	background: #000000;
 }
 
 /* com */
 .tabbable ul.nav-tabs li.active a,.tabbable ul.nav-tabs li a:hover {
-	color: #85888C;
+	color: #000000;
 }
 .accordion .accordion-heading a.active {
-	color: #85888C;
+	color: #000000;
 }
 
 #tweet ul li a {
-	color: #85888C;
+	color: #000000;
 }
 
 
 /* works */
 #filters ul li a:hover h5, #filters ul li a.active h5 {
-	background: #85888C;
-	border-color: #85888C;
+	background: #000000;
+	border-color: #000000;
 }
 
 .portfolio .portfolio-overlay {
-	background: #85888C;
+	background: #000000;
 }
 
 /* icon */

@@ -1,19 +1,8 @@
-<!DOCTYPE HTML>
-<html lang="en">
+@extends('web.layout')
 
-<head>
-    <meta charset="utf-8">
-    <title>Maxim - Modern One Page Bootstrap Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    @include('web.assets.css')
-    <link rel="shortcut icon" href="{{ asset('web/img/favicon.ico') }}">
-</head>
+@section('title', 'Dashboard')
 
-<body>
-    @include('web.partials.navbar')
-    @include('web.partials.header')
+@section('content')
     <!-- section: team -->
     <section id="about" class="section">
         <div class="container">
@@ -266,7 +255,7 @@
 
     <!-- end spacer section -->
     <!-- section: contact -->
-    <section id="contact" class="section green">
+    <section id="contact" class="section black">
         <div class="container">
             <h4>Get in Touch</h4>
             <p>
@@ -311,11 +300,8 @@
             </div>
         </div>
     </section>
-    @include('web.partials.footer')
+@endsection
 
-    <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
-    @include('web.assets.js')
+@section('script')
 
-</body>
-
-</html>
+@endsection
