@@ -21,11 +21,11 @@ Route::middleware('guest')->namespace('Web')->group(function () {
         Route::get('{slug}-{id}', 'IntroducesController@show')->name('introduce.detail');
     });
 
-    Route::prefix('product')->group(function () {
-        Route::get('search', 'ProductsController@search')->name('product.search');
-        Route::get('list/', 'ProductsController@index')->name('product.index');
-        Route::get('list/{slug}-{menu_id}', 'ProductsController@list')->name('product.list');
-        Route::get('{slug}-{id}', 'ProductsController@show')->name('product.detail');
+    Route::prefix('blogs')->group(function () {
+        Route::get('search', 'BlogsController@search')->name('blog.search');
+//        Route::get('list/', 'BlogsController@index')->name('blog.index');
+//        Route::get('list/{slug}-{menu_id}', 'BlogsController@list')->name('blog.list');
+        Route::get('{slug}-{id}', 'BlogsController@show')->name('blog.detail');
     });
 
     Route::prefix('document')->group(function () {
@@ -54,9 +54,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::resource('contact', 'ContactController');
         Route::resource('user', 'UserController');
 
-        Route::get('copy-product/{id}', 'ProductController@copy')->name('product.copy');
-        Route::get('order-product', 'ProductController@order')->name('product.order');
-        Route::post('change-order-product', 'ProductController@changeOrder')->name('product.change.order');
+        Route::get('copy-product/{id}', 'ProductController@copy')->name('blog.copy');
+        Route::get('order-product', 'ProductController@order')->name('blog.order');
+        Route::post('change-order-product', 'ProductController@changeOrder')->name('blog.change.order');
         Route::get('list-menu', 'ProductController@listMenu')->name('menu.index');
         Route::get('create-menu', 'ProductController@createMenu')->name('menu.create');
         Route::get('edit-menu/{id}', 'ProductController@editMenu')->name('menu.edit');

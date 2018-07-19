@@ -9,4 +9,4 @@
 <script src="{{ asset('web/js/inview.js') }}"></script>
 <script src="{{ asset('web/js/animate.js') }}"></script>
 <script src="{{ asset('web/js/custom.js') }}"></script>
-<script src="{{ asset('web/contactform/contactform.js') }}"></script>
+<script src="{{ asset('web/js/contactform.js') }}"></script>

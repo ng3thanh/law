@@ -1,8 +1,12 @@
 @extends('web.layout')
 
-@section('title', 'Dashboard')
-
+@section('title', 'Homepage')
+@section('css')
+    <link href="{{ asset('web/css/bootstrap-responsive.css') }}" rel="stylesheet">
+@endsection
 @section('content')
+    @include('web.partials.navbar')
+    @include('web.partials.header')
     <!-- section: team -->
     <section id="about" class="section">
         <div class="container">
