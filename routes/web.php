@@ -23,7 +23,7 @@ Route::middleware('guest')->namespace('Web')->group(function () {
 
     Route::prefix('blogs')->group(function () {
         Route::get('search', 'BlogsController@search')->name('blog.search');
-//        Route::get('list/', 'BlogsController@index')->name('blog.index');
+        Route::get('list/', 'BlogsController@index')->name('blog.index');
 //        Route::get('list/{slug}-{menu_id}', 'BlogsController@list')->name('blog.list');
         Route::get('{slug}-{id}', 'BlogsController@show')->name('blog.detail');
     });

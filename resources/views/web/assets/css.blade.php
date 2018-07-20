@@ -12,5 +12,5 @@
 <link rel="stylesheet" href="{{ asset('web/css/style.default.css') }}">
 <!-- Favicon-->
 <link rel="shortcut icon" href="{{ asset('web/favicon.png') }}">
-<!-- Custom stylesheet - for your changes-->
-<link rel="stylesheet" href="{{ asset('web/css/custom.css') }}">
+{{--<!-- Custom stylesheet - for your changes-->--}}
+{{--<link rel="stylesheet" href="{{ asset('web/css/custom.css') }}">--}}
