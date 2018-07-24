@@ -20,6 +20,7 @@ class CreateBlogsTable extends Migration
             $table->string('author', 50);
             $table->text('description');
             $table->text('content');
+            $table->integer('view');
             $table->dateTime('publish_date');
             $table->dateTime('end_date');
             $table->timestamps();

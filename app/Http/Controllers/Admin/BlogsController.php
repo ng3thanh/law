@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BlogPostRequest;
 use App\Models\Blogs;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.blogs.create');
     }
 
     /**
@@ -34,9 +35,10 @@ class BlogsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogPostRequest $request)
     {
-        //
+        $data = $request->all();
+        dd($data);
     }
 
     /**

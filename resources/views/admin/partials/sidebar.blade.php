@@ -37,14 +37,14 @@
             <li class="active treeview">
                 <a href="{{ route('dashboard') }}">
                     <i class="fa fa-dashboard"></i>
-                    <span> Trang quản lý</span>
+                    <span> Dashboard</span>
                 </a>
             </li>
 
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
-                    <span> Tin tức</span>
+                    <span> News</span>
                     <span class="pull-right-container"> 
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
@@ -52,12 +52,12 @@
                 <ul class="treeview-menu">
                     <li>
                         <a href="{{ route('news.index') }}">
-                            <i class="fa fa-circle-o"></i> Danh sách tin tức
+                            <i class="fa fa-circle-o"></i> News index
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('news.create') }}">
-                            <i class="fa fa-plus-circle"></i> Thêm mới tin tức
+                            <i class="fa fa-plus-circle"></i> Add new
                         </a>
                     </li>
                 </ul>
@@ -66,35 +66,20 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-calendar"></i>
-                    <span> Sản phẩm</span>
+                    <span> Blogs</span>
                     <span class="pull-right-container"> 
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="{{ route('menu.index') }}">
-                            <i class="fa fa-asterisk"></i> Danh sách menu
+                        <a href="{{ route('blog.index') }}">
+                            <i class="fa fa-asterisk"></i> Blogs index
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('menu.create') }}">
-                            <i class="fa fa-edit"></i> Thêm mới menu
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('product.index') }}">
-                            <i class="fa fa-list"></i> Danh mục sản phẩm
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('product.order') }}">
-                            <i class="fa fa-wifi"></i> Sắp xếp sản phẩm
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('product.create') }}">
-                            <i class="fa fa-plus-circle"></i> Thêm mới sản phẩm
+                        <a href="{{ route('blog.create') }}">
+                            <i class="fa fa-edit"></i> Add blog
                         </a>
                     </li>
                 </ul>
@@ -102,7 +87,7 @@
 
             <li class="treeview">
                 <a href="#"> <i class="fa fa-usd"></i>
-                    <span> Liên hệ</span>
+                    <span> Contact</span>
                     <span class="pull-right-container"> 
 						<i class="fa fa-angle-left pull-right"></i>
         			</span>
@@ -110,7 +95,7 @@
                 <ul class="treeview-menu">
                     <li>
                         <a href="#">
-                            <i class="fa fa-circle-o"></i>General Elements
+                            <i class="fa fa-circle-o"></i>Contact index
                         </a>
                     </li>
                     <li>
@@ -129,7 +114,7 @@
             <li>
                 <a href="#">
                     <i class="fa fa-cubes"></i>
-                    <span> Thiết lập</span>
+                    <span> Setting</span>
                     <span class="pull-right-container"> 
 						<small class="label pull-right bg-red">3</small> 
 						<small class="label pull-right bg-blue">17</small>

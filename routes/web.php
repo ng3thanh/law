@@ -49,20 +49,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::prefix('management')->middleware('admin')->group(function () {
         Route::get('/', 'MainController@index')->name('dashboard');
 
-        Route::resource('product', 'ProductController');
+        Route::resource('blog', 'BlogsController');
         Route::resource('news', 'NewsController');
-        Route::resource('contact', 'ContactController');
+        Route::resource('feedback', 'FeedbacksController');
         Route::resource('user', 'UserController');
-
-        Route::get('copy-product/{id}', 'ProductController@copy')->name('blog.copy');
-        Route::get('order-product', 'ProductController@order')->name('blog.order');
-        Route::post('change-order-product', 'ProductController@changeOrder')->name('blog.change.order');
-        Route::get('list-menu', 'ProductController@listMenu')->name('menu.index');
-        Route::get('create-menu', 'ProductController@createMenu')->name('menu.create');
-        Route::get('edit-menu/{id}', 'ProductController@editMenu')->name('menu.edit');
-        Route::post('create-menu', 'ProductController@storeMenu')->name('menu.store');
-        Route::post('edit-menu/{id}', 'ProductController@updateMenu')->name('menu.update');
-        Route::post('delete-menu/{id}', 'ProductController@destroyMenu')->name('menu.destroy');
+        Route::get('copy-blog/{id}', 'BlogsController@copy')->name('blog.copy');
     });
 });
 
