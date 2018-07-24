@@ -5,7 +5,7 @@
 
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container header-padding-top">
         <div class="row">
             <!-- Latest Posts -->
             <main class="post blog-post col-lg-8">
