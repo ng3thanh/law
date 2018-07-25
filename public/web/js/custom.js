@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 	$("a[data-pretty^='prettyPhoto']").prettyPhoto();		
 
     // Localscrolling 
-	$('#menu-main, .brand').localScroll();
+    // $('#menu-main, .brand').localScroll();
 	
 	$('#menu-main li a').click(function(){
 		var links = $('#menu-main li a');
@@ -80,36 +80,7 @@ jQuery(document).ready(function($) {
 			$(this).find('h2').removeClass("animated fadeInUp");
 			}
 		);
-		
-	
-	// cache container
-	var $container = $('#portfolio-wrap');
-	$.browser.safari = ($.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase())));	
-	
-	if($.browser.safari){ 	
-	// initialize isotope
-	$container.isotope({
-		animationEngine : 'jquery',
-		animationOptions: {
-			duration: 200,
-			queue: false
-		},
-		layoutMode: 'fitRows'
-	});
-	} else {	
-	$container.isotope({
-		animationEngine : 'best-available',
-		animationOptions: {
-			duration: 200,
-			queue: false
-		},
-		layoutMode: 'fitRows'
-	});	
-	
-	$(window).resize(function() {
-		$container.isotope('reLayout');
-	});
-	}
+
 	// filter items when filter link is clicked
 	$('#filters a').click(function(){
 		$('#filters a').removeClass('active');

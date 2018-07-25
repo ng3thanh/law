@@ -2523,6 +2523,57 @@ a.text-dark:focus, a.text-dark:hover {
 /*********   HOME PAGE - THANH   **********/
 /******************************************/
 
+#homepage h1, #homepage h2, #homepage h3, #homepage h4, #homepage h5, #homepage h6 {
+  font-weight: 400;
+  color: #312f2b;
+  line-height:1.1em;
+  font-family:'Open Sans', Arial, sans-serif;
+}
+#homepage h1 {
+  font-size: 36px;
+  margin-bottom:20px;
+}
+#homepage h2 {
+  font-size: 30px;
+  margin-bottom:20px;
+}
+#homepage h3 {
+  font-size: 26px;
+  margin-bottom:20px;
+}
+#homepage h4 {
+  font-size: 22px;
+  margin-bottom:20px;
+}
+#homepage h5 {
+  font-size: 18px;
+  margin-bottom:15px;
+}
+#homepage h6 {
+  font-size: 16px;
+  margin-bottom:10px;
+}
+
+#homepage strong {
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#homepage p {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1.6em;
+  margin: 0 0 10px 0;
+}
+
+#homepage li {
+  list-style:none;
+  background-image:none;
+  background-repeat:none;
+  background-position:0;
+}
+
 /* === section header === */
 
 #homepage #header-wrapper {
@@ -2709,7 +2760,9 @@ a.text-dark:focus, a.text-dark:hover {
   margin: 0;
   overflow: hidden;
   line-height: 0;
-  width: 20%;
+  width: 19%;
+  margin-left: 1%;
+  float: left;
   border:0;
   padding: 0;
 }
@@ -2882,8 +2935,12 @@ a.text-dark:focus, a.text-dark:hover {
   font-weight: 700;
 }
 
-#homepage section#services.section.orange .service-box:hover {
-  background:#f36518;
+#homepage section#services .service-box p {
+  color: #f7f7f7;
+}
+
+#homepage section#services .service-box:hover {
+  color: #0b0b0b !important;
 }
 
 
@@ -2895,7 +2952,6 @@ a.text-dark:focus, a.text-dark:hover {
 
 #homepage .home-post {
   background:#fff;
-
 }
 
 #homepage .home-post:hover {
@@ -2909,6 +2965,12 @@ a.text-dark:focus, a.text-dark:hover {
   transition: all 0.4s ease-in-out;
 }
 
+#homepage img{
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+}
 #homepage .home-post .entry-content {
   padding:20px;
 }
@@ -2926,6 +2988,8 @@ a.text-dark:focus, a.text-dark:hover {
   padding:20px;
   overflow:hidden;
   color:#fcfcfc;
+  background:#000;
+  margin-top: 0px;
 }
 #homepage .home-post .post-meta i {
   float:left;
@@ -3066,16 +3130,6 @@ a.text-dark:focus, a.text-dark:hover {
   height: 156px;
 }
 
-#homepage #contact-form input[type=text]:focus, #homepage .contactForm textarea:focus {
-  background: #fff;
-  color: #555;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  transition: background 0.25 ease-in;
-  -moz-transition: background 0.25 ease-in;
-  -webkit-transition: background 0.25 ease-in;
-}
 #homepage #contact-form input[type=text] {
   height: 60px;
   margin-bottom:30px;
@@ -3128,4 +3182,41 @@ a.text-dark:focus, a.text-dark:hover {
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
+}
+
+#homepage .blankdivider10 {
+  height: 10px;
+  display: block;
+}
+
+#homepage .blankdivider20 {
+  height: 20px;
+  display: block;
+}
+
+#homepage .blankdivider30 {
+  height: 30px;
+  display: block;
+}
+
+#homepage .btn.btn-theme {
+  background: #000;
+  color: #fff;
+}
+
+#homepage .btn.btn-theme:hover {
+  background: #aaa;
+  color: #fff;
+}
+
+#homepage .btn-large {
+  padding: 15px 20px;
+  font-size: 18px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+#homepage .aligncenter {
+  text-align: center;
 }
