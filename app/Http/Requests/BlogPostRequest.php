@@ -28,7 +28,7 @@ class BlogPostRequest extends FormRequest
             'slug' => 'required|max:255',
             'description' => 'required|max:1000',
             'content' => 'required|max:5000',
-            'main_img' => 'required'
+            'image' => 'required'
         ];
     }
 }

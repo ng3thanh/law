@@ -55,7 +55,7 @@ class BlogsController extends Controller
         $data = $request->except('_token');
         $result = $this->blogService->create($data);
         if ($result) {
-            return view('blog.index')->with('success', 'Create new data successfully!');
+            return redirect()->route('blog.index')->with('success', 'Create new data successfully!');
         } else {
             return redirect()->back()->with('errors', 'Having error when save data');
         }
