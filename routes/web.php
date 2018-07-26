@@ -53,7 +53,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::resource('news', 'NewsController');
         Route::resource('feedback', 'FeedbacksController');
         Route::resource('user', 'UserController');
-        Route::get('copy-blog/{id}', 'BlogsController@copy')->name('blog.copy');
+        Route::get('copy/{id}', 'BlogsController@copy')->name('blog.copy');
     });
 });
 

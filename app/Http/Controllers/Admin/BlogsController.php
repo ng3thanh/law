@@ -68,9 +68,10 @@ class BlogsController extends Controller
      * @param  \App\Models\Blogs $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blogs $blog)
+    public function copy($id)
     {
-        //
+        $blog = $this->blogService->findBlog($id);
+        return view('admin.pages.blogs.copy', compact('blog'));
     }
 
     /**
