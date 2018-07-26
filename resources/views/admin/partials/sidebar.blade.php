@@ -1,3 +1,13 @@
+@php
+    $dashboardActive = \Request::route()->getName() == 'dashboard' ? 'active' : '';
+    $newIndexActive = \Request::route()->getName() == 'news.index' ? 'active' : '';
+    $newCreateActive = \Request::route()->getName() == 'news.create' ? 'active' : '';
+    $newActive = (!empty($newIndexActive) || !empty($newCreateActive)) ? 'active' : '';
+    $blogIndexActive = \Request::route()->getName() == 'blog.index' ? 'active' : '';
+    $blogCreateActive = \Request::route()->getName() == 'blog.create' ? 'active' : '';
+    $blogActive = (!empty($blogIndexActive) || !empty($blogCreateActive)) ? 'active' : '';
+@endphp
+
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 
@@ -18,7 +28,7 @@
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="search_all" class="form-control" placeholder="Search...">
                 <span class="input-group-btn">
 					<button type="submit" name="search" id="search-btn" class="btn btn-flat">
 						<i class="fa fa-search"></i>
@@ -32,16 +42,16 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
 
-            <li class="header">DANH MỤC</li>
+            <li class="header">SIDEBAR MENU</li>
 
-            <li class="active treeview">
+            <li class="treeview {{ $dashboardActive }}">
                 <a href="{{ route('dashboard') }}">
                     <i class="fa fa-dashboard"></i>
                     <span> Dashboard</span>
                 </a>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ $newActive }}">
                 <a href="#">
                     <i class="fa fa-users"></i>
                     <span> News</span>
@@ -50,12 +60,12 @@
 					</span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ $newIndexActive }}">
                         <a href="{{ route('news.index') }}">
                             <i class="fa fa-circle-o"></i> News index
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ $newIndexActive }}">
                         <a href="{{ route('news.create') }}">
                             <i class="fa fa-plus-circle"></i> Add new
                         </a>
@@ -63,7 +73,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ $blogActive }}">
                 <a href="#">
                     <i class="fa fa-calendar"></i>
                     <span> Blogs</span>
@@ -72,12 +82,12 @@
 					</span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{ $blogIndexActive }}">
                         <a href="{{ route('blog.index') }}">
                             <i class="fa fa-asterisk"></i> Blogs index
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ $blogCreateActive }}">
                         <a href="{{ route('blog.create') }}">
                             <i class="fa fa-edit"></i> Add blog
                         </a>

@@ -26,3 +26,11 @@
 .text-left {
 	text-align: left !important;
 }
+
+.span-red {
+	color: #a94442;
+}
+
+.required-text-box {
+	padding-top: 4px;
+}
