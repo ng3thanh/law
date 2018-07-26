@@ -23,6 +23,12 @@ class BlogService
         $this->blogsRepository = $blogsRepository;
     }
 
+    public function getAllBlog()
+    {
+        $data = $this->blogsRepository->getAllPaginate(200);
+        return $data;
+    }
+
     public function create($data)
     {
         try {

@@ -32,7 +32,8 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        //
+        $blogs = $this->blogService->getAllBlog();
+        return view('admin.pages.blogs.index', compact('blogs'));
     }
 
     /**
@@ -64,10 +65,10 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blogs $news
+     * @param  \App\Models\Blogs $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blogs $news)
+    public function show(Blogs $blog)
     {
         //
     }
@@ -75,22 +76,22 @@ class BlogsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blogs $news
+     * @param  \App\Models\Blogs $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blogs $news)
+    public function edit(Blogs $blog)
     {
-        //
+        return view('admin.pages.blogs.edit', compact('blog'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Blogs $news
+     * @param  \App\Models\Blogs $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blogs $news)
+    public function update(Request $request, Blogs $blog)
     {
         //
     }
@@ -98,10 +99,10 @@ class BlogsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blogs $news
+     * @param  \App\Models\Blogs $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blogs $news)
+    public function destroy(Blogs $blog)
     {
         //
     }

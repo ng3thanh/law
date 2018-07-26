@@ -11,6 +11,12 @@ interface BaseRepositoryInterface
     public function getAll();
 
     /**
+     * Get all with paginate
+     * @return mixed
+     */
+    public function getAllPaginate($limit);
+
+    /**
      * Get one
      * @param $id
      * @return mixed

@@ -43,6 +43,14 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Get all with paginate
+     * @return mixed
+     */
+    public function getAllPaginate($limit)
+    {
+        return $this->model->paginate($limit);
+    }
+    /**
      * Get one
      * @param $id
      * @return mixed

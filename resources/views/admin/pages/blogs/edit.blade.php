@@ -1,13 +1,15 @@
 @extends('admin.layout')
 
-@section('title', 'Create new blog')
+@section('title', 'Edit blog')
 
 @section('css')
 @endsection
 
 @php
     $oldPlDate = old('publish_date');
+    $oldTitle = old('title');
     $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y');
+    $title = isset($oldTitle) ? $oldTitle : $blog->title;
 @endphp
 @section('content')
     <section class="content">
@@ -21,7 +23,7 @@
             <div class="box-body">
                 <div class="row">
                     <div class="box-body">
-                        <form role="form" id="create-new-blog" class="form-horizontal" action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                        <form role="form" id="update-blog" class="form-horizontal" action="{{ route('blog.update', [ $blog->id ]) }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                             <div>
                                 <div class="col-xs-12">
@@ -85,10 +87,10 @@
                         <div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
                             <div class="col-xs-8 col-xs-offset-2">
                                 <div class="col-xs-3">
-                                    <button class="btn btn-block btn-default" form="create-new-blog" type="submit">Create</button>
+                                    <button class="btn btn-block btn-default" form="update-blog" type="submit">Create</button>
                                 </div>
                                 <div class="col-xs-offset-1 col-xs-3">
-                                    <button class="btn btn-block btn-default" form="create-new-blog" type="reset">Reset</button>
+                                    <button class="btn btn-block btn-default" form="update-blog" type="reset">Reset</button>
                                 </div>
                                 <div class="col-xs-offset-1 col-xs-3">
                                     <a href="{{ route('blog.index') }}" class="btn btn-block btn-default">Back</a>
