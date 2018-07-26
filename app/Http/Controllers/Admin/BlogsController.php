@@ -93,7 +93,13 @@ class BlogsController extends Controller
      */
     public function update(Request $request, Blogs $blog)
     {
-        //
+        $data = $request->except('_token', '_method');
+        $result = $this->blogService->update($blog->id, $data);
+        if ($result) {
+            return redirect()->route('blog.index')->with('success', 'Update data successfully!');
+        } else {
+            return redirect()->back()->with('errors', 'Having error when update data');
+        }
     }
 
     /**

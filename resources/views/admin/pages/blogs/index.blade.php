@@ -1,9 +1,7 @@
 @extends('admin.layout')
-@section('title', 'Danh sách sản phẩm')
+@section('title', 'Blog list')
 
 @section('css')
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('admin/css/select2.min.css') }}">
 @endsection
 
 @section('content')
@@ -14,7 +12,7 @@
                 <!-- general form elements disabled -->
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tìm kiếm</h3>
+                        <h3 class="box-title">Search</h3>
                     </div>
 
                     <div class="box-body">
@@ -103,13 +101,13 @@
                             <div class="col-xs-4 col-xs-offset-4">
                                 <div class="col-xs-5">
                                     <button class="btn btn-block btn-info btn-sm" type="submit">
-                                        <i class="fa fa-search"></i> &nbsp;&nbsp;Tìm kiếm
+                                        <i class="fa fa-search"></i> &nbsp;&nbsp;Search
                                     </button>
                                 </div>
                                 <div class="col-xs-offset-2 col-xs-5">
                                     <a href="{{ route('blog.create') }}"
                                        class="btn btn-block btn-success btn-sm col-xs-offset-1 col-xs-1">
-                                        <i class="fa fa-plus"></i> &nbsp;&nbsp;Tạo mới
+                                        <i class="fa fa-plus"></i> &nbsp;&nbsp;Create
                                     </a>
                                 </div>
                             </div>
@@ -145,7 +143,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <img src='{{ asset("$blog->image") }}' width="50px" height="">
+                                        <img class="img-thumbnail" src='{{ asset("$blog->image") }}' width="50px" height="">
                                     </td>
                                     <td>
                                         <span class="short-text">{!! $blog->description !!}</span>
@@ -154,22 +152,15 @@
                                         <span class="short-text">{!! $blog->content !!}</span>
                                     </td>
                                     <td>
-                                        {{ date('d-m-Y H:i:s', strtotime($blog->publish_date)) }}
+                                        {{ date('d/m/Y H:i', strtotime($blog->publish_date)) }}
                                     </td>
                                     <td>
-                                        {{ date('d-m-Y H:i:s', strtotime($blog->end_date)) }}
+                                        {{ date('d/m/Y H:i', strtotime($blog->end_date)) }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('blog.copy', $blog->id) }}" class="btn btn-block btn-success btn-xs">Copy</a>
-                                        <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-block btn-warning btn-xs">Edit</a>
-                                        <form role="form" id="create-new-product" class="form-horizontal"
-                                              style="margin-top: 5px"
-                                              action="{{ route('blog.destroy', $blog->id) }}" method="POST"
-                                              enctype="multipart/form-data">
-                                            {{ csrf_field() }}
-                                            {{ method_field('delete') }}
-                                            <button type="submit" class="btn btn-block btn-danger btn-xs">Delete</button>
-                                        </form>
+                                        <a href="{{ route('blog.copy', $blog->id) }}"><i class="fa fa-copy"></i>&nbsp;</a>
+                                        <a href="{{ route('blog.edit', $blog->id) }}"><i class="fa fa-edit"></i>&nbsp;</a>
+                                        <a href="{{ route('blog.destroy', $blog->id) }}"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -198,45 +189,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/js/select2.full.min.js') }}"></script>
 
-    <!-- date-range-picker -->
-    <script src="{{ asset('admin/js/daterangepicker.js') }}"></script>
-    <script>
-        $(function () {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                },
-            })
-        });
-
-        var getUrlParameter = function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
-
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        };
-
-        var time = getUrlParameter('publish_time');
-
-        if (typeof time !== "undefined") {
-            $('#reservationtime').val(time.replace(/\+/g, ' '));
-        }
-
-    </script>
 @endsection

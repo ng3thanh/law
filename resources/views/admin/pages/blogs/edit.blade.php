@@ -6,16 +6,25 @@
 @endsection
 
 @php
-    $oldPlDate = old('publish_date');
     $oldTitle = old('title');
-    $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y');
+    $oldSlug = old('slug');
+    $oldDescription = old('description');
+    $oldContent = old('content');
+    $oldPlDate = old('publish_date');
+    $oldEnDate = old('end_date');
     $title = isset($oldTitle) ? $oldTitle : $blog->title;
+    $slug = isset($oldSlug) ? $oldSlug : $blog->slug;
+    $description = isset($oldDescription) ? $oldDescription : $blog->description;
+    $content = isset($oldContent) ? $oldContent : $blog->content;
+    $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y', strtotime($blog->publish_date));
+    $endDate = isset($oldEnDate) ? $oldEnDate : date('m/d/Y', strtotime($blog->end_date));
+
 @endphp
 @section('content')
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Create new blog</h3>
+                <h3 class="box-title">Edit blog</h3>
                 <div class="box-tools pull-right required-text-box">
                     <span class="span-red">(*): The attribute must be required</span>
                 </div>
@@ -25,39 +34,41 @@
                     <div class="box-body">
                         <form role="form" id="update-blog" class="form-horizontal" action="{{ route('blog.update', [ $blog->id ]) }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        {{ method_field("PUT") }}
                             <div>
                                 <div class="col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title" name="title" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
+                                            <input type="text" id="title" name="title" class="form-control" value="{{ $title }}">
                                             @include('elements.error_line', ['attribute' => 'title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug') }}">
+                                            <input type="text" id="slug" name="slug" class="form-control" value="{{ $slug }}">
                                             @include('elements.error_line', ['attribute' => 'slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter" name="description" rows="8" cols="80">{{ old('description') }}</textarea>
+                                            <textarea class="form-control" id="des_ckediter" name="description" rows="8" cols="80">{{ $description }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter" name="content" rows="10" cols="80">{{ old('content') }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter" name="content" rows="10" cols="80">{{ $content }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'content'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Main image <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
+                                            <img class="img-thumbnail" src='{{ asset("$blog->image") }}' width="200px" height=""><br><br>
                                             <input type="file" class="form-control" name="image">
                                             @include('elements.error_line', ['attribute' => 'image'])
                                         </div>
@@ -77,7 +88,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right datepicker" name="end_date" value="{{ old('end_date') }}">
+                                            <input type="text" class="form-control pull-right datepicker" name="end_date" value="{{ $endDate }}">
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +98,7 @@
                         <div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
                             <div class="col-xs-8 col-xs-offset-2">
                                 <div class="col-xs-3">
-                                    <button class="btn btn-block btn-default" form="update-blog" type="submit">Create</button>
+                                    <button class="btn btn-block btn-default" form="update-blog" type="submit">Edit</button>
                                 </div>
                                 <div class="col-xs-offset-1 col-xs-3">
                                     <button class="btn btn-block btn-default" form="update-blog" type="reset">Reset</button>

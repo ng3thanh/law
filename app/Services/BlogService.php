@@ -43,13 +43,41 @@ class BlogService
             $data = formatDataBaseOnTable('blogs', $data);
             $result = $this->blogsRepository->create($data);
             if ($result) {
-                $newName = 'blog_' . $result->id . '_main_image.' . $file->getClientOriginalExtension();
-                $file->move(config('upload.blog') . $result->id . '/', $newName);
-                $this->blogsRepository->update($result->id, ['image' => config('upload.blog') . $result->id . '/' . $newName]);
+                $newName = $this->uploadImage($result->id, $file);
+                $this->blogsRepository->update(
+                    $result->id,
+                    ['image' => config('upload.blog') . $result->id . '/' . $newName
+                ]);
             }
             return true;
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    public function update($id, $data)
+    {
+        try {
+            if ($data['image']) {
+                $newName = $this->uploadImage($id, $data['image']);
+                $data['image'] = config('upload.blog') . $id . '/' . $newName;
+            }
+
+            $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
+            $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
+
+            $data = formatDataBaseOnTable('blogs', $data);
+            $this->blogsRepository->update($id, $data);
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    private function uploadImage($id, $file)
+    {
+        $newName = 'blog_' . $id . '_main_image.' . $file->getClientOriginalExtension();
+        $file->move(config('upload.blog') . $id . '/', $newName);
+        return $newName;
     }
 }
