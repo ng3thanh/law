@@ -22,7 +22,6 @@ class BlogsController extends Controller
     public function __construct(
         BlogService $blogService
     ) {
-        parent::__construct();
         $this->blogService = $blogService;
     }
 

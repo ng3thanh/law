@@ -25,10 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $repositories = ['Base', 'Feedbacks', 'Blogs', 'Services', 'Slides', 'Roles', 'Users'];
 
-        foreach ($repositories as $value) {
-            $this->app->singleton(
-                'App/Repositories/' . $value . '/' . $value . 'RepositoryInterface::class',
-                'App/Repositories/' . $value . '/' . $value . 'EloquentRepository::class'
+        foreach ($repositories as $model) {
+            $this->app->bind(
+                "App\Repositories\\{$model}\\{$model}RepositoryInterface",
+                "App\Repositories\\{$model}\\{$model}EloquentRepository"
             );
         }
     }
