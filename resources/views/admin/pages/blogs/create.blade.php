@@ -56,8 +56,8 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Main image <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="file" class="form-control" name="main_img">
-                                            @include('elements.error_line', ['attribute' => 'main_img'])
+                                            <input type="file" class="form-control" name="image">
+                                            @include('elements.error_line', ['attribute' => 'image'])
                                         </div>
                                     </div>
                                     <div class="form-group">

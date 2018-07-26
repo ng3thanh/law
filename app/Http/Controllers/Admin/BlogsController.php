@@ -52,7 +52,7 @@ class BlogsController extends Controller
      */
     public function store(BlogPostRequest $request)
     {
-        $data = $request->all();
+        $data = $request->except('_token');
         $result = $this->blogService->create($data);
         if ($result) {
             return view('blog.index')->with('success', 'Create new data successfully!');

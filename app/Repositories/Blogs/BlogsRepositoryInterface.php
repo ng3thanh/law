@@ -2,7 +2,9 @@
 
 namespace App\Repositories\Blogs;
 
-interface BlogsRepositoryInterface
+use App\Repositories\Base\BaseRepositoryInterface;
+
+interface BlogsRepositoryInterface extends BaseRepositoryInterface
 {
     /**
      * Get all posts only published
