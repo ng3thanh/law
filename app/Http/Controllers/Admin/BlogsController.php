@@ -58,14 +58,14 @@ class BlogsController extends Controller
         if ($result) {
             return redirect()->route('blog.index')->with('success', 'Create new data successfully!');
         } else {
-            return redirect()->back()->with('errors', 'Having error when save data');
+            return redirect()->back()->with('error', 'Having error when save data');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blogs $blog
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function copy($id)
@@ -99,7 +99,7 @@ class BlogsController extends Controller
         if ($result) {
             return redirect()->route('blog.index')->with('success', 'Update data successfully!');
         } else {
-            return redirect()->back()->with('errors', 'Having error when update data');
+            return redirect()->back()->with('error', 'Having error when update data');
         }
     }
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Feedbacks;
 use Illuminate\Http\Request;
 
-class FeedbacksController extends Controller
+class ContactsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class FeedbacksController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.contacts.index');
     }
 
     /**

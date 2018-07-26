@@ -15,17 +15,7 @@ class SlidesController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('admin.pages.settings.slides.index');
     }
 
     /**
@@ -36,7 +26,7 @@ class SlidesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

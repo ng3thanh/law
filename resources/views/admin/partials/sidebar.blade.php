@@ -104,34 +104,39 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i>Contact index
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i>General Elements
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i>General Elements
+                        <a href="{{ route('contact.index') }}">
+                            <i class="fa fa-circle-o"></i> Contact index
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li>
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-cubes"></i>
                     <span> Setting</span>
-                    <span class="pull-right-container"> 
-						<small class="label pull-right bg-red">3</small> 
-						<small class="label pull-right bg-blue">17</small>
-					</span>
+                    <span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+        			</span>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ route('slide.index') }}">
+                            <i class="fa fa-circle-o"></i> Background slide
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-circle-o"></i> Footer info
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-circle-o"></i> Social network
+                        </a>
+                    </li>
+                </ul>
             </li>
-
         </ul>
     </section>
     <!-- /.sidebar -->

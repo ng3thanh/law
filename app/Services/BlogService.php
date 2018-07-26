@@ -38,7 +38,7 @@ class BlogService
     public function create($data)
     {
         try {
-            if ($data['image']) {
+            if (isset($data['image'])) {
                 $file = $data['image'];
                 unset($data['image']);
             }
@@ -64,7 +64,7 @@ class BlogService
     public function update($id, $data)
     {
         try {
-            if ($data['image']) {
+            if (isset($data['image'])) {
                 $newName = $this->uploadImage($id, $data['image']);
                 $data['image'] = config('upload.blog') . $id . '/' . $newName;
             }

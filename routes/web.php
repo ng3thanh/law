@@ -49,11 +49,16 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::prefix('management')->middleware('admin')->group(function () {
         Route::get('/', 'MainController@index')->name('dashboard');
 
-        Route::resource('blog', 'BlogsController');
         Route::resource('news', 'NewsController');
-        Route::resource('feedback', 'FeedbacksController');
+        Route::resource('contact', 'ContactsController');
         Route::resource('user', 'UserController');
+
+        // Blogs
+        Route::resource('blog', 'BlogsController');
         Route::get('copy/{id}', 'BlogsController@copy')->name('blog.copy');
+
+        // Slides
+        Route::resource('slide', 'SlidesController');
     });
 });
 

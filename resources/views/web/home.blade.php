@@ -113,7 +113,7 @@
         <!-- section: works -->
         <section id="works" class="section">
             <div class="container clearfix">
-                <h4>Our Works</h4>
+                <h4>Feature clients</h4>
                 <div class="row">
                     <div class="col-lg-12">
                         <div id="portfolio-wrap">
