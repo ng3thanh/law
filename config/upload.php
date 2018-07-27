@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'blog' => 'upload/blogs/'
+    'blog' => 'upload/blogs/',
+    'slide' => 'upload/slides/'
 ];

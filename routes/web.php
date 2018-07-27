@@ -59,6 +59,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         // Slides
         Route::resource('slide', 'SlidesController');
+        Route::post('slide/choose', 'SlidesController');
     });
 });
 

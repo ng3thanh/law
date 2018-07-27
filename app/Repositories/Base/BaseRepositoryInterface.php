@@ -5,6 +5,13 @@ namespace App\Repositories\Base;
 interface BaseRepositoryInterface
 {
     /**
+     * Get first data base on order
+     * @param $orderBy
+     * @return mixed
+     */
+    public function getFirst($orderBy);
+
+    /**
      * Get all
      * @return mixed
      */

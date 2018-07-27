@@ -140,3 +140,19 @@ if (!function_exists('getFullQuery')) {
         return $sql;
     }
 }
+
+if (!function_exists('uploadImage')) {
+    /**
+     * Upload image
+     * @param $id
+     * @param $file
+     * @param $location
+     * @return string
+     */
+    function uploadImage($id, $file, $location)
+    {
+        $newName = $location . '_' . $id . '_main_image.' . $file->getClientOriginalExtension();
+        $file->move(config('upload.'. $location) . $id . '/', $newName);
+        return $newName;
+    }
+}

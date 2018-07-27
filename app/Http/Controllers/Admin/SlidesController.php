@@ -4,10 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slides;
+use App\Services\SlideService;
 use Illuminate\Http\Request;
 
 class SlidesController extends Controller
 {
+    /**
+     * @var SlideService
+     */
+    protected $slideService;
+
+    /**
+     * SlidesController constructor.
+     * @param SlideService $slideService
+     */
+    public function __construct(
+        SlideService $slideService
+    ) {
+        $this->slideService = $slideService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +30,10 @@ class SlidesController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.settings.slides.index');
+        $slideShow = $this->slideService->getSlideShow();
+        $slideNotShow = $this->slideService->getSlideNotShow();
+
+        return view('admin.pages.settings.slides.index', compact('slideShow', 'slideNotShow'));
     }
 
     /**
@@ -26,7 +44,13 @@ class SlidesController extends Controller
      */
     public function store(Request $request)
     {
-
+        $data = $request->except('_token');
+        $result = $this->slideService->create($data);
+        if ($result) {
+            return redirect()->route('slide.index')->with('success', 'Create new slide successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when save slide');
+        }
     }
 
     /**

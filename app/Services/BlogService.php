@@ -49,7 +49,7 @@ class BlogService
             $data = formatDataBaseOnTable('blogs', $data);
             $result = $this->blogsRepository->create($data);
             if ($result) {
-                $newName = $this->uploadImage($result->id, $file);
+                $newName = uploadImage($result->id, $file, 'blog');
                 $this->blogsRepository->update(
                     $result->id,
                     ['image' => config('upload.blog') . $result->id . '/' . $newName
@@ -65,7 +65,7 @@ class BlogService
     {
         try {
             if (isset($data['image'])) {
-                $newName = $this->uploadImage($id, $data['image']);
+                $newName = uploadImage($id, $data['image'], 'blog');
                 $data['image'] = config('upload.blog') . $id . '/' . $newName;
             }
 
@@ -78,12 +78,5 @@ class BlogService
         } catch (Exception $e) {
             return false;
         }
-    }
-
-    private function uploadImage($id, $file)
-    {
-        $newName = 'blog_' . $id . '_main_image.' . $file->getClientOriginalExtension();
-        $file->move(config('upload.blog') . $id . '/', $newName);
-        return $newName;
     }
 }

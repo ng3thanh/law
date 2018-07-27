@@ -34,6 +34,15 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Get first data base on order
+     * @param $orderBy
+     * @return mixed
+     */
+    public function getFirst($orderBy){
+        return $this->model->orderBy($orderBy)->first();
+    }
+
+    /**
      * Get All
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
@@ -50,6 +59,7 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     {
         return $this->model->paginate($limit);
     }
+
     /**
      * Get one
      * @param $id
