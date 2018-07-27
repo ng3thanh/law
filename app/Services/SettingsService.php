@@ -6,7 +6,7 @@ use App\Repositories\Slides\SlidesRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class SlideService
+class SettingsService
 {
     /**
      * @var SlidesRepositoryInterface

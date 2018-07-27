@@ -60,6 +60,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         // Slides
         Route::resource('slide', 'SlidesController');
         Route::get('slide/choose/{id}', 'SlidesController@choose')->name('slide.choose');
+
+        // Footer
+        Route::resource('footer', 'FooterController');
     });
 });
 

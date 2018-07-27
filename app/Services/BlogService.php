@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Blogs\BlogsRepositoryInterface;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class BlogService
 {
@@ -38,6 +39,8 @@ class BlogService
     public function create($data)
     {
         try {
+            DB::beginTransaction();
+
             if (isset($data['image'])) {
                 $file = $data['image'];
                 unset($data['image']);
@@ -55,8 +58,10 @@ class BlogService
                     ['image' => config('upload.blog') . $result->id . '/' . $newName
                 ]);
             }
+            DB::commit();
             return true;
         } catch (Exception $e) {
+            DB::rollBack();
             return false;
         }
     }
@@ -64,6 +69,8 @@ class BlogService
     public function update($id, $data)
     {
         try {
+            DB::beginTransaction();
+
             if (isset($data['image'])) {
                 $newName = uploadImage($id, $data['image'], 'blog');
                 $data['image'] = config('upload.blog') . $id . '/' . $newName;
@@ -74,8 +81,10 @@ class BlogService
 
             $data = formatDataBaseOnTable('blogs', $data);
             $this->blogsRepository->update($id, $data);
+            DB::commit();
             return true;
         } catch (Exception $e) {
+            DB::rollBack();
             return false;
         }
     }
