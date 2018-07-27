@@ -72,6 +72,17 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Get one with trash
+     * @param $id
+     * @return mixed
+     */
+    public function findWithTrash($id)
+    {
+        $result = $this->model->withTrashed($id);
+        return $result;
+    }
+
+    /**
      * Create
      * @param array $attributes
      * @return mixed

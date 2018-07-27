@@ -31,6 +31,13 @@ interface BaseRepositoryInterface
     public function find($id);
 
     /**
+     * Get one with trash
+     * @param $id
+     * @return mixed
+     */
+    public function findWithTrash($id);
+
+    /**
      * Create
      * @param array $attributes
      * @return mixed

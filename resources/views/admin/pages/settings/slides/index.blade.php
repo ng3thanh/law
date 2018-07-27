@@ -55,7 +55,7 @@
                         <span class="info-box-text">
                             <strong>{{ $slide->alt }}</strong>
                             <div class="box-tools pull-right">
-                                <a href="{{ route('slide.choose') }}" class="btn btn-default btn-sm checkbox-toggle">
+                                <a href="{{ route('slide.choose', $slide->id) }}" class="btn btn-default btn-sm checkbox-toggle">
                                     <i class="fa fa-hand-pointer-o"></i>
                                 </a>
                             </div>

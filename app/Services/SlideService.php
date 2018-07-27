@@ -65,4 +65,16 @@ class SlideService
             $this->slidesRepository->delete($slide->id);
         }
     }
+
+    public function choose($id)
+    {
+        try {
+            $this->deleteAllSlideShow();
+            $slide = $this->slidesRepository->findWithTrash($id);
+            $slide->restore();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

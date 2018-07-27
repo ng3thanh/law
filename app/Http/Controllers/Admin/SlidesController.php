@@ -97,4 +97,13 @@ class SlidesController extends Controller
     {
         //
     }
+
+    public function choose($id) {
+        $result = $this->slideService->choose($id);
+        if ($result) {
+            return redirect()->route('slide.index')->with('success', 'Create new slide successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when save slide');
+        }
+    }
 }
