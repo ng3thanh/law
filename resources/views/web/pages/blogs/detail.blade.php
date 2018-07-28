@@ -150,7 +150,7 @@
                         @endforeach
                     </div>
                 </div>
-                
+
                 <!-- Widget [Tags Cloud Widget]-->
                 <div class="widget tags">
                     <header>
@@ -168,6 +168,7 @@
         </div>
     </div>
 @endsection
+
 
 @section('script')
 
