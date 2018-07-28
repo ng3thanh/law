@@ -17,4 +17,11 @@ interface BlogsRepositoryInterface extends BaseRepositoryInterface
      * @return mixed
      */
     public function findOnlyPublished($id);
+
+    /**
+     * Find by slug
+     * @param $slug
+     * @return mixed
+     */
+    public function findBySlug($slug);
 }

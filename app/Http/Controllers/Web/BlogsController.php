@@ -4,10 +4,26 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blogs;
+use App\Services\BlogService;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
 {
+    /**
+     * @var BlogService
+     */
+    protected $blogService;
+
+    /**
+     * BlogsController constructor.
+     * @param BlogService $blogService
+     */
+    public function __construct(
+        BlogService $blogService
+    ) {
+        $this->blogService = $blogService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +31,8 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        return view('web.pages.blogs.list');
+        $blogList = $this->blogService->getAllBlog();
+        return view('web.pages.blogs.list', compact('blogList'));
     }
 
     /**
@@ -42,21 +59,23 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blogs  $news
+     * @param  \App\Models\Blogs  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blogs $news)
+    public function show($slug)
     {
-        return view('web.pages.blogs.detail');
+        $blog = $this->blogService->findBlogBySlug($slug);
+        $randomBlog = $this->blogService->randomBlog(3);
+        return view('web.pages.blogs.detail', compact('blog', 'randomBlog'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blogs  $news
+     * @param  \App\Models\Blogs  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blogs $news)
+    public function edit(Blogs $blog)
     {
         //
     }
@@ -65,10 +84,10 @@ class BlogsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blogs  $news
+     * @param  \App\Models\Blogs  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blogs $news)
+    public function update(Request $request, Blogs $blog)
     {
         //
     }
@@ -76,10 +95,10 @@ class BlogsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blogs  $news
+     * @param  \App\Models\Blogs  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blogs $news)
+    public function destroy(Blogs $blog)
     {
         //
     }

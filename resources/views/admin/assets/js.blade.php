@@ -53,4 +53,4 @@
 <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
 
 <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
-{{--<script src="{{ asset('admin/ckfinder/ckfinder.js') }}"></script>--}}
+<script src="{{ asset('admin/ckfinder/ckfinder.js') }}"></script>

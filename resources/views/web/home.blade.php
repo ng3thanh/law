@@ -282,7 +282,7 @@
                 </div>
                 <div class="blankdivider30"></div>
                 <div class="aligncenter">
-                    <a href="#" class="btn btn-large btn-theme">More blog post</a>
+                    <a href="{{ route('blogs.index') }}" class="btn btn-large btn-theme">More blog post</a>
                 </div>
             </div>
         </section>

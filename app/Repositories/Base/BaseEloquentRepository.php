@@ -61,6 +61,16 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Get random data
+     * @param $number
+     * @return mixed
+     */
+    public function getSomeRandomData($number)
+    {
+        return $this->model->inRandomOrder()->limit($number)->get();
+    }
+
+    /**
      * Get one
      * @param $id
      * @return mixed

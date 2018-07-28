@@ -45,4 +45,15 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
 
         return $result;
     }
+
+    /**
+     * Find by slug
+     * @param $slug
+     * @return mixed
+     */
+    public function findBySlug($slug)
+    {
+        $result = $this->model->where('slug', $slug)->first();
+        return $result;
+    }
 }

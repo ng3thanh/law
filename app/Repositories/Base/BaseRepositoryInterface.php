@@ -24,6 +24,13 @@ interface BaseRepositoryInterface
     public function getAllPaginate($limit);
 
     /**
+     * Get random data
+     * @param $number
+     * @return mixed
+     */
+    public function getSomeRandomData($number);
+
+    /**
      * Get one
      * @param $id
      * @return mixed

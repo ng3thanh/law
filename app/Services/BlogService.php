@@ -36,6 +36,12 @@ class BlogService
         return $data;
     }
 
+    public function findBlogBySlug($slug)
+    {
+        $data = $this->blogsRepository->findBySlug($slug);
+        return $data;
+    }
+
     public function create($data)
     {
         try {
@@ -87,5 +93,11 @@ class BlogService
             DB::rollBack();
             return false;
         }
+    }
+
+    public function randomBlog($number)
+    {
+        $result = $this->blogsRepository->getSomeRandomData($number);
+        return $result;
     }
 }

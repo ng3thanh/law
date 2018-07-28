@@ -22,27 +22,11 @@ Route::middleware('guest')->namespace('Web')->group(function () {
     });
 
     Route::prefix('blogs')->group(function () {
-        Route::get('search', 'BlogsController@search')->name('blog.search');
-//        Route::get('list/', 'BlogsController@index')->name('blog.index');
-//        Route::get('list/{slug}-{menu_id}', 'BlogsController@list')->name('blog.list');
-        Route::get('{slug}-{id}', 'BlogsController@show')->name('blog.detail');
+//        Route::get('search', 'BlogsController@search')->name('blogs.search');
+        Route::get('list/', 'BlogsController@index')->name('blogs.index');
+//        Route::get('list/{slug}-{menu_id}', 'BlogsController@list')->name('blogs.list');
+        Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
     });
-
-    Route::prefix('document')->group(function () {
-        Route::get('/document', 'DocumentController@index')->name('document');
-        Route::get('{slug}-{id}', 'DocumentController@show')->name('document.detail');
-    });
-
-    Route::prefix('contact')->group(function () {
-        Route::get('/list', 'ContactController@index')->name('contact');
-        Route::post('/feedback', 'ContactController@feedback')->name('feedback');
-    });
-
-    // Users
-    Route::resource('users', 'UserController');
-
-    // Roles
-    Route::resource('roles', 'RoleController');
 });
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
@@ -57,12 +41,15 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::resource('blog', 'BlogsController');
         Route::get('copy/{id}', 'BlogsController@copy')->name('blog.copy');
 
+        // Settings
         // Slides
-        Route::resource('slide', 'SlidesController');
-        Route::get('slide/choose/{id}', 'SlidesController@choose')->name('slide.choose');
+        Route::get('/slide/index', 'SettingsController@slideIndex')->name('slide.index');
+        Route::post('/slide/store', 'SettingsController@slideStore')->name('slide.store');
+        Route::get('/slide/choose/{id}', 'SettingsController@slideChoose')->name('slide.choose');
 
         // Footer
-        Route::resource('footer', 'FooterController');
+        Route::get('footer/index', 'SettingsController@footerIndex')->name('footer.index');
+        Route::post('footer/update', 'SettingsController@footerUpdate')->name('footer.update');
     });
 });
 
