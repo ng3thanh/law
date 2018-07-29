@@ -61,10 +61,10 @@
                             </div>
                         </span>
                         <span class="info-box-more">
-                            Created at: {{ $slide->created_at }}
+                            Created at: {{ timeElapsedString($slide->created_at) }}
                         </span>
                         <span class="info-box-more">
-                            Deleted at: {{ $slide->deleted_at }}
+                            Deleted at: {{ timeElapsedString($slide->deleted_at) }}
                         </span>
                     </div>
                     <!-- /.info-box-content -->
