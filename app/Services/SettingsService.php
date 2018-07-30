@@ -23,19 +23,28 @@ class SettingsService
         $this->slidesRepository = $slidesRepository;
     }
 
-    public function getSlideShow()
+    /**
+     * Get slide showing (only one)
+     * @return mixed
+     */
+    public function getSlideShowing()
     {
-        $data = $this->slidesRepository->getFirst('updated_at');
+        $data = $this->slidesRepository->getDataOrderBy('updated_at')->first();
         return $data;
     }
 
-    public function getSlideNotShow()
+    /**
+     * Get 4 slide not show
+     *
+     * @return mixed
+     */
+    public function getSlideNotShow($limit)
     {
-        $data = $this->slidesRepository->getSlideNotShow(4);
+        $data = $this->slidesRepository->getSlideNotShow($limit)->get();
         return $data;
     }
 
-    public function create($data)
+    public function createSlide($data)
     {
         try {
             DB::beginTransaction();
@@ -70,7 +79,7 @@ class SettingsService
         }
     }
 
-    public function choose($id)
+    public function chooseSlide($id)
     {
         try {
             DB::beginTransaction();

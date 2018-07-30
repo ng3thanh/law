@@ -38,8 +38,8 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
      * @param $orderBy
      * @return mixed
      */
-    public function getFirst($orderBy){
-        return $this->model->orderBy($orderBy)->first();
+    public function getDataOrderBy($orderBy){
+        return $this->model->orderBy($orderBy);
     }
 
     /**

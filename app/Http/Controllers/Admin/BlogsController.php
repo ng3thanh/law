@@ -54,7 +54,7 @@ class BlogsController extends Controller
     public function store(BlogPostRequest $request)
     {
         $data = $request->except('_token');
-        $result = $this->blogService->create($data);
+        $result = $this->blogService->createBlog($data);
         if ($result) {
             return redirect()->route('blog.index')->with('success', 'Create new data successfully!');
         } else {
@@ -95,7 +95,7 @@ class BlogsController extends Controller
     public function update(Request $request, Blogs $blog)
     {
         $data = $request->except('_token', '_method');
-        $result = $this->blogService->update($blog->id, $data);
+        $result = $this->blogService->updateBlog($blog->id, $data);
         if ($result) {
             return redirect()->route('blog.index')->with('success', 'Update data successfully!');
         } else {

@@ -16,20 +16,13 @@ class SettingsController extends Controller
     protected $settingService;
 
     /**
-     * @var SlideService
-     */
-    protected $slideService;
-
-    /**
      * SettingsController constructor.
      * @param SlideService $slideService
      * @param SettingsService $settingService
      */
     public function __construct(
-        SlideService $slideService,
         SettingsService $settingService
     ) {
-        $this->slideService = $slideService;
         $this->settingService = $settingService;
     }
     /**
@@ -54,8 +47,8 @@ class SettingsController extends Controller
      */
     public function slideIndex()
     {
-        $slideShow = $this->slideService->getSlideShow();
-        $slideNotShow = $this->slideService->getSlideNotShow();
+        $slideShow = $this->settingService->getSlideShowing();
+        $slideNotShow = $this->settingService->getSlideNotShow(config('constant.number.slide.not_show'));
 
         return view('admin.pages.settings.slides.index', compact('slideShow', 'slideNotShow'));
     }
@@ -69,7 +62,7 @@ class SettingsController extends Controller
     public function slideStore(Request $request)
     {
         $data = $request->except('_token');
-        $result = $this->slideService->create($data);
+        $result = $this->settingService->createSlide($data);
         if ($result) {
             return redirect()->route('slide.index')->with('success', 'Create new slide successfully!');
         } else {
@@ -84,7 +77,7 @@ class SettingsController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function slideChoose($id) {
-        $result = $this->slideService->choose($id);
+        $result = $this->settingService->chooseSlide($id);
         if ($result) {
             return redirect()->route('slide.index')->with('success', 'Change slide successfully!');
         } else {

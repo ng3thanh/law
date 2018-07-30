@@ -24,25 +24,48 @@ class BlogService
         $this->blogsRepository = $blogsRepository;
     }
 
+    /**
+     * Find blog
+     *
+     * @param $id
+     * @return mixed
+     */
     public function findBlog($id)
     {
         $data = $this->blogsRepository->find($id);
         return $data;
     }
 
+    /**
+     * Get all blog and paginate
+     *
+     * @return mixed
+     */
     public function getAllBlog()
     {
-        $data = $this->blogsRepository->getAllPaginate(200);
+        $data = $this->blogsRepository->getAllPaginate(config('constant.number.blog.paginate.admin'));
         return $data;
     }
 
+    /**
+     * Find blog by slug
+     *
+     * @param $slug
+     * @return mixed
+     */
     public function findBlogBySlug($slug)
     {
         $data = $this->blogsRepository->findBySlug($slug);
         return $data;
     }
 
-    public function create($data)
+    /**
+     * Create new blog
+     *
+     * @param $data
+     * @return bool
+     */
+    public function createBlog($data)
     {
         try {
             DB::beginTransaction();
@@ -72,7 +95,14 @@ class BlogService
         }
     }
 
-    public function update($id, $data)
+    /**
+     * Update blog
+     * 
+     * @param $id
+     * @param $data
+     * @return bool
+     */
+    public function updateBlog($id, $data)
     {
         try {
             DB::beginTransaction();

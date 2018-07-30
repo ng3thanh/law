@@ -1,7 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thanhnguyenb
- * Date: 7/26/2018
- * Time: 3:35 PM
- */
+
+return [
+    'number' => [
+        'slide' => [
+            'not_show' => 4
+        ],
+        'blog' => [
+            'paginate' => [
+                'web' => 9,
+                'admin' => 20
+            ]
+        ]
+    ],
+    'text' => [
+
+    ]
+];

@@ -23,7 +23,7 @@ class SlidesEloquentRepository extends BaseEloquentRepository implements SlidesR
      * @return mixed
      */
     public function getSlideNotShow($limit){
-        $data = $this->model->onlyTrashed()->limit($limit)->get();
+        $data = $this->model->onlyTrashed()->limit($limit);
         return $data;
     }
 }
