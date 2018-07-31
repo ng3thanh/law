@@ -34,7 +34,7 @@ class SettingsController extends Controller
     {
         $footerInfo = $this->settingService->getFooterInfo();
         $faIcon = config('constant.fa-icon');
-        return view('admin.pages.setting.setting.index', compact('footerInfo', 'faIcon'));
+        return view('admin.pages.settings.setting.index', compact('footerInfo', 'faIcon'));
     }
 
     public function footerUpdate()
@@ -52,7 +52,7 @@ class SettingsController extends Controller
         $slideShow = $this->settingService->getSlideShowing();
         $slideNotShow = $this->settingService->getSlideNotShow(config('constant.number.slide.not_show'));
 
-        return view('admin.pages.setting.slides.index', compact('slideShow', 'slideNotShow'));
+        return view('admin.pages.settings.slides.index', compact('slideShow', 'slideNotShow'));
     }
 
     /**

@@ -14,7 +14,7 @@ class Settings extends Model
      *
      * @var string
      */
-    protected $table = 'setting';
+    protected $table = 'settings';
 
     /**
      * @var array

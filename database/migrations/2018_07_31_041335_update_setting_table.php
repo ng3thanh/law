@@ -13,7 +13,7 @@ class UpdateSettingTable extends Migration
      */
     public function up()
     {
-        Schema::table('setting', function (Blueprint $table) {
+        Schema::table('settings', function (Blueprint $table) {
             $table->string('icon')->after('name')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class UpdateSettingTable extends Migration
      */
     public function down()
     {
-        Schema::table('setting', function (Blueprint $table) {
+        Schema::table('settings', function (Blueprint $table) {
             $table->dropColumn('icon');
         });
     }
