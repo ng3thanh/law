@@ -23,6 +23,12 @@ class ServiceService
         $this->servicesRepository = $servicesRepository;
     }
 
+    public function getAllService()
+    {
+        $data = $this->servicesRepository->getAllPaginate(config('constant.number.service.paginate.admin'));
+        return $data;
+    }
+
     public function createService($data)
     {
         try {
@@ -42,6 +48,26 @@ class ServiceService
                     ['image' => config('upload.service') . $result->id . '/' . $newName
                     ]);
             }
+            DB::commit();
+            return true;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    public function updateService($id, $data)
+    {
+        try {
+            DB::beginTransaction();
+
+            if (isset($data['image'])) {
+                $newName = uploadImage($id, $data['image'], 'service');
+                $data['image'] = config('upload.service') . $id . '/' . $newName;
+            }
+
+            $data = formatDataBaseOnTable('services', $data);
+            $this->servicesRepository->update($id, $data);
             DB::commit();
             return true;
         } catch (Exception $e) {

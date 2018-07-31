@@ -31,7 +31,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = collect([]);
+        $services = $this->serviceService->getAllService();
         return view('admin.pages.services.index', compact('services'));
     }
 
@@ -65,10 +65,10 @@ class ServicesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Services  $products
+     * @param  \App\Models\Services  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Services $products)
+    public function show(Services $service)
     {
         //
     }
@@ -76,33 +76,39 @@ class ServicesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Services  $products
+     * @param  \App\Models\Services  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Services $products)
+    public function edit(Services $service)
     {
-        //
+        return view('admin.pages.services.edit', compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Services  $products
+     * @param  \App\Models\Services  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Services $products)
+    public function update(Request $request, Services $service)
     {
-        //
+        $data = $request->except('_token', '_method');
+        $result = $this->serviceService->updateService($service->id, $data);
+        if ($result) {
+            return redirect()->route('services.index')->with('success', 'Update data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when update data');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Services  $products
+     * @param  \App\Models\Services  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Services $products)
+    public function destroy(Services $service)
     {
         //
     }

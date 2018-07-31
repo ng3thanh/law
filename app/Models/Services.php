@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Services extends Model
 {
+    const STATUS_UNCONFIRMED = 0;
+    const STAR_START = 5;
+    const VOTE_COUNT_START = 0;
+
     use SoftDeletes;
 
     /**
@@ -15,6 +19,17 @@ class Services extends Model
      * @var string
      */
     protected $table = 'services';
+
+    /**
+     * Default value
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'status' => self::STATUS_UNCONFIRMED,
+        'star' => self::STAR_START,
+        'vote' => self::VOTE_COUNT_START,
+    ];
 
     /**
      * @var array

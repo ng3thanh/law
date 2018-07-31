@@ -26,42 +26,41 @@
                                     <td></td>
                                     <td class="text-left">
                                         <a href="#" target="_blank">
-                                            <span class="short-text">{{ $service->title }}</span>
+                                            <span class="short-text">{{ $service->name }}</span>
                                         </a>
                                     </td>
                                     <td>
                                         <img class="img-thumbnail" src='{{ asset("$service->image") }}' width="50px" height="">
                                     </td>
                                     <td>
+                                        <span class="short-text">{!! isset($service->price) ? $service->price : 'Contact' !!}</span>
+                                    </td>
+                                    <td>
                                         <span class="short-text">{!! $service->description !!}</span>
                                     </td>
                                     <td>
-                                        {{ date('d/m/Y H:i', strtotime($service->publish_date)) }}
-                                    </td>
-                                    <td>
-                                        {{ date('d/m/Y H:i', strtotime($service->end_date)) }}
+                                        {{ $service->status }}
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('Service.copy', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-copy"></i></a>
-                                            <a href="{{ route('Service.edit', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('Service.destroy', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('services.edit', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('services.destroy', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
-                        {{--<div class="text-center">--}}
-                            {{--{{--}}
-                                {{--$services->appends([--}}
-                                    {{--"title" => Request::get('title'),--}}
-                                    {{--"status" => Request::get('status'),--}}
-                                    {{--"publish_date" => Request::get('publish_date'),--}}
-                                    {{--"end_date" => Request::get('end_date'),--}}
-                                    {{--"menu" => Request::get('menu')--}}
-                                {{--])->links()--}}
-                            {{--}}--}}
-                        {{--</div>--}}
+                        <div class="text-center">
+                            {{
+                                $services->appends([
+                                    "title" => Request::get('title'),
+                                    "status" => Request::get('status'),
+                                    "publish_date" => Request::get('publish_date'),
+                                    "end_date" => Request::get('end_date'),
+                                    "menu" => Request::get('menu')
+                                ])->links()
+                            }}
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
