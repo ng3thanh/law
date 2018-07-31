@@ -48,6 +48,17 @@ class SettingsController extends Controller
         }
     }
 
+    public function footerStore(Request $request)
+    {
+        $data = $request->except('_token');
+        $result = $this->settingService->addNewFooterSetting($data);
+        if ($result) {
+            return redirect()->back()->with('success', 'Update footer setting successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when update footer setting.');
+        }
+    }
+
     /**
      * Display a listing of the slides.
      *

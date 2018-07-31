@@ -50,6 +50,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         // Footer
         Route::get('footer/index', 'SettingsController@footerIndex')->name('footer.index');
         Route::post('footer/update', 'SettingsController@footerUpdate')->name('footer.update');
+        Route::post('footer/new', 'SettingsController@footerStore')->name('footer.store');
     });
 });
 

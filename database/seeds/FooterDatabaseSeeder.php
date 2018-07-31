@@ -18,7 +18,7 @@ class FooterDatabaseSeeder extends Seeder
         $dataList = [
             '1' => ['introduce'],
             '2' => ['phone','address','email'],
-            '3' => ['facebook','tweeter','google','instagram']
+            '3' => ['facebook','twitter','google','instagram']
         ];
 
         foreach ($dataList as $key => $type) {

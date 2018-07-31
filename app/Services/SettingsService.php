@@ -133,10 +133,24 @@ class SettingsService
             DB::beginTransaction();
 
             foreach ($data as $key => $value) {
-                dd($value);
-                $this->footersRepository->update();
+                $id = $value['id'];
+                unset($value['id']);
+                $this->footersRepository->update($id, $value);
             }
 
+            DB::commit();
+            return true;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    public function addNewFooterSetting($data)
+    {
+        try {
+            DB::beginTransaction();
+            $this->footersRepository->create($data);
             DB::commit();
             return true;
         } catch (Exception $e) {
