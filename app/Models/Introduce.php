@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Services extends Model
+class Introduce extends Model
 {
     use SoftDeletes;
 
@@ -14,7 +14,7 @@ class Services extends Model
      *
      * @var string
      */
-    protected $table = 'services';
+    protected $table = 'introduces';
 
     /**
      * @var array
