@@ -16,6 +16,12 @@ return [
                 'web' => 9,
                 'admin' => 20
             ]
+        ],
+        'client' => [
+            'paginate' => [
+                'web' => 9,
+                'admin' => 20
+            ]
         ]
     ],
     'text' => [

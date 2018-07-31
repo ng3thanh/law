@@ -4,10 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Clients;
 use App\Http\Controllers\Controller;
+use App\Services\ClientService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as RequestParameter;
 
 class ClientsController extends Controller
 {
+    /**
+     * @var ClientService
+     */
+    protected $clientService;
+
+    /**
+     * ClientsController constructor.
+     * @param ClientService $clientService
+     */
+    public function __construct(
+        ClientService $clientService
+    ) {
+        $this->clientService = $clientService;
+    }
 
     /**
      * Display a listing of the resource.
@@ -16,7 +32,10 @@ class ClientsController extends Controller
      */
     public function index()
     {
-
+        $limit = config('constant.number.client.paginate.admin');
+        $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
+        $clients = $this->clientService->getAllClient();
+        return view('admin.pages.clients.index', compact('clients', 'number'));
     }
 
     /**
@@ -26,7 +45,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.clients.create');
     }
 
     /**
@@ -37,16 +56,22 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $result = $this->clientService->createClient($data);
+        if ($result) {
+            return redirect()->route('clients.index')->with('success', 'Create new data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when save data')->withInput();
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Clients  $clients
+     * @param  \App\Models\Clients  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Clients $clients)
+    public function show(Clients $client)
     {
         //
     }
@@ -54,33 +79,39 @@ class ClientsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Clients  $clients
+     * @param  \App\Models\Clients  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clients $clients)
+    public function edit(Clients $client)
     {
-        //
+        return view('admin.pages.clients.edit', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Clients  $clients
+     * @param  \App\Models\Clients  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clients $clients)
+    public function update(Request $request, Clients $client)
     {
-        //
+        $data = $request->except('_token', '_method');
+        $result = $this->clientService->updateClient($client->id, $data);
+        if ($result) {
+            return redirect()->route('clients.index')->with('success', 'Update data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when update data')->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Clients  $clients
+     * @param  \App\Models\Clients  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clients $clients)
+    public function destroy(Clients $client)
     {
         //
     }

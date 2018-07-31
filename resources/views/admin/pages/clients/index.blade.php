@@ -14,43 +14,31 @@
                         <table class="table table-hover">
                             <tr class="header-table">
                                 <th>ID</th>
-                                <th>Service</th>
+                                <th>Client name</th>
                                 <th>Image</th>
-                                <th>Price</th>
-                                <th>Description</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
-                            @foreach($services as $service)
+                            @foreach($clients as $client)
                                 <tr class="body-table">
                                     <td>{{ $number++ }}</td>
                                     <td class="text-left">
                                         <a href="#" target="_blank">
-                                            <span class="short-text">{{ $service->name }}</span>
+                                            <span class="short-text">{{ $client->name }}</span>
                                         </a>
                                     </td>
                                     <td>
-                                        <img class="img-thumbnail" src='{{ asset("$service->image") }}' width="50px" height="">
-                                    </td>
-                                    <td>
-                                        <span class="short-text">{!! isset($service->price) ? $service->price : 'Contact' !!}</span>
-                                    </td>
-                                    <td>
-                                        <span class="short-text">{!! $service->description !!}</span>
-                                    </td>
-                                    <td>
-                                        {{ $service->status }}
+                                        <img class="img-thumbnail" src='{{ asset("$client->image") }}' width="50px" height="">
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('services.edit', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('services.destroy', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('clients.edit', $client->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('clients.destroy', $client->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
-                        <div class="text-center"> {{ $services->links() }}</div>
+                        <div class="text-center"> {{ $clients->links() }}</div>
                     </div>
                     <!-- /.box-body -->
                 </div>

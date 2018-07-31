@@ -23,7 +23,7 @@
                             </tr>
                             @foreach($blogs as $blog)
                                 <tr class="body-table">
-                                    <td></td>
+                                    <td>{{ $number++ }}</td>
                                     <td class="text-left">
                                         <a href="#" target="_blank">
                                             <span class="short-text">{{ $blog->title }}</span>

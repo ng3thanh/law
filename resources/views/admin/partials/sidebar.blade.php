@@ -1,7 +1,7 @@
 @php
     $dashboardActive = \Request::route()->getName() == 'dashboard' ? 'active' : '';
-    $serviceIndexActive = \Request::route()->getName() == 'clients.index' ? 'active' : '';
-    $serviceCreateActive = \Request::route()->getName() == 'clients.create' ? 'active' : '';
+    $serviceIndexActive = \Request::route()->getName() == 'services.index' ? 'active' : '';
+    $serviceCreateActive = \Request::route()->getName() == 'services.create' ? 'active' : '';
     $serviceActive = (!empty($serviceIndexActive) || !empty($serviceCreateActive)) ? 'active' : '';
     $clientIndexActive = \Request::route()->getName() == 'clients.index' ? 'active' : '';
     $clientCreateActive = \Request::route()->getName() == 'clients.create' ? 'active' : '';

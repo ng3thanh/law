@@ -3,5 +3,6 @@
 return [
     'blog' => 'upload/blogs/',
     'slide' => 'upload/slides/',
-    'service' => 'upload/services/'
+    'service' => 'upload/services/',
+    'client' => 'upload/clients/',
 ];

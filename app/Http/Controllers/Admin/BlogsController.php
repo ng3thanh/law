@@ -7,6 +7,7 @@ use App\Http\Requests\BlogPostRequest;
 use App\Models\Blogs;
 use App\Services\BlogService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as RequestParameter;
 
 class BlogsController extends Controller
 {
@@ -32,8 +33,10 @@ class BlogsController extends Controller
      */
     public function index()
     {
+        $limit = config('constant.number.blog.paginate.admin');
+        $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
         $blogs = $this->blogService->getAllBlog();
-        return view('admin.pages.blogs.index', compact('blogs'));
+        return view('admin.pages.blogs.index', compact('blogs', 'number'));
     }
 
     /**
@@ -58,7 +61,7 @@ class BlogsController extends Controller
         if ($result) {
             return redirect()->route('blog.index')->with('success', 'Create new data successfully!');
         } else {
-            return redirect()->back()->with('error', 'Having error when save data');
+            return redirect()->back()->with('error', 'Having error when save data')->withInput();
         }
     }
 
@@ -99,7 +102,7 @@ class BlogsController extends Controller
         if ($result) {
             return redirect()->route('blog.index')->with('success', 'Update data successfully!');
         } else {
-            return redirect()->back()->with('error', 'Having error when update data');
+            return redirect()->back()->with('error', 'Having error when update data')->withInput();
         }
     }
 

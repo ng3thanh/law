@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Services;
 use App\Services\ServiceService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as RequestParameter;
 
 class ServicesController extends Controller
 {
@@ -31,8 +32,10 @@ class ServicesController extends Controller
      */
     public function index()
     {
+        $limit = config('constant.number.service.paginate.admin');
+        $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
         $services = $this->serviceService->getAllService();
-        return view('admin.pages.services.index', compact('services'));
+        return view('admin.pages.services.index', compact('services', 'number'));
     }
 
     /**
@@ -53,12 +56,13 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->except('_token');
         $result = $this->serviceService->createService($data);
         if ($result) {
             return redirect()->route('services.index')->with('success', 'Create new data successfully!');
         } else {
-            return redirect()->back()->with('error', 'Having error when save data');
+            return redirect()->back()->with('error', 'Having error when save data')->withInput();
         }
     }
 
@@ -98,7 +102,7 @@ class ServicesController extends Controller
         if ($result) {
             return redirect()->route('services.index')->with('success', 'Update data successfully!');
         } else {
-            return redirect()->back()->with('error', 'Having error when update data');
+            return redirect()->back()->with('error', 'Having error when update data')->withInput();
         }
     }
 
