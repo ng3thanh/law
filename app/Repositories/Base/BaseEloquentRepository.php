@@ -38,7 +38,8 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
      * @param $orderBy
      * @return mixed
      */
-    public function getDataOrderBy($orderBy){
+    public function getDataOrderBy($orderBy)
+    {
         return $this->model->orderBy($orderBy);
     }
 
@@ -68,6 +69,21 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     public function getSomeRandomData($number)
     {
         return $this->model->inRandomOrder()->limit($number)->get();
+    }
+
+    /**
+     * Get data with offset and limit
+     * @param $offset
+     * @param $limit
+     * @return mixed
+     */
+    public function getDataLimit($limit, $offset = null)
+    {
+        if ($offset) {
+            return $this->model->offset($offset)->limit($limit);
+        } else {
+            return $this->model->limit($limit);
+        }
     }
 
     /**
@@ -111,7 +127,7 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     public function update($id, array $attributes)
     {
         $result = $this->find($id);
-        if($result) {
+        if ($result) {
             $result->update($attributes);
             return $result;
         }
@@ -127,7 +143,7 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     public function delete($id)
     {
         $result = $this->find($id);
-        if($result) {
+        if ($result) {
             $result->delete();
             return true;
         }

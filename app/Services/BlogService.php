@@ -134,4 +134,14 @@ class BlogService
         $result = $this->blogsRepository->getSomeRandomData($number);
         return $result;
     }
+
+    /**
+     * @param $limit
+     * @return mixed
+     */
+    public function getServiceLimit($limit)
+    {
+        $data = $this->blogsRepository->getDataLimit($limit)->get();
+        return $data;
+    }
 }

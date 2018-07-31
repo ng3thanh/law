@@ -70,42 +70,15 @@
                 <h4>Services</h4>
                 <!-- Four columns -->
                 <div class="row">
+                    @foreach ($services as $service)
                     <div class="span3 col-lg-3 animated-fast flyIn">
                         <div class="service-box">
-                            <img src="{{ asset('web/img/icons/laptop.png') }}" alt="" />
-                            <h2>Web design</h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
+                            <img src='{{ asset("$service->image") }}' alt="{{ $service->name }}" />
+                            <h2>{{ $service->name }}</h2>
+                            {!! $service->description !!}
                         </div>
                     </div>
-                    <div class="span3 col-lg-3 animated flyIn">
-                        <div class="service-box">
-                            <img src="{{ asset('web/img/icons/lab.png') }}" alt="" />
-                            <h2>Web development</h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="span3 col-lg-3 animated-fast flyIn">
-                        <div class="service-box">
-                            <img src="{{ asset('web/img/icons/camera.png') }}" alt="" />
-                            <h2>Photography</h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="span3 col-lg-3 animated-slow flyIn">
-                        <div class="service-box">
-                            <img src="{{ asset('web/img/icons/basket.png') }}" alt="" />
-                            <h2>Ecommerce</h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -117,14 +90,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div id="portfolio-wrap">
+                            @foreach ($clients as $key => $client)
                             <!-- portfolio item -->
                             <div class="portfolio-item grid print photography">
                                 <div class="portfolio">
-                                    <a href="{{ asset('web/img/works/big.jpg') }}" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
-                                        <img src="{{ asset('web/img/works/1.png') }}" alt="" />
+                                    <a href='{{ asset("$client->image") }}' data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+                                        <img src='{{ asset("$client->image") }}' alt="" />
                                         <div class="portfolio-overlay">
                                             <div class="thumb-info">
-                                                <h5>Portfolio name</h5>
+                                                <h5>{{ $client->name }}</h5>
                                                 <i class="icon-plus icon-2x"></i>
                                             </div>
                                         </div>
@@ -132,66 +106,7 @@
                                 </div>
                             </div>
                             <!-- end portfolio item -->
-                            <!-- portfolio item -->
-                            <div class="portfolio-item grid print design web">
-                                <div class="portfolio">
-                                    <a href="{{ asset('web/img/works/big.jpg') }}" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
-                                        <img src="{{ asset('web/img/works/2.png') }}" alt="" />
-                                        <div class="portfolio-overlay">
-                                            <div class="thumb-info">
-                                                <h5>Portfolio name</h5>
-                                                <i class="icon-plus icon-2x"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- end portfolio item -->
-                            <!-- portfolio item -->
-                            <div class="portfolio-item grid print design">
-                                <div class="portfolio">
-                                    <a href="{{ asset('web/img/works/big.jpg') }}" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
-                                        <img src="{{ asset('web/img/works/3.png') }}" alt="" />
-                                        <div class="portfolio-overlay">
-                                            <div class="thumb-info">
-                                                <h5>Portfolio name</h5>
-                                                <i class="icon-plus icon-2x"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- end portfolio item -->
-                            <!-- portfolio item -->
-                            <div class="portfolio-item grid photography web">
-                                <div class="portfolio">
-                                    <a href="{{ asset('web/img/works/big.jpg') }}" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
-                                        <img src="{{ asset('web/img/works/4.png') }}" alt="" />
-                                        <div class="portfolio-overlay">
-                                            <div class="thumb-info">
-                                                <h5>Portfolio name</h5>
-                                                <i class="icon-plus icon-2x"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- end portfolio item -->
-                            <!-- portfolio item -->
-                            <div class="portfolio-item grid photography web">
-                                <div class="portfolio">
-                                    <a href="{{ asset('web/img/works/big.jpg') }}" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
-                                        <img src="{{ asset('web/img/works/5.png') }}" alt="" />
-                                        <div class="portfolio-overlay">
-                                            <div class="thumb-info">
-                                                <h5>Portfolio name</h5>
-                                                <i class="icon-plus icon-2x"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- end portfolio item -->
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -203,82 +118,29 @@
                 <h4>Our Blog</h4>
                 <!-- Three columns -->
                 <div class="row">
+                    @foreach($blogs as $blog)
                     <div class="span3 col-lg-3">
                         <div class="home-post">
                             <div class="post-image">
-                                <img class="max-img" src="{{ asset('web/img/blog/img1.jpg') }}" alt="" />
+                                <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $blog->title }}" />
                             </div>
                             <div class="post-meta">
                                 <i class="icon-file icon-2x"></i>
-                                <span class="date">June 19, 2013</span>
+                                <span class="date">{{ date("F j, Y", strtotime($blog->publish_date)) }}</span>
                                 <span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>
                             </div>
                             <div class="entry-content">
-                                <h5><strong><a href="#">New design trends</a></strong></h5>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
-                                </p>
-                                <a href="#" class="more">Read more</a>
+                                <h5>
+                                    <strong>
+                                        <a href="{{ route('blogs.detail', $blog->slug) }}">{{ $blog->title }}</a>
+                                    </strong>
+                                </h5>
+                                {!! $blog->description !!}
+                                <a href="{{ route('blogs.detail', $blog->slug) }}" class="more">Read more</a>
                             </div>
                         </div>
                     </div>
-                    <div class="span3 col-lg-3">
-                        <div class="home-post">
-                            <div class="post-image">
-                                <img class="max-img" src="{{ asset('web/img/blog/img2.jpg') }}" alt="" />
-                            </div>
-                            <div class="post-meta">
-                                <i class="icon-file icon-2x"></i>
-                                <span class="date">June 19, 2013</span>
-                                <span class="tags"><a href="#">Design</a>, <a href="#">News</a></span>
-                            </div>
-                            <div class="entry-content">
-                                <h5><strong><a href="#">Retro is great</a></strong></h5>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
-                                </p>
-                                <a href="#" class="more">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span3 col-lg-3">
-                        <div class="home-post">
-                            <div class="post-image">
-                                <img class="max-img" src="{{ asset('web/img/blog/img3.jpg') }}" alt="" />
-                            </div>
-                            <div class="post-meta">
-                                <i class="icon-file icon-2x"></i>
-                                <span class="date">June 22, 2013</span>
-                                <span class="tags"><a href="#">Design</a>, <a href="#">Tips</a></span>
-                            </div>
-                            <div class="entry-content">
-                                <h5><strong><a href="#">Isometric mockup</a></strong></h5>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
-                                </p>
-                                <a href="#" class="more">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span3 col-lg-3">
-                        <div class="home-post">
-                            <div class="post-image">
-                                <img class="max-img" src="{{ asset('web/img/blog/img4.jpg') }}" alt="" />
-                            </div>
-                            <div class="post-meta">
-                                <i class="icon-file icon-2x"></i>
-                                <span class="date">June 27, 2013</span>
-                                <span class="tags"><a href="#">News</a>, <a href="#">Tutorial</a></span>
-                            </div>
-                            <div class="entry-content">
-                                <h5><strong><a href="#">Free icon set</a></strong></h5>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
-                                </p>
-                                <a href="#" class="more">Read more</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="blankdivider30"></div>
                 <div class="aligncenter">

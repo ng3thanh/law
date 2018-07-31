@@ -75,4 +75,10 @@ class ClientService
             return false;
         }
     }
+
+    public function getClientLimit($limit)
+    {
+        $data = $this->clientsRepository->getDataLimit($limit)->get();
+        return $data;
+    }
 }

@@ -7,19 +7,20 @@ return [
         ],
         'blog' => [
             'paginate' => [
+                'main' => 4,
                 'web' => 9,
                 'admin' => 20
             ]
         ],
         'service' => [
             'paginate' => [
-                'web' => 9,
+                'web' => 4,
                 'admin' => 20
             ]
         ],
         'client' => [
             'paginate' => [
-                'web' => 9,
+                'web' => 5,
                 'admin' => 20
             ]
         ]

@@ -4,10 +4,45 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feedbacks;
+use App\Services\BlogService;
+use App\Services\ClientService;
+use App\Services\ServiceService;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+    /**
+     * @var BlogService
+     */
+    protected $blogService;
+
+    /**
+     * @var ClientService
+     */
+    protected $clientService;
+
+    /**
+     * @var ServiceService
+     */
+    protected $serviceService;
+
+    /**
+     * MainController constructor.
+     *
+     * @param BlogService $blogService
+     * @param ClientService $clientService
+     * @param ServiceService $serviceService
+     */
+    public function __construct(
+        BlogService $blogService,
+        ClientService $clientService,
+        ServiceService $serviceService
+    ) {
+        $this->blogService = $blogService;
+        $this->clientService = $clientService;
+        $this->serviceService = $serviceService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +50,11 @@ class MainController extends Controller
      */
     public function index()
     {
-        return view('web.home');
+        $clients = $this->clientService->getClientLimit(config('constant.number.client.paginate.web'));
+        $services = $this->serviceService->getServiceLimit(config('constant.number.service.paginate.web'));
+        $blogs = $this->blogService->getServiceLimit(config('constant.number.blog.paginate.main'));
+
+        return view('web.home', compact('clients','services', 'blogs'));
     }
 
     /**

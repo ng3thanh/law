@@ -31,6 +31,14 @@ interface BaseRepositoryInterface
     public function getSomeRandomData($number);
 
     /**
+     * Get data with offset and limit
+     * @param $offset
+     * @param $limit
+     * @return mixed
+     */
+    public function getDataLimit($limit, $offset = null);
+
+    /**
      * Get one
      * @param $id
      * @return mixed

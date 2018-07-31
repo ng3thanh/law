@@ -75,4 +75,10 @@ class ServiceService
             return false;
         }
     }
+
+    public function getServiceLimit($limit)
+    {
+        $data = $this->servicesRepository->getDataLimit($limit)->get();
+        return $data;
+    }
 }
