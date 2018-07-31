@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label text-capitalize"> {{ $value->name }} </label>
                                 <div class="col-sm-9 input-group">
-                                    <textarea id="{{ $value->name }}" name="{{ $value->name }}" class="form-control">{{ $value->value }}</textarea>
+                                    <textarea id="{{ $value->name }}" name="{{ $value->name }}[value]" class="form-control">{{ $value->value }}</textarea>
                                 </div>
                             </div>
                         @endforeach
@@ -61,8 +61,8 @@
                                     <div class="input-group-addon">
                                         <i id="fa_{{ $value->name }}" class="fa fa-fw fa-{{ $value->icon }}"></i>
                                     </div>
-                                    <input type="text" id="{{ $value->name }}" name="{{ $value->name }}" class="form-control" value="{{ $value->value }}">
-                                    <select class="form-control" name="icon_{{ $value->name }}" id="icon_{{ $value->name }}">
+                                    <input type="text" id="{{ $value->name }}" name="{{ $value->name }}[value]" class="form-control" value="{{ $value->value }}">
+                                    <select class="form-control" name="{{ $value->name }}[icon]" id="icon_{{ $value->name }}">
                                         @foreach($faIcon as $k => $v)
                                             <option value="{{ $v }}" @if($v == $value->value) selected @endif class="text-capitalize">{{ $v }}</option>
                                         @endforeach
@@ -78,8 +78,8 @@
                                     <div class="input-group-addon">
                                         <i id="fa_{{ $value->name }}" class="fa fa-fw fa-{{ $value->icon }}"></i>
                                     </div>
-                                    <input type="text" id="{{ $value->name }}" name="{{ $value->name }}" class="form-control" value="{{ $value->value }}">
-                                    <select class="form-control" name="icon_{{ $value->name }}" id="icon_{{ $value->name }}">
+                                    <input type="text" id="{{ $value->name }}" name="{{ $value->name }}[value]" class="form-control" value="{{ $value->value }}">
+                                    <select class="form-control" name="{{ $value->name }}[icon]" id="icon_{{ $value->name }}">
                                         @foreach($faIcon as $k => $v)
                                             <option value="{{ $v }}" @if($v == $value->value) selected @endif class="text-capitalize">{{ $v }}</option>
                                         @endforeach
@@ -109,5 +109,10 @@
 @endsection
 
 @section('script')
-    <script></script>
+    <script src="{{ asset('admin/js/pages/setting/setting.js') }}"></script>
+    <script>
+        $(function () {
+            Setting.init();
+        });
+    </script>
 @endsection

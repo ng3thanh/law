@@ -126,4 +126,22 @@ class SettingsService
         $data = $this->footersRepository->getAll()->groupBy('type');
         return $data;
     }
+
+    public function updateFooterSetting($data)
+    {
+        try {
+            DB::beginTransaction();
+
+            foreach ($data as $key => $value) {
+                dd($value);
+                $this->footersRepository->update();
+            }
+
+            DB::commit();
+            return true;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return false;
+        }
+    }
 }

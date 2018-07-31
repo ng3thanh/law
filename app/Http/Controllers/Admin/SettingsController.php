@@ -34,12 +34,18 @@ class SettingsController extends Controller
     {
         $footerInfo = $this->settingService->getFooterInfo();
         $faIcon = config('constant.fa-icon');
-        return view('admin.pages.settings.setting.index', compact('footerInfo', 'faIcon'));
+        return view('admin.pages.settings.settings.index', compact('footerInfo', 'faIcon'));
     }
 
-    public function footerUpdate()
+    public function footerUpdate(Request $request)
     {
-
+        $data = $request->except('_token');
+        $result = $this->settingService->updateFooterSetting($data);
+        if ($result) {
+            return redirect()->back()->with('success', 'Update footer setting successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when update footer setting.');
+        }
     }
 
     /**
