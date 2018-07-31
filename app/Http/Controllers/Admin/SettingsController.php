@@ -32,7 +32,8 @@ class SettingsController extends Controller
      */
     public function footerIndex()
     {
-        return view('admin.pages.settings.settings.index');
+        $footerInfo = $this->settingService->getFooterInfo();
+        return view('admin.pages.settings.settings.index', compact('footerInfo'));
     }
 
     public function footerUpdate()

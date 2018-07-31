@@ -97,7 +97,7 @@ class BlogService
 
     /**
      * Update blog
-     * 
+     *
      * @param $id
      * @param $data
      * @return bool

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Footer extends Model
+class Settings extends Model
 {
     use SoftDeletes;
 
@@ -14,7 +14,7 @@ class Footer extends Model
      *
      * @var string
      */
-    protected $table = 'footer';
+    protected $table = 'settings';
 
     /**
      * @var array

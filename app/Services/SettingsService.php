@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Repositories\Footers\FootersRepositoryInterface;
 use App\Repositories\Slides\SlidesRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -14,13 +15,22 @@ class SettingsService
     protected $slidesRepository;
 
     /**
-     * SlideService constructor.
+     * @var FootersRepositoryInterface
+     */
+    protected $footersRepository;
+
+    /**
+     * SettingsService constructor.
+     *
      * @param SlidesRepositoryInterface $slidesRepository
+     * @param FootersRepositoryInterface $footersRepository
      */
     public function __construct(
-        SlidesRepositoryInterface $slidesRepository
+        SlidesRepositoryInterface $slidesRepository,
+        FootersRepositoryInterface $footersRepository
     ) {
         $this->slidesRepository = $slidesRepository;
+        $this->footersRepository = $footersRepository;
     }
 
     /**
@@ -44,6 +54,12 @@ class SettingsService
         return $data;
     }
 
+    /**
+     * Create new slide
+     *
+     * @param $data
+     * @return bool
+     */
     public function createSlide($data)
     {
         try {
@@ -71,6 +87,9 @@ class SettingsService
         }
     }
 
+    /**
+     * Delete all slide show before create new or change slide show
+     */
     private function deleteAllSlideShow()
     {
         $slides = $this->slidesRepository->getAll();
@@ -79,6 +98,12 @@ class SettingsService
         }
     }
 
+    /**
+     * Choosing slide to show
+     *
+     * @param $id
+     * @return bool
+     */
     public function chooseSlide($id)
     {
         try {
@@ -94,5 +119,11 @@ class SettingsService
             DB::rollBack();
             return false;
         }
+    }
+
+    public function getFooterInfo()
+    {
+        $data = $this->footersRepository->getAll()->groupBy('type');
+        return $data;
     }
 }
