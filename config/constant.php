@@ -14,5 +14,23 @@ return [
     ],
     'text' => [
 
+    ],
+    'fa-icon' => [
+        'globe', 'industry', 'map', 'map-o', 'street-view',
+        'commenting-o', 'creative-commons', 'hourglass',
+        'area-chart',
+        'mobile-phone', 'phone', 'phone-square',
+        'picture-o',
+        'send ', 'send-o',
+        'language',
+        'rss', 'rss-square',
+        'envelope', 'envelope-o',
+        'facebook-square', 'flickr', 'dropbox', 'drupal', 'flickr', 'forumbee',
+        'gg-circle', 'google', 'google-plus', 'linkedin-square',
+        'paypal', 'opencart', 'reddit', 'qq',
+        'share-alt', 'share-alt-square',
+        'skype', 'slack', 'slideshare', 'soundcloud', 'spotify', 'tumblr-square',
+        'twitter', 'twitter-square', 'wechat', 'weibo',
+        'youtube', 'youtube-play', 'youtube-square'
     ]
 ];

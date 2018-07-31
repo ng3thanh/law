@@ -13,7 +13,7 @@ class FooterDatabaseSeeder extends Seeder
     public function run()
     {
         // Create Settings
-        DB::table('settings')->truncate();
+        DB::table('setting')->truncate();
 
         $dataList = [
             '1' => ['introduce'],
@@ -23,7 +23,7 @@ class FooterDatabaseSeeder extends Seeder
 
         foreach ($dataList as $key => $type) {
             foreach ($type as $data) {
-                DB::table('settings')->insert([
+                DB::table('setting')->insert([
                     'type' => $key,
                     'name' => $data,
                     'created_at' => date('Y-m-d H:i:s'),

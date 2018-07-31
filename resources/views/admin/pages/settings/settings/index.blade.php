@@ -20,18 +20,18 @@
         <!-- info row -->
         <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
-                <i class="fa fa-{{ $footerInfo[1][0]->icon }}"></i> <strong class="text-capitalize">{{ $footerInfo[1][0]->name }}</strong>: <span>{{ $footerInfo[1][0]->value }}</span>
+                <i class="fa fa-fw fa-{{ $footerInfo[1][0]->icon }}"></i> <strong class="text-capitalize">{{ $footerInfo[1][0]->name }}</strong>: <span>{{ $footerInfo[1][0]->value }}</span>
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
                 @foreach($footerInfo[2] as $key => $value)
-                    <i class="fa fa-{{ $value->icon }}"></i> <strong class="text-capitalize">{{ $value->name }}</strong>: <span>{{ $value->value }}</span><br>
+                    <i class="fa fa-fw fa-{{ $value->icon }}"></i> <strong class="text-capitalize">{{ $value->name }}</strong>: <span>{{ $value->value }}</span><br>
                 @endforeach
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
                 @foreach($footerInfo[3] as $key => $value)
-                    <i class="fa fa-{{ $value->icon }}"></i> <strong class="text-capitalize">{{ $value->name }}</strong>: <span>{{ $value->value }}</span><br>
+                    <i class="fa fa-fw fa-{{ $value->icon }}"></i> <strong class="text-capitalize">{{ $value->name }}</strong>: <span>{{ $value->value }}</span><br>
                 @endforeach
             </div>
             <!-- /.col -->
@@ -45,13 +45,48 @@
                 <form role="form" id="update-setting" class="form-horizontal" action="{{ route('footer.update') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="col-xs-12">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
-                            <div class="col-sm-9 input-group">
-                                <input type="text" id="title" name="title" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
-                                @include('elements.error_line', ['attribute' => 'title'])
+                        @foreach($footerInfo[1] as $key => $value)
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label text-capitalize"> {{ $value->name }} </label>
+                                <div class="col-sm-9 input-group">
+                                    <textarea id="{{ $value->name }}" name="{{ $value->name }}" class="form-control">{{ $value->value }}</textarea>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
+                        <hr>
+                        @foreach($footerInfo[2] as $key => $value)
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label text-capitalize"> {{ $value->name }} </label>
+                                <div class="input-group col-sm-9">
+                                    <div class="input-group-addon">
+                                        <i id="fa_{{ $value->name }}" class="fa fa-fw fa-{{ $value->icon }}"></i>
+                                    </div>
+                                    <input type="text" id="{{ $value->name }}" name="{{ $value->name }}" class="form-control" value="{{ $value->value }}">
+                                    <select class="form-control" name="icon_{{ $value->name }}" id="icon_{{ $value->name }}">
+                                        @foreach($faIcon as $k => $v)
+                                            <option value="{{ $v }}" @if($v == $value->value) selected @endif class="text-capitalize">{{ $v }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endforeach
+                        <hr>
+                        @foreach($footerInfo[3] as $key => $value)
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label text-capitalize"> {{ $value->name }} </label>
+                                <div class="input-group col-sm-9">
+                                    <div class="input-group-addon">
+                                        <i id="fa_{{ $value->name }}" class="fa fa-fw fa-{{ $value->icon }}"></i>
+                                    </div>
+                                    <input type="text" id="{{ $value->name }}" name="{{ $value->name }}" class="form-control" value="{{ $value->value }}">
+                                    <select class="form-control" name="icon_{{ $value->name }}" id="icon_{{ $value->name }}">
+                                        @foreach($faIcon as $k => $v)
+                                            <option value="{{ $v }}" @if($v == $value->value) selected @endif class="text-capitalize">{{ $v }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </form>
 
@@ -74,5 +109,5 @@
 @endsection
 
 @section('script')
-
+    <script></script>
 @endsection
