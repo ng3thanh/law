@@ -125,6 +125,10 @@ class BlogService
         }
     }
 
+    /**
+     * @param $number
+     * @return mixed
+     */
     public function randomBlog($number)
     {
         $result = $this->blogsRepository->getSomeRandomData($number);

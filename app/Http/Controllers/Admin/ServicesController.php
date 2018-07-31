@@ -4,10 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Services;
+use App\Services\ServiceService;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
+    /**
+     * @var ServiceService
+     */
+    protected $serviceService;
+
+    /**
+     * ServicesController constructor.
+     * @param ServiceService $serviceService
+     */
+    public function __construct(
+        ServiceService $serviceService
+    ) {
+        $this->serviceService = $serviceService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +31,8 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        //
+        $services = collect([]);
+        return view('admin.pages.services.index', compact('services'));
     }
 
     /**
@@ -25,7 +42,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.services.create');
     }
 
     /**
@@ -36,7 +53,13 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $result = $this->serviceService->createService($data);
+        if ($result) {
+            return redirect()->route('services.index')->with('success', 'Create new data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when save data');
+        }
     }
 
     /**

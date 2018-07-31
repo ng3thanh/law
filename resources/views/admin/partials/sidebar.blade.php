@@ -1,8 +1,11 @@
 @php
     $dashboardActive = \Request::route()->getName() == 'dashboard' ? 'active' : '';
-    $newIndexActive = \Request::route()->getName() == 'news.index' ? 'active' : '';
-    $newCreateActive = \Request::route()->getName() == 'news.create' ? 'active' : '';
-    $newActive = (!empty($newIndexActive) || !empty($newCreateActive)) ? 'active' : '';
+    $serviceIndexActive = \Request::route()->getName() == 'clients.index' ? 'active' : '';
+    $serviceCreateActive = \Request::route()->getName() == 'clients.create' ? 'active' : '';
+    $serviceActive = (!empty($serviceIndexActive) || !empty($serviceCreateActive)) ? 'active' : '';
+    $clientIndexActive = \Request::route()->getName() == 'clients.index' ? 'active' : '';
+    $clientCreateActive = \Request::route()->getName() == 'clients.create' ? 'active' : '';
+    $clientActive = (!empty($clientIndexActive) || !empty($clientCreateActive)) ? 'active' : '';
     $blogIndexActive = \Request::route()->getName() == 'blog.index' ? 'active' : '';
     $blogCreateActive = \Request::route()->getName() == 'blog.create' ? 'active' : '';
     $blogActive = (!empty($blogIndexActive) || !empty($blogCreateActive)) ? 'active' : '';
@@ -51,23 +54,45 @@
                 </a>
             </li>
 
-            <li class="treeview {{ $newActive }}">
+            <li class="treeview {{ $serviceActive }}">
                 <a href="#">
                     <i class="fa fa-users"></i>
-                    <span> News</span>
+                    <span> Services</span>
                     <span class="pull-right-container"> 
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $newIndexActive }}">
-                        <a href="{{ route('news.index') }}">
-                            <i class="fa fa-circle-o"></i> News index
+                    <li class="{{ $serviceIndexActive }}">
+                        <a href="{{ route('services.index') }}">
+                            <i class="fa fa-circle-o"></i> Services index
                         </a>
                     </li>
-                    <li class="{{ $newIndexActive }}">
-                        <a href="{{ route('news.create') }}">
-                            <i class="fa fa-plus-circle"></i> Add new
+                    <li class="{{ $serviceCreateActive }}">
+                        <a href="{{ route('services.create') }}">
+                            <i class="fa fa-plus-circle"></i> Add service
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview {{ $clientActive }}">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span> Clients</span>
+                    <span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $clientIndexActive }}">
+                        <a href="{{ route('clients.index') }}">
+                            <i class="fa fa-circle-o"></i> Clients index
+                        </a>
+                    </li>
+                    <li class="{{ $clientCreateActive }}">
+                        <a href="{{ route('clients.create') }}">
+                            <i class="fa fa-plus-circle"></i> Add client
                         </a>
                     </li>
                 </ul>
@@ -131,8 +156,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i> Social network
+                        <a href="{{ route('introduce.index') }}">
+                            <i class="fa fa-circle-o"></i> Introduce
                         </a>
                     </li>
                 </ul>

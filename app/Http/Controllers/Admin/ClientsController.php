@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Clients;
+use App\Models\Clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,7 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -42,7 +43,7 @@ class ClientsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Clients  $clients
+     * @param  \App\Models\Clients  $clients
      * @return \Illuminate\Http\Response
      */
     public function show(Clients $clients)

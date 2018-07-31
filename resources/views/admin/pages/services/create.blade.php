@@ -1,19 +1,15 @@
 @extends('admin.layout')
 
-@section('title', 'Create new blog')
+@section('title', 'Create new service')
 
 @section('css')
 @endsection
 
-@php
-    $oldPlDate = old('publish_date');
-    $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y');
-@endphp
 @section('content')
     <section class="content">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Create new blog</h3>
+                <h3 class="box-title">Create new service</h3>
                 <div class="box-tools pull-right required-text-box">
                     <span class="span-red">(*): The attribute must be required</span>
                 </div>
@@ -21,15 +17,15 @@
             <div class="box-body">
                 <div class="row">
                     <div class="box-body">
-                        <form role="form" id="create-new-blog" class="form-horizontal" action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                        <form role="form" id="create-new-service" class="form-horizontal" action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                             <div>
                                 <div class="col-xs-12">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
+                                        <label class="col-sm-3 control-label"> Service <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title" name="title" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
-                                            @include('elements.error_line', ['attribute' => 'title'])
+                                            <input type="text" id="name" name="name" class="form-control" placeholder="Service name" value="{{ old('name') }}">
+                                            @include('elements.error_line', ['attribute' => 'name'])
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -60,24 +56,6 @@
                                             @include('elements.error_line', ['attribute' => 'image'])
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label"> Publish date <span class="span-red">*</span></label>
-                                        <div class="col-sm-9 input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right datepicker" name="publish_date" value="{{ $publishDate }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label"> End date <span class="span-red">*</span></label>
-                                        <div class="col-sm-9 input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right datepicker" name="end_date" value="{{ old('end_date') }}">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -85,13 +63,13 @@
                         <div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
                             <div class="col-xs-8 col-xs-offset-2">
                                 <div class="col-xs-3">
-                                    <button class="btn btn-block btn-default" form="create-new-blog" type="submit">Create</button>
+                                    <button class="btn btn-block btn-default" form="create-new-service" type="submit">Create</button>
                                 </div>
                                 <div class="col-xs-offset-1 col-xs-3">
-                                    <button class="btn btn-block btn-default" form="create-new-blog" type="reset">Reset</button>
+                                    <button class="btn btn-block btn-default" form="create-new-service" type="reset">Reset</button>
                                 </div>
                                 <div class="col-xs-offset-1 col-xs-3">
-                                    <a href="{{ route('blog.index') }}" class="btn btn-block btn-default">Back</a>
+                                    <a href="{{ route('services.index') }}" class="btn btn-block btn-default">Back</a>
                                 </div>
                             </div>
                         </div>
@@ -103,13 +81,13 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/js/pages/blog/blog.create.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/services/service.create.js') }}"></script>
     <script>
         $(function () {
             CKEDITOR.replace('des_ckediter');
             var contentEditor = CKEDITOR.replace( 'content_ckediter' );
             CKFinder.setupCKEditor(contentEditor);
-            BlogCreate.init();
+            ServiceCreate.init();
         });
     </script>
 @endsection

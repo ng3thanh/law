@@ -37,12 +37,18 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::resource('contact', 'ContactsController');
         Route::resource('user', 'UserController');
 
+        // Introduce
+        Route::resource('introduce', 'ServicesController');
+
         // Services
         Route::resource('services', 'ServicesController');
 
         // Blogs
         Route::resource('blog', 'BlogsController');
         Route::get('copy/{id}', 'BlogsController@copy')->name('blog.copy');
+
+        // Clients
+        Route::resource('clients', 'ClientsController');
 
         // Settings
         // Slides
@@ -54,6 +60,10 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('footer/index', 'SettingsController@footerIndex')->name('footer.index');
         Route::post('footer/update', 'SettingsController@footerUpdate')->name('footer.update');
         Route::post('footer/new', 'SettingsController@footerStore')->name('footer.store');
+
+        // Introduce
+        Route::get('introduce/index', 'SettingsController@introduceIndex')->name('introduce.index');
+        Route::post('introduce/new', 'SettingsController@introduceStore')->name('introduce.store');
     });
 });
 

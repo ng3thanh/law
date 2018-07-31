@@ -2,5 +2,6 @@
 
 return [
     'blog' => 'upload/blogs/',
-    'slide' => 'upload/slides/'
+    'slide' => 'upload/slides/',
+    'service' => 'upload/services/'
 ];

@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'Blog list')
+@section('title', 'Service list')
 
 @section('css')
 @endsection
@@ -14,54 +14,54 @@
                         <table class="table table-hover">
                             <tr class="header-table">
                                 <th>ID</th>
-                                <th>Title</th>
+                                <th>Service</th>
                                 <th>Image</th>
+                                <th>Price</th>
                                 <th>Description</th>
-                                <th>Publish date</th>
-                                <th>End date</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
-                            @foreach($blogs as $blog)
+                            @foreach($services as $service)
                                 <tr class="body-table">
                                     <td></td>
                                     <td class="text-left">
                                         <a href="#" target="_blank">
-                                            <span class="short-text">{{ $blog->title }}</span>
+                                            <span class="short-text">{{ $service->title }}</span>
                                         </a>
                                     </td>
                                     <td>
-                                        <img class="img-thumbnail" src='{{ asset("$blog->image") }}' width="50px" height="">
+                                        <img class="img-thumbnail" src='{{ asset("$service->image") }}' width="50px" height="">
                                     </td>
                                     <td>
-                                        <span class="short-text">{!! $blog->description !!}</span>
+                                        <span class="short-text">{!! $service->description !!}</span>
                                     </td>
                                     <td>
-                                        {{ date('d/m/Y H:i', strtotime($blog->publish_date)) }}
+                                        {{ date('d/m/Y H:i', strtotime($service->publish_date)) }}
                                     </td>
                                     <td>
-                                        {{ date('d/m/Y H:i', strtotime($blog->end_date)) }}
+                                        {{ date('d/m/Y H:i', strtotime($service->end_date)) }}
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('blog.copy', $blog->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-copy"></i></a>
-                                            <a href="{{ route('blog.edit', $blog->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('blog.destroy', $blog->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('Service.copy', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-copy"></i></a>
+                                            <a href="{{ route('Service.edit', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('Service.destroy', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
-                        <div class="text-center">
-                            {{
-                                $blogs->appends([
-                                    "title" => Request::get('title'),
-                                    "status" => Request::get('status'),
-                                    "publish_date" => Request::get('publish_date'),
-                                    "end_date" => Request::get('end_date'),
-                                    "menu" => Request::get('menu')
-                                ])->links()
-                            }}
-                        </div>
+                        {{--<div class="text-center">--}}
+                            {{--{{--}}
+                                {{--$services->appends([--}}
+                                    {{--"title" => Request::get('title'),--}}
+                                    {{--"status" => Request::get('status'),--}}
+                                    {{--"publish_date" => Request::get('publish_date'),--}}
+                                    {{--"end_date" => Request::get('end_date'),--}}
+                                    {{--"menu" => Request::get('menu')--}}
+                                {{--])->links()--}}
+                            {{--}}--}}
+                        {{--</div>--}}
                     </div>
                     <!-- /.box-body -->
                 </div>
