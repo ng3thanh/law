@@ -37,6 +37,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::resource('contact', 'ContactsController');
         Route::resource('user', 'UserController');
 
+        // Services
+        Route::resource('services', 'ServicesController');
+
         // Blogs
         Route::resource('blog', 'BlogsController');
         Route::get('copy/{id}', 'BlogsController@copy')->name('blog.copy');
