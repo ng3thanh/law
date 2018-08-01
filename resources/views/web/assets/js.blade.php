@@ -10,6 +10,4 @@
 <script src="{{ asset('web/js/isotope.js') }}"></script>
 <script src="{{ asset('web/js/jquery.flexslider.js') }}"></script>
 <script src="{{ asset('web/js/inview.js') }}"></script>
-<script src="{{ asset('web/js/animate.js') }}"></script>
 <script src="{{ asset('web/js/custom.js') }}"></script>
-<script src="{{ asset('web/js/contactform.js') }}"></script>

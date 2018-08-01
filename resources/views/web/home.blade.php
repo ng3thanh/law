@@ -71,7 +71,7 @@
                 <!-- Four columns -->
                 <div class="row">
                     @foreach ($services as $service)
-                    <div class="span3 col-lg-3 animated-fast flyIn">
+                    <div class="service-box-hover col-lg-3">
                         <div class="service-box">
                             <img src='{{ asset("$service->image") }}' alt="{{ $service->name }}" />
                             <h2>{{ $service->name }}</h2>
@@ -88,7 +88,7 @@
             <div class="container clearfix">
                 <h4>Feature clients</h4>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="margin-top: 20px">
                         <div id="portfolio-wrap">
                             @foreach ($clients as $key => $client)
                             <!-- portfolio item -->
@@ -132,10 +132,12 @@
                             <div class="entry-content">
                                 <h5>
                                     <strong>
-                                        <a href="{{ route('blogs.detail', $blog->slug) }}">{{ $blog->title }}</a>
+                                        <a href="{{ route('blogs.detail', $blog->slug) }}">
+                                            {{ $blog->title }}
+                                        </a>
                                     </strong>
                                 </h5>
-                                {!! $blog->description !!}
+                                {!! (strlen($blog->description) > 150) ? substr($blog->description, 0, 147) . ' ... ' : $blog->description !!}
                                 <a href="{{ route('blogs.detail', $blog->slug) }}" class="more">Read more</a>
                             </div>
                         </div>
@@ -199,5 +201,5 @@
 @endsection
 
 @section('script')
-
+    <script src="{{ asset('web/js/contactform.js') }}"></script>
 @endsection

@@ -473,6 +473,8 @@ div[class*="-btn"] {
 
 .navbar .navbar-toggler {
   margin-top: 5px;
+  background: #fff;
+  padding: 5px;
 }
 
 .navbar .navbar-toggler span {
@@ -987,7 +989,7 @@ section.gallery .overlay i {
 */
 footer.main-footer {
   background: #0e0e0e;
-  padding: 100px 0 0;
+  padding: 60px 0px 0px 0px;
   color: #fff;
   font-size: 14px;
 }
@@ -1023,10 +1025,8 @@ footer.main-footer .list-unstyled a {
 }
 
 footer.main-footer .list-unstyled .info-footer {
+  line-height: 1.9em;
   font-size: 0.95em;
-  color: inherit;
-  font-weight: 300;
-  margin-bottom: 7px;
 }
 
 footer.main-footer .latest-posts .image {
@@ -2568,7 +2568,7 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 #homepage p {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 300;
   font-family: 'Open Sans', Arial, sans-serif;
   line-height: 1.6em;
@@ -2685,7 +2685,7 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 #homepage section.section {
-  padding: 100px 0 80px;
+  padding: 80px 0 80px;
 }
 #homepage section.section h4 {
   text-align: center;
@@ -2864,6 +2864,13 @@ a.text-dark:focus, a.text-dark:hover {
   width: 100%;
   position: absolute;
   text-align: center;
+  vertical-align: middle;
+  background: #000000e3;
+  opacity: 0.5;
+  margin-bottom: 0;
+  margin-top: 48%;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 #homepage .portfolio-overlay .thumb-info p {
   color: #ffffff;
@@ -2934,8 +2941,8 @@ a.text-dark:focus, a.text-dark:hover {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-#homepage section#services .span3:hover {
-  background:#e3e3e3;
+#homepage section#services .service-box-hover:hover {
+  background: #3d3838;
 }
 
 #homepage section#services .service-box h2 {
@@ -2948,7 +2955,7 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 #homepage section#services .service-box:hover {
-  color: #303133 !important;
+  color: #0b0b0b !important;
 }
 
 
@@ -2983,7 +2990,8 @@ a.text-dark:focus, a.text-dark:hover {
   padding:20px;
 }
 #homepage .home-post .entry-content h5 a {
-  font-size:22px;
+  font-size: 20px;
+  line-height: 1.5em;
 }
 #homepage .home-post .entry-content h5 a:hover {
   color:#312f2b;
