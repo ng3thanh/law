@@ -24,4 +24,24 @@ interface BlogsRepositoryInterface extends BaseRepositoryInterface
      * @return mixed
      */
     public function findBySlug($slug);
+
+    /**
+     * @param $id
+     * @param $date
+     * @return mixed
+     */
+    public function getBlogNextDate($id, $date);
+
+    /**
+     * @param $id
+     * @param $date
+     * @return mixed
+     */
+    public function getBlogPreviousDate($id, $date);
+
+    /**
+     * @param $limit
+     * @return mixed
+     */
+    public function getAllBlogPaginate($limit);
 }

@@ -23,8 +23,8 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
     public function getAllPublished()
     {
         $result = $this->model
-            ->whereDate('publish_date', '=<', date('Y-m-d H:i:s'))
-            ->whereDate('end_date', '>=', date('Y-m-d H:i:s'))
+            ->where('publish_date', '<=', date('Y-m-d H:i:s'))
+            ->where('end_date', '>=', date('Y-m-d H:i:s'))
             ->get();
 
         return $result;
@@ -39,8 +39,8 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
     {
         $result = $this->model
             ->where('id', $id)
-            ->whereDate('publish_date', '=<', date('Y-m-d H:i:s'))
-            ->whereDate('end_date', '>=', date('Y-m-d H:i:s'))
+            ->where('publish_date', '<=', date('Y-m-d H:i:s'))
+            ->where('end_date', '>=', date('Y-m-d H:i:s'))
             ->first();
 
         return $result;
@@ -53,7 +53,41 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
      */
     public function findBySlug($slug)
     {
-        $result = $this->model->where('slug', $slug)->first();
+        $result = $this->model
+            ->where('publish_date', '<=', date('Y-m-d H:i:s'))
+            ->where('end_date', '>=', date('Y-m-d H:i:s'))
+            ->where('slug', $slug)
+            ->first();
+        return $result;
+    }
+
+    public function getBlogNextDate($id, $date)
+    {
+        $result = $this->model->where('publish_date', '>=', $date)
+            ->where('publish_date', '<=', date('Y-m-d H:i:s'))
+            ->where('end_date', '>=', date('Y-m-d H:i:s'))
+            ->where('id', '!=', $id)
+            ->first();
+        return $result;
+    }
+
+    public function getBlogPreviousDate($id, $date)
+    {
+        $result = $this->model->where('publish_date', '<=', $date)
+            ->where('publish_date', '<=', date('Y-m-d H:i:s'))
+            ->where('end_date', '>=', date('Y-m-d H:i:s'))
+            ->where('id', '!=', $id)
+            ->first();
+        return $result;
+    }
+
+    public function getAllBlogPaginate($limit)
+    {
+        $result = $this->model
+            ->where('publish_date', '<=', date('Y-m-d H:i:s'))
+            ->where('end_date', '>=', date('Y-m-d H:i:s'))
+            ->paginate($limit);
+
         return $result;
     }
 }

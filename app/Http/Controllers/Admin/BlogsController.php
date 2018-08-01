@@ -35,7 +35,7 @@ class BlogsController extends Controller
     {
         $limit = config('constant.number.blog.paginate.admin');
         $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
-        $blogs = $this->blogService->getAllBlog();
+        $blogs = $this->blogService->getAllBlog($limit);
         return view('admin.pages.blogs.index', compact('blogs', 'number'));
     }
 

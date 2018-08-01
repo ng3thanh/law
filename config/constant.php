@@ -10,7 +10,8 @@ return [
                 'main' => 4,
                 'web' => 9,
                 'admin' => 20
-            ]
+            ],
+            'random' => 3
         ],
         'service' => [
             'paginate' => [

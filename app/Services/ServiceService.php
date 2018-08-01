@@ -81,4 +81,10 @@ class ServiceService
         $data = $this->servicesRepository->getDataLimit($limit)->get();
         return $data;
     }
+
+    public function countService()
+    {
+        $data = $this->servicesRepository->countAll();
+        return $data;
+    }
 }

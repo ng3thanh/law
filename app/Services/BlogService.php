@@ -41,9 +41,20 @@ class BlogService
      *
      * @return mixed
      */
-    public function getAllBlog()
+    public function getAllBlog($limit)
     {
-        $data = $this->blogsRepository->getAllPaginate(config('constant.number.blog.paginate.admin'));
+        $data = $this->blogsRepository->getAllPaginate($limit);
+        return $data;
+    }
+
+    /**
+     * Get all blog and paginate to show in web
+     *
+     * @return mixed
+     */
+    public function getAllBlogInWeb($limit)
+    {
+        $data = $this->blogsRepository->getAllBlogPaginate($limit);
         return $data;
     }
 
@@ -59,6 +70,25 @@ class BlogService
         return $data;
     }
 
+    /**
+     * @param $blog
+     * @return mixed
+     */
+    public function findBlogNext($blog)
+    {
+        $data = $this->blogsRepository->getBlogNextDate($blog->id, $blog->publish_date);
+        return $data;
+    }
+
+    /**
+     * @param $blog
+     * @return mixed
+     */
+    public function findBlogPrevious($blog)
+    {
+        $data = $this->blogsRepository->getBlogPreviousDate($blog->id, $blog->publish_date);
+        return $data;
+    }
     /**
      * Create new blog
      *
@@ -142,6 +172,12 @@ class BlogService
     public function getServiceLimit($limit)
     {
         $data = $this->blogsRepository->getDataLimit($limit)->get();
+        return $data;
+    }
+
+    public function countBlog()
+    {
+        $data = $this->blogsRepository->countAll();
         return $data;
     }
 }

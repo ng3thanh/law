@@ -73,4 +73,9 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function delete($id);
+
+    /**
+     * @return mixed
+     */
+    public function countAll();
 }

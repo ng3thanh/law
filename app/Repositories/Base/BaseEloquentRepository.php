@@ -150,4 +150,13 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
 
         return false;
     }
+
+    /**
+     * @return int|mixed
+     */
+    public function countAll()
+    {
+        $result = $this->model->all()->count();
+        return $result;
+    }
 }

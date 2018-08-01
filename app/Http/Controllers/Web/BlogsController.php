@@ -31,7 +31,7 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogList = $this->blogService->getAllBlog();
+        $blogList = $this->blogService->getAllBlogInWeb(config('constant.number.blog.paginate.web'));
         return view('web.pages.blogs.list', compact('blogList'));
     }
 
@@ -65,8 +65,10 @@ class BlogsController extends Controller
     public function show($slug)
     {
         $blog = $this->blogService->findBlogBySlug($slug);
-        $randomBlog = $this->blogService->randomBlog(3);
-        return view('web.pages.blogs.detail', compact('blog', 'randomBlog'));
+        $blogNext = $this->blogService->findBlogNext($blog);
+        $blogPrevious = $this->blogService->findBlogPrevious($blog);
+        $randomBlog = $this->blogService->randomBlog(config('constant.number.blog.random'));
+        return view('web.pages.blogs.detail', compact('blog', 'randomBlog', 'blogNext', 'blogPrevious'));
     }
 
     /**

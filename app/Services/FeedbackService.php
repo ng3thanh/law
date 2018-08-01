@@ -44,4 +44,10 @@ class FeedbackService
             return false;
         }
     }
+
+    public function countFeedback()
+    {
+        $data = $this->feedbacksRepository->countAll();
+        return $data;
+    }
 }

@@ -81,4 +81,10 @@ class ClientService
         $data = $this->clientsRepository->getDataLimit($limit)->get();
         return $data;
     }
+
+    public function countClient()
+    {
+        $data = $this->clientsRepository->countAll();
+        return $data;
+    }
 }

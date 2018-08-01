@@ -17,7 +17,11 @@
                     <ul class="list-unstyled">
                         @foreach($footer[2] as $key => $value)
                             <li class="list-inline-item info-footer">
-                                <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;{{ $value->value }}<br>
+                                <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;
+                                <span class="text-capitalize">{{ $value->name }}: </span>
+                                &nbsp;
+                                {{ $value->value }}
+                                <br>
                             </li>
                         @endforeach
                     </ul>

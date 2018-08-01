@@ -12,7 +12,7 @@
             <main class="posts-listing col-lg-12">
                 <div class="container">
                     <div class="row">
-                    @foreach($blogList as $blog)
+                        @foreach($blogList as $blog)
                         <!-- post -->
                             <div class="post col-xl-4">
                                 <div class="post-thumbnail">
@@ -52,14 +52,65 @@
                         @endforeach
                     </div>
                     <!-- Pagination -->
+
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-template d-flex justify-content-center">
-                            <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
-                            <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
-                        </ul>
+                        @if (isset($blogList) && $blogList->lastPage() > 1)
+                            <ul class="pagination pagination-template d-flex justify-content-center">
+                                @php
+                                $interval = isset($interval) ? abs(intval($interval)) : 3 ;
+                                $from = $blogList->currentPage() - $interval;
+                                if($from < 1){
+                                    $from = 1;
+                                }
+
+                                $to = $blogList->currentPage() + $interval;
+                                if($to > $blogList->lastPage()){
+                                    $to = $blogList->lastPage();
+                                }
+                                @endphp
+
+
+                                <!-- first/previous -->
+                                @if($blogList->currentPage() > 1)
+                                    <li class="page-item">
+                                        <a href="{{ $blogList->url(1) }}" class="page-link">
+                                            <i class="fa fa-angle-double-left"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="page-item">
+                                        <a href="{{ $blogList->url($blogList->currentPage() - 1) }}" class="page-link">
+                                            <i class="fa fa-angle-left"></i>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                <!-- links -->
+                                @for($i = $from; $i <= $to; $i++)
+                                    @php
+                                        $isCurrentPage = $blogList->currentPage() == $i;
+                                    @endphp
+                                    <li class="page-item">
+                                        <a href="{{ !$isCurrentPage ? $blogList->url($i) : '#' }}" class="page-link {{ $isCurrentPage }}">{{ $i }}</a>
+                                    </li>
+                                @endfor
+
+                                <!-- next/last -->
+                                @if($blogList->currentPage() < $blogList->lastPage())
+                                    <li class="page-item">
+                                        <a href="{{ $blogList->url($blogList->currentPage() + 1) }}" class="page-link">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="page-item">
+                                        <a href="{{ $blogList->url($blogList->lastpage()) }}" class="page-link">
+                                            <i class="fa fa-angle-double-right"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+                        @endif
                     </nav>
                 </div>
             </main>
