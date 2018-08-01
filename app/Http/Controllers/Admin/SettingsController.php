@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Footer;
 use App\Services\SettingsService;
 use App\Services\SlideService;
 use Illuminate\Http\Request;
@@ -37,6 +36,10 @@ class SettingsController extends Controller
         return view('admin.pages.settings.settings.index', compact('footerInfo', 'faIcon'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function footerUpdate(Request $request)
     {
         $data = $request->except('_token');
@@ -48,6 +51,10 @@ class SettingsController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function footerStore(Request $request)
     {
         $data = $request->except('_token');

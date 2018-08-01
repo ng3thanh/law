@@ -989,6 +989,7 @@ footer.main-footer {
   background: #0e0e0e;
   padding: 100px 0 0;
   color: #fff;
+  font-size: 14px;
 }
 
 footer.main-footer .contact-details p {
@@ -1019,6 +1020,13 @@ footer.main-footer ul {
 
 footer.main-footer .list-unstyled a {
   font-size: 0.95em;
+}
+
+footer.main-footer .list-unstyled .info-footer {
+  font-size: 0.95em;
+  color: inherit;
+  font-weight: 300;
+  margin-bottom: 7px;
 }
 
 footer.main-footer .latest-posts .image {

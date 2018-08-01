@@ -16,15 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->namespace('Web')->group(function () {
     Route::get('/', 'MainController@index')->name('main');
 
-    Route::prefix('introduce')->group(function () {
-        Route::get('list', 'IntroducesController@index')->name('introduce');
-        Route::get('{slug}-{id}', 'IntroducesController@show')->name('introduce.detail');
-    });
+    // Send contact
+    Route::post('feedback', 'FeedbacksController@store')->name('feedbacks.store');
 
+    // Blogs
     Route::prefix('blogs')->group(function () {
-//        Route::get('search', 'BlogsController@search')->name('blogs.search');
         Route::get('list/', 'BlogsController@index')->name('blogs.index');
-//        Route::get('list/{slug}-{menu_id}', 'BlogsController@list')->name('blogs.list');
         Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
     });
 });

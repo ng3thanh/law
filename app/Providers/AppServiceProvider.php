@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Settings;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $footer = Settings::all()->groupBy('type');
+        View::share('footer', $footer);
     }
 
     /**
@@ -23,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $repositories = ['Base', 'Blogs', 'Slides', 'Footers', 'Services', 'Introduces', 'Clients'];
+        $repositories = ['Base', 'Blogs', 'Slides', 'Footers', 'Services', 'Introduces', 'Clients', 'Feedbacks'];
 
         foreach ($repositories as $model) {
             $this->app->bind(

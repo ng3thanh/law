@@ -164,7 +164,8 @@
                         <div class="cform" id="contact-form">
                             <div id="sendmessage">Your message has been sent. Thank you!</div>
                             <div id="errormessage"></div>
-                            <form action="" method="post" role="form" class="contactForm">
+                            <form action="{{ route('feedbacks.store') }}" method="post" role="form" class="contactForm">
+                                {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="field your-name form-group">
@@ -172,7 +173,7 @@
                                             <div class="validation"></div>
                                         </div>
                                         <div class="field your-email form-group">
-                                            <input type="text" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                            <input type="text" class="form-control" name="mail" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                                             <div class="validation"></div>
                                         </div>
                                         <div class="field subject form-group">
@@ -182,7 +183,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="field message form-group">
-                                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                            <textarea class="form-control" name="content" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                                             <div class="validation"></div>
                                         </div>
                                         <input type="submit" value="Send message" class="btn btn-theme pull-left">
