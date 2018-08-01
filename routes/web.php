@@ -31,8 +31,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('/', 'MainController@index')->name('dashboard');
 
         Route::resource('news', 'NewsController');
-        Route::resource('contact', 'ContactsController');
         Route::resource('user', 'UserController');
+
+        // Contact
+        Route::get('contact/index', 'ContactsController@index')->name('contact.index');
+        Route::get('contact/show/{id}', 'ContactsController@show')->name('contact.show');
 
         // Introduce
         Route::resource('introduce', 'ServicesController');

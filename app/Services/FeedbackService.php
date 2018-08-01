@@ -50,4 +50,22 @@ class FeedbackService
         $data = $this->feedbacksRepository->countAll();
         return $data;
     }
+
+    public function getPaginateFeedback($limit)
+    {
+        $data = $this->feedbacksRepository->getDataOrderBy('created_at')->paginate($limit);
+        return $data;
+    }
+
+    public function getFeedbackRelated($id)
+    {
+        $feedbackCheck = $this->feedbacksRepository->find($id);
+        $data = $this->feedbacksRepository->getFeedbackRelatedMail($feedbackCheck->mail);
+        $result = [];
+        foreach ($data as $key => $value) {
+            $date = date('Y-m-d', strtotime($value->created_at));
+            $result[$date][] = $value;
+        }
+        return $result;
+    }
 }

@@ -4,10 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feedbacks;
+use App\Services\FeedbackService;
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
+    /**
+     * @var FeedbackService
+     */
+    protected $feedbackService;
+
+    /**
+     * FeedbacksController constructor.
+     * @param FeedbackService $feedbackService
+     */
+    public function __construct(
+        FeedbackService $feedbackService
+    ) {
+        $this->feedbackService = $feedbackService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,72 +31,18 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.contacts.index');
+        $limit = config('constant.number.feedback.paginate.admin');
+        $contacts = $this->feedbackService->getPaginateFeedback($limit);
+        return view('admin.pages.contacts.index', compact('contacts', 'limit'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Feedbacks  $feedbacks
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Feedbacks $feedbacks)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Feedbacks  $feedbacks
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Feedbacks $feedbacks)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Feedbacks  $feedbacks
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Feedbacks $feedbacks)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Feedbacks  $feedbacks
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Feedbacks $feedbacks)
-    {
-        //
+        $listFeedback = $this->feedbackService->getFeedbackRelated($id);
+        return view('admin.pages.contacts.detail', compact('listFeedback'));
     }
 }

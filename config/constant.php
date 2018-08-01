@@ -24,6 +24,11 @@ return [
                 'web' => 5,
                 'admin' => 20
             ]
+        ],
+        'feedback' => [
+            'paginate' => [
+                'admin' => 20
+            ]
         ]
     ],
     'text' => [

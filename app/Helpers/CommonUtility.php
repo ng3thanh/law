@@ -194,3 +194,26 @@ if (!function_exists('timeElapsedString')) {
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
 }
+
+if (!function_exists('timeFormatTextDate')) {
+    /**
+     * @param $date
+     * @return false|string
+     */
+    function timeFormatTextDate($date)
+    {
+        return date("F j, Y", strtotime($date));
+    }
+}
+
+if (!function_exists('dateFormat')) {
+    /**
+     * @param $date
+     * @param string $format
+     * @return false|string
+     */
+    function dateFormat($date, $format = 'Y-m-d H:i:s')
+    {
+        return date($format, strtotime($date));
+    }
+}

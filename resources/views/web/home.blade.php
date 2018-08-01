@@ -126,7 +126,7 @@
                             </div>
                             <div class="post-meta">
                                 <i class="icon-file icon-2x"></i>
-                                <span class="date">{{ date("F j, Y", strtotime($blog->publish_date)) }}</span>
+                                <span class="date">{{ timeFormatTextDate($blog->publish_date) }}</span>
                                 <span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>
                             </div>
                             <div class="entry-content">
