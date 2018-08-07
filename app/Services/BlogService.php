@@ -175,6 +175,7 @@ class BlogService
         return $data;
     }
 
+
     public function countBlog()
     {
         $data = $this->blogsRepository->countAll();
