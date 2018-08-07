@@ -11,7 +11,7 @@
 @endphp
 @section('content')
     <section class="content">
-        <div class="box box-default">
+        <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Create new blog</h3>
             </div>
