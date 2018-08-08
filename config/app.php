@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Centaur\CentaurServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Dimsav\Translatable\TranslatableServiceProvider::class,
     ],
 
     /*
