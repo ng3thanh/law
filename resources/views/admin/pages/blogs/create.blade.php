@@ -36,7 +36,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                                 <div class="col-sm-9 input-group">
-                                                    <input type="text" id="title" name="title" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
+                                                    <input type="text" id="title" name="title" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ old('title') }}">
                                                     @include('elements.error_line', ['attribute' => 'title'])
                                                 </div>
                                             </div>
@@ -147,7 +147,9 @@
 @endsection
 
 @section('script')
-    {{--<script src="{{ asset('admin/js/utilities/form.validate.js') }}"></script>--}}
+    <script src="{{ asset('admin/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('admin/js/utilities/jquery.validate.messages.js') }}"></script>
+    <script src="{{ asset('admin/js/utilities/form.validate.js') }}"></script>
     <script src="{{ asset('admin/js/pages/blog/blog.create.js') }}"></script>
     <script>
         $(function () {
@@ -155,6 +157,7 @@
             var contentEditor = CKEDITOR.replace( 'content_ckediter' );
             CKFinder.setupCKEditor(contentEditor);
             BlogCreate.init();
+            FormUtil.validate('#create-new-blog');
         });
     </script>
 @endsection

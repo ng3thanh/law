@@ -30,3 +30,5 @@
 
 <!-- Local css -->
 <link rel="stylesheet" href="{{ asset('admin/css/local.css') }}">
+
+<link rel="stylesheet" href="{{ asset('admin/css/app-test.css') }}">
