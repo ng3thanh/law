@@ -255,7 +255,8 @@ $.validator.addMethod("timeCheck", function (value, element) {
 
 //Date picker
 $.validator.addMethod("dateCheck", function (value, element) {
-    var regEx = /^\d{4}\/\d{2}\/\d{2}?$/;
+    // var regEx = /^\d{4}\/\d{2}\/\d{2}?$/;
+    var regEx = /^(0[1-9]{1}|[12]{1}[0-9]{1}|3[01]{1}).{1}(0[1-9]{1}|1[0-2]{1}).{1}([12]{1}[0-9]{3})$/;
 
     if (value.length && value.match(regEx) == null) {
         return false;

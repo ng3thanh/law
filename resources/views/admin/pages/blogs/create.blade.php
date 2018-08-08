@@ -7,7 +7,7 @@
 
 @php
     $oldPlDate = old('publish_date');
-    $publishDate = isset($oldPlDate) ? $oldPlDate : date('Y/m/d');
+    $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y');
 @endphp
 @section('content')
     <section class="content">
