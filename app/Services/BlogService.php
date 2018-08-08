@@ -108,8 +108,10 @@ class BlogService
             $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
             $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
             $data['author'] = Sentinel::getUser()->username;
-            $data = formatDataBaseOnTable('blogs', $data);
-            $result = $this->blogsRepository->create($data);
+            $dataMainBlog = formatDataBaseOnTable('blogs', $data);
+            $result = $this->blogsRepository->create($dataMainBlog);
+
+//            $dataTranslate =
             if ($result) {
                 $newName = uploadImage($result->id, $file, 'blog');
                 $this->blogsRepository->update(

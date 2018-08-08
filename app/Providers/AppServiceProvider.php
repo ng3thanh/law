@@ -26,7 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $repositories = ['Base', 'Blogs', 'Slides', 'Footers', 'Services', 'Introduces', 'Clients', 'Feedbacks'];
+        $repositories = [
+            'Base', 'Blogs', 'Slides', 'Footers', 'Services', 'Introduces', 'Clients', 'Feedbacks',
+            'BlogsTranslate', 'ServicesTranslate', 'IntroducesTranslate', 'ClientsTranslate'
+        ];
 
         foreach ($repositories as $model) {
             $this->app->bind(

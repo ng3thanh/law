@@ -29,7 +29,10 @@ var BlogCreate = function () {
     }
 
     function setupDatepicker() {
-        datepicker.datepicker({ autoclose: true });
+        datepicker.datepicker({
+            dateFormat: 'yy/mm/dd',
+            autoclose: true
+        });
     }
 
     /**

@@ -7,7 +7,7 @@
 
 @php
     $oldPlDate = old('publish_date');
-    $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y');
+    $publishDate = isset($oldPlDate) ? $oldPlDate : date('Y/m/d');
 @endphp
 @section('content')
     <section class="content">
@@ -22,36 +22,40 @@
                         <!-- Custom Tabs -->
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_en" data-toggle="tab" aria-expanded="true">English</a></li>
-                                <li class=""><a href="#tab_vn" data-toggle="tab" aria-expanded="false">Vietnamese</a></li>
+                                <li class="active">
+                                    <a href="#tab_en" data-toggle="tab" aria-expanded="true">English</a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_vn" data-toggle="tab" aria-expanded="false">Vietnamese</a>
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_en">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title" name="title" data-rule-required="true" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
+                                            <input type="text" id="title" name="trans[en][title]" data-rule-required="true" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
                                             @include('elements.error_line', ['attribute' => 'title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug') }}">
+                                            <input type="text" id="slug" name="trans[en][slug]" data-rule-required="true" class="form-control" value="{{ old('slug') }}">
                                             @include('elements.error_line', ['attribute' => 'slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter" name="description" rows="8" cols="80">{{ old('description') }}</textarea>
+                                            <textarea class="form-control" id="des_ckediter" name="trans[en][description]" data-rule-required="true" rows="8" cols="80">{{ old('description') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter" name="content" rows="10" cols="80">{{ old('content') }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" data-rule-required="true" rows="10" cols="80">{{ old('content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'content'])
                                         </div>
                                     </div>
@@ -61,28 +65,28 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title" name="title" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
+                                            <input type="text" id="title" name="trans[vn][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ old('title') }}">
                                             @include('elements.error_line', ['attribute' => 'title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug') }}">
+                                            <input type="text" id="slug" name="trans[vn][slug]" class="form-control" data-rule-required="true" value="{{ old('slug') }}">
                                             @include('elements.error_line', ['attribute' => 'slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter_vn" name="description" rows="8" cols="80">{{ old('description') }}</textarea>
+                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vn][description]" data-rule-required="true" rows="8" cols="80">{{ old('description') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter_vn" name="content" rows="10" cols="80">{{ old('content') }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vn][content]" data-rule-required="true" rows="10" cols="80">{{ old('content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'content'])
                                         </div>
                                     </div>
@@ -93,7 +97,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label"> Main image <span class="span-red">*</span></label>
                                     <div class="col-sm-9 input-group">
-                                        <input type="file" class="form-control" name="image">
+                                        <input type="file" class="form-control" data-rule-required="true" name="image">
                                         @include('elements.error_line', ['attribute' => 'image'])
                                     </div>
                                 </div>
@@ -104,7 +108,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right datepicker" name="publish_date" value="{{ $publishDate }}">
+                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="publish_date" value="{{ $publishDate }}">
                                     </div>
                                 </div>
 
@@ -114,7 +118,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right datepicker" name="end_date" value="{{ old('end_date') }}">
+                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="end_date" value="{{ old('end_date') }}">
                                     </div>
                                 </div>
 
