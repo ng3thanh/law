@@ -145,7 +145,6 @@ class BlogService
             DB::commit();
             return true;
         } catch (Exception $e) {
-            dd($e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -171,8 +170,14 @@ class BlogService
             $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
             $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
 
-            $data = formatDataBaseOnTable('blogs', $data);
-            $this->blogsRepository->update($id, $data);
+            $dataBaseBlog = formatDataBaseOnTable('blogs', $data);
+            $this->blogsRepository->update($id, $dataBaseBlog);
+
+            $dataTranslates = $data['trans'];
+            foreach ($dataTranslates as $key => $value) {
+                $this->blogsTransRepository->updateTrans($id, $key, $value);
+            }
+
             DB::commit();
             return true;
         } catch (Exception $e) {

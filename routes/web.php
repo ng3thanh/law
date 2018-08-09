@@ -45,7 +45,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         // Blogs
         Route::resource('blog', 'BlogsController');
-        Route::get('copy/{id}', 'BlogsController@copy')->name('blog.copy');
+        Route::get('blog/copy/{id}', 'BlogsController@copy')->name('blog.copy');
 
         // Clients
         Route::resource('clients', 'ClientsController');

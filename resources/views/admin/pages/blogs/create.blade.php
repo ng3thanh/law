@@ -34,28 +34,28 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title-en" name="trans[en][title]" data-rule-required="true" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
+                                            <input type="text" id="title-en" name="trans[en][title]" data-rule-required="true" class="form-control" placeholder="Title ..." value="{{ old('trans.en.title') }}">
                                             @include('elements.error_line', ['attribute' => 'trans.en.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug-en" name="trans[en][slug]" data-rule-required="true" class="form-control" value="{{ old('slug') }}">
+                                            <input type="text" id="slug-en" name="trans[en][slug]" data-rule-required="true" class="form-control" value="{{ old('trans.en.slug') }}">
                                             @include('elements.error_line', ['attribute' => 'trans.en.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter" name="trans[en][description]" data-rule-required="true" rows="8" cols="80">{{ old('description') }}</textarea>
+                                            <textarea class="form-control" id="des_ckediter" name="trans[en][description]" data-rule-required="true" rows="8" cols="80">{{ old('trans.en.description') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.en.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" data-rule-required="true" rows="10" cols="80">{{ old('content') }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" data-rule-required="true" rows="10" cols="80">{{ old('trans.en.content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.en.content'])
                                         </div>
                                     </div>
@@ -65,28 +65,28 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title-vn" name="trans[vn][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ old('title') }}">
+                                            <input type="text" id="title-vn" name="trans[vn][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ old('trans.vn.title') }}">
                                             @include('elements.error_line', ['attribute' => 'trans.vn.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug-vn" name="trans[vn][slug]" class="form-control" data-rule-required="true" value="{{ old('slug') }}">
+                                            <input type="text" id="slug-vn" name="trans[vn][slug]" class="form-control" data-rule-required="true" value="{{ old('trans.vn.slug') }}">
                                             @include('elements.error_line', ['attribute' => 'trans.vn.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vn][description]" data-rule-required="true" rows="8" cols="80">{{ old('description') }}</textarea>
+                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vn][description]" data-rule-required="true" rows="8" cols="80">{{ old('trans.vn.description') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.vn.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vn][content]" data-rule-required="true" rows="10" cols="80">{{ old('content') }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vn][content]" data-rule-required="true" rows="10" cols="80">{{ old('trans.vn.content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.vn.content'])
                                         </div>
                                     </div>
@@ -154,11 +154,41 @@
     <script src="{{ asset('admin/js/pages/blog/blog.create.js') }}"></script>
     <script>
         $(function () {
-            CKEDITOR.replace('des_ckediter');
-            var contentEditor = CKEDITOR.replace( 'content_ckediter' );
+            CKEDITOR.replace('des_ckediter', {
+                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+            });
+            var contentEditor = CKEDITOR.replace( 'content_ckediter', {
+                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+            });
             CKFinder.setupCKEditor(contentEditor);
-            CKEDITOR.replace('des_ckediter_vn');
-            var contentEditorVn = CKEDITOR.replace( 'content_ckediter_vn' );
+
+            CKEDITOR.replace('des_ckediter_vn', {
+                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+            });
+
+            var contentEditorVn = CKEDITOR.replace( 'content_ckediter_vn', {
+                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+            });
             CKFinder.setupCKEditor(contentEditorVn);
             BlogCreate.init();
             FormUtil.validate('#create-new-blog');

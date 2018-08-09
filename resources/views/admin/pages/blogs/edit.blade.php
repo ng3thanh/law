@@ -6,116 +6,176 @@
 @endsection
 
 @php
-    $oldTitle = old('title');
-    $oldSlug = old('slug');
-    $oldDescription = old('description');
-    $oldContent = old('content');
+    $oldEnTitle = old('trans.en.title');
+    $oldEnSlug = old('trans.en.slug');
+    $oldEnDescription = old('trans.en.description');
+    $oldEnContent = old('trans.en.content');
+
+    $titleEn = isset($oldEnTitle) ? $oldEnTitle : $blog->translations[0]->title;
+    $slugEn = isset($oldEnSlug) ? $oldEnSlug : $blog->translations[0]->slug;
+    $descriptionEn = isset($oldEnDescription) ? $oldEnDescription : $blog->translations[0]->description;
+    $contentEn = isset($oldEnContent) ? $oldEnContent : $blog->translations[0]->content;
+
+    $oldVnTitle = old('trans.vn.title');
+    $oldVnSlug = old('trans.vn.slug');
+    $oldVnDescription = old('trans.vn.description');
+    $oldVnContent = old('trans.vn.content');
+
+    $titleVn = isset($oldVnTitle) ? $oldVnTitle : $blog->translations[1]->title;
+    $slugVn = isset($oldVnSlug) ? $oldVnSlug : $blog->translations[1]->slug;
+    $descriptionVn = isset($oldVnDescription) ? $oldVnDescription : $blog->translations[1]->description;
+    $contentVn = isset($oldVnContent) ? $oldVnContent : $blog->translations[1]->content;
+
     $oldPlDate = old('publish_date');
     $oldEnDate = old('end_date');
-    $title = isset($oldTitle) ? $oldTitle : $blog->title;
-    $slug = isset($oldSlug) ? $oldSlug : $blog->slug;
-    $description = isset($oldDescription) ? $oldDescription : $blog->description;
-    $content = isset($oldContent) ? $oldContent : $blog->content;
     $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y', strtotime($blog->publish_date));
     $endDate = isset($oldEnDate) ? $oldEnDate : date('m/d/Y', strtotime($blog->end_date));
 
 @endphp
 @section('content')
     <section class="content">
-        <div class="box box-default">
+        <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Edit blog</h3>
-                <div class="box-tools pull-right required-text-box">
-                    <span class="span-red">(*): The attribute must be required</span>
-                </div>
             </div>
             <div class="box-body">
-                <div class="row">
-                    <div class="box-body">
-                        <form role="form" id="update-blog" class="form-horizontal" action="{{ route('blog.update', [ $blog->id ]) }}" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        {{ method_field("PUT") }}
-                            <div>
-                                <div class="col-xs-12">
+                <form role="form" id="update-blog" class="form-horizontal" action="{{ route('blog.update', [ $blog->id ]) }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field("PUT") }}
+                    <div class="col-xs-12">
+                        <!-- Custom Tabs -->
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_en" data-toggle="tab" aria-expanded="true">English</a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_vn" data-toggle="tab" aria-expanded="false">Vietnamese</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_en">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title" name="title" class="form-control" value="{{ $title }}">
-                                            @include('elements.error_line', ['attribute' => 'title'])
+                                            <input type="text" id="title-en" name="trans[en][title]" data-rule-required="true" class="form-control" placeholder="Title ..." value="{{ $titleEn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.en.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug" name="slug" class="form-control" value="{{ $slug }}">
-                                            @include('elements.error_line', ['attribute' => 'slug'])
+                                            <input type="text" id="slug-en" name="trans[en][slug]" data-rule-required="true" class="form-control" value="{{ $slugEn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.en.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter" name="description" rows="8" cols="80">{{ $description }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'description'])
+                                            <textarea class="form-control" id="des_ckediter" name="trans[en][description]" data-rule-required="true" rows="8" cols="80">{{ $descriptionEn }}</textarea>
+                                            @include('elements.error_line', ['attribute' => 'trans.en.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter" name="content" rows="10" cols="80">{{ $content }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'content'])
+                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" data-rule-required="true" rows="10" cols="80">{{ $contentEn }}</textarea>
+                                            @include('elements.error_line', ['attribute' => 'trans.en.content'])
                                         </div>
                                     </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_vn">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label"> Main image <span class="span-red">*</span></label>
+                                        <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <img class="img-thumbnail" src='{{ asset("$blog->image") }}' width="200px" height=""><br><br>
-                                            <input type="file" class="form-control" name="image">
-                                            @include('elements.error_line', ['attribute' => 'image'])
+                                            <input type="text" id="title-vn" name="trans[vn][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ $titleVn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label"> Publish date <span class="span-red">*</span></label>
-                                        <div class="col-sm-9 input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right datepicker" name="publish_date" value="{{ $publishDate }}">
+                                        <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            <input type="text" id="slug-vn" name="trans[vn][slug]" class="form-control" data-rule-required="true" value="{{ $slugVn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label"> End date <span class="span-red">*</span></label>
-                                        <div class="col-sm-9 input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right datepicker" name="end_date" value="{{ $endDate }}">
+                                        <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vn][description]" data-rule-required="true" rows="8" cols="80">{{ $descriptionVn }}</textarea>
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.description'])
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vn][content]" data-rule-required="true" rows="10" cols="80">{{ $contentVn }}</textarea>
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.content'])
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                                <!-- /.tab-pane -->
 
-                        <div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="col-xs-3">
-                                    <button class="btn btn-block btn-default" form="update-blog" type="submit">Edit</button>
+                                <!-- nav-tabs-custom -->
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"> Main image <span class="span-red">*</span></label>
+                                    <div class="col-sm-9 input-group">
+                                        <img class="img-thumbnail" src='{{ asset("$blog->image") }}' width="200px" height=""><br><br>
+                                        <input type="file" class="form-control" name="image">
+                                        @include('elements.error_line', ['attribute' => 'image'])
+                                    </div>
                                 </div>
-                                <div class="col-xs-offset-1 col-xs-3">
-                                    <button class="btn btn-block btn-default" form="update-blog" type="reset">Reset</button>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"> Publish date <span class="span-red">*</span></label>
+                                    <div class="col-sm-9 input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="publish_date" value="{{ $publishDate }}">
+                                    </div>
                                 </div>
-                                <div class="col-xs-offset-1 col-xs-3">
-                                    <a href="{{ route('blog.index') }}" class="btn btn-block btn-default">Back</a>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"> End date <span class="span-red">*</span></label>
+                                    <div class="col-sm-9 input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="end_date" value="{{ $endDate }}">
+                                    </div>
                                 </div>
+
+                                <div class="button-list col-lg-12">
+                                    <div class="col-lg-8 col-lg-offset-2">
+                                        <div class="col-lg-3">
+                                            <button class="btn btn-block btn-default" form="update-blog" type="submit">Edit</button>
+                                        </div>
+                                        <div class="col-lg-offset-1 col-lg-3">
+                                            <button class="btn btn-block btn-default" form="update-blog" type="reset">Reset</button>
+                                        </div>
+                                        <div class="col-lg-offset-1 col-lg-3">
+                                            <a href="{{ route('blog.index') }}" class="btn btn-block btn-default">Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+                            <!-- /.tab-content -->
                         </div>
+
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
 @endsection
 
 @section('script')
+    <script src="{{ asset('admin/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('admin/js/utilities/jquery.validate.messages.js') }}"></script>
+    <script src="{{ asset('admin/js/utilities/form.validate.js') }}"></script>
     <script src="{{ asset('admin/js/pages/blog/blog.create.js') }}"></script>
     <script>
         $(function () {
@@ -136,7 +196,27 @@
                 filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
             });
             CKFinder.setupCKEditor(contentEditor);
+
+            CKEDITOR.replace('des_ckediter_vn', {
+                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+            });
+
+            var contentEditorVn = CKEDITOR.replace( 'content_ckediter_vn', {
+                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
+                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
+                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
+                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+            });
+            CKFinder.setupCKEditor(contentEditorVn);
             BlogCreate.init();
+            FormUtil.validate('#update-blog');
         });
     </script>
 @endsection

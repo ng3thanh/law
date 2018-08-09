@@ -24,10 +24,14 @@ class BlogPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
-            'slug' => 'required|max:255',
-            'description' => 'required|max:1000',
-            'content' => 'required|max:5000',
+            'trans.vn.title' => 'required|max:255',
+            'trans.vn.slug' => 'required|max:255',
+            'trans.vn.description' => 'required|max:1000',
+            'trans.vn.content' => 'required|max:5000',
+            'trans.en.title' => 'required|max:255',
+            'trans.en.slug' => 'required|max:255',
+            'trans.en.description' => 'required|max:1000',
+            'trans.en.content' => 'required|max:5000',
             'image' => 'required'
         ];
     }
