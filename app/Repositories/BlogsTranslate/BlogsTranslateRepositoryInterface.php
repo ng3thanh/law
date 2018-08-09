@@ -11,12 +11,4 @@ interface BlogsTranslateRepositoryInterface extends BaseRepositoryInterface
      * @return mixed
      */
     public function findTransBlogBaseBlogId($id);
-
-    /**
-     * @param $id
-     * @param $locale
-     * @param $data
-     * @return mixed
-     */
-    public function updateTrans($id, $locale, $data);
 }

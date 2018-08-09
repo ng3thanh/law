@@ -8,10 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ServicesTranslation extends Model
 {
-    use Translatable;
-
-    public $translatedAttributes = ['name', 'slug', 'description', 'content'];
-
     /**
      * The table associated with the model.
      *
@@ -27,5 +23,5 @@ class ServicesTranslation extends Model
     /**
      * @var boolean
      */
-    public $timestamps = true;
+    public $timestamps = false;
 }

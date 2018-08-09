@@ -175,7 +175,7 @@ class BlogService
 
             $dataTranslates = $data['trans'];
             foreach ($dataTranslates as $key => $value) {
-                $this->blogsTransRepository->updateTrans($id, $key, $value);
+                $this->blogsTransRepository->updateTrans('blogs_id', $id, $key, $value);
             }
 
             DB::commit();

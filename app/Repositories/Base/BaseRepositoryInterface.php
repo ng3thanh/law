@@ -78,4 +78,13 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function countAll();
+
+    /**
+     * @param $idColumn
+     * @param $id
+     * @param $locale
+     * @param $data
+     * @return mixed
+     */
+    public function updateTrans($idColumn, $id, $locale, $data);
 }

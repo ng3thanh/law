@@ -28,16 +28,4 @@ class BlogsTranslateEloquentRepository extends BaseEloquentRepository implements
 
         return $result;
     }
-
-    /**
-     * @param $id
-     * @param $locale
-     * @param $data
-     * @return mixed
-     */
-    public function updateTrans($id, $locale, $data)
-    {
-        $result = $this->model->where('blogs_id', $id)->where('locale', $locale)->update($data);
-        return $result;
-    }
 }

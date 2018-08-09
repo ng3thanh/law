@@ -43,7 +43,7 @@
         <!-- section: team -->
         <section id="about" class="section">
             <div class="container">
-                <h4>Who We Are</h4>
+                <h4>{{ __('homepage.we_are') }}</h4>
                 <div class="row">
                     <div class="col-lg-4 offset-1">
                         <div>
@@ -67,7 +67,7 @@
         <!-- section: services -->
         <section id="services" class="section black">
             <div class="container">
-                <h4>Services</h4>
+                <h4>{{ __('homepage.services') }}</h4>
                 <!-- Four columns -->
                 <div class="row">
                     @foreach ($services as $service)
@@ -86,7 +86,7 @@
         <!-- section: works -->
         <section id="works" class="section">
             <div class="container clearfix">
-                <h4>Feature clients</h4>
+                <h4>{{ __('homepage.clients') }}</h4>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 20px">
                         <div id="portfolio-wrap">
@@ -115,7 +115,7 @@
         <!-- section: blog -->
         <section id="blog" class="section">
             <div class="container">
-                <h4>Our Blog</h4>
+                <h4>{{ __('homepage.our_blog') }}</h4>
                 <!-- Three columns -->
                 <div class="row">
                     @foreach($blogs as $blog)
@@ -140,7 +140,7 @@
                                             </strong>
                                         </h5>
                                         {!! (strlen($trans->description) > 150) ? substr($trans->description, 0, 147) . ' ... ' : $trans->description !!}
-                                        <a href="{{ route('blogs.detail', $trans->slug) }}" class="more">Read more</a>
+                                        <a href="{{ route('blogs.detail', $trans->slug) }}" class="more">{{ __('homepage.read_more') }}</a>
                                     @endif
                                 @endforeach
                             </div>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="blankdivider30"></div>
                 <div class="aligncenter">
-                    <a href="{{ route('blogs.index') }}" class="btn btn-large btn-theme">More blog post</a>
+                    <a href="{{ route('blogs.index') }}" class="btn btn-large btn-theme">{{ __('homepage.more_blog') }}</a>
                 </div>
             </div>
         </section>
@@ -158,17 +158,16 @@
         <!-- section: contact -->
         <section id="contact" class="section green">
             <div class="container">
-                <h4>Get in Touch</h4>
+                <h4>{{ __('homepage.feedback_label') }}</h4>
                 <p>
-                    Reque facer nostro et ius, cu persius mnesarchum disputando eam, clita prompta et mel vidisse phaedrum pri et. Facilisis posidonium ex his. Mutat iudico vis in, mea aeque tamquam scripserit an, mea eu ignota viderer probatus. Lorem legere consetetur ei
-                    eum. Sumo aeque assentior te eam, pri nominati posidonium consttuam
+                    {{ __('homepage.feedback_message') }}
                 </p>
                 <div class="blankdivider30">
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="cform" id="contact-form">
-                            <div id="sendmessage">Your message has been sent. Thank you!</div>
+                            <div id="sendmessage">{{ __('homepage.feedback_message_success') }}</div>
                             <div id="errormessage"></div>
                             <form action="{{ route('feedbacks.store') }}" method="post" role="form" class="contactForm">
                                 {{ csrf_field() }}

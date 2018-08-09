@@ -1,11 +1,18 @@
 var ServiceCreate = function () {
-    var title = $("#name");
-    var slug = $("#slug");
+    var titleEn = $("#name-en");
+    var slugEn = $("#slug-en");
+    var titleVn = $("#name-vi");
+    var slugVn = $("#slug-vi");
 
     function changeSlug() {
-        title.change(function(){
-            var newSlug = stringToSlug(title.val());
-            slug.val(newSlug);
+        titleEn.change(function(){
+            var newSlug = stringToSlug(titleEn.val());
+            slugEn.val(newSlug);
+        });
+
+        titleVn.change(function(){
+            var newSlug = stringToSlug(titleVn.val());
+            slugVn.val(newSlug);
         });
     }
 

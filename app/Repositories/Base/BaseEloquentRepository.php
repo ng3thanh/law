@@ -159,4 +159,17 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
         $result = $this->model->all()->count();
         return $result;
     }
+
+    /**
+     * @param $idColumn
+     * @param $id
+     * @param $locale
+     * @param $data
+     * @return mixed
+     */
+    public function updateTrans($idColumn, $id, $locale, $data)
+    {
+        $result = $this->model->where($idColumn, $id)->where('locale', $locale)->update($data);
+        return $result;
+    }
 }

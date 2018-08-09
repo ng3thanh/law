@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Services\ServicesRepositoryInterface;
+use App\Repositories\ServicesTranslate\ServicesTranslateRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
@@ -14,13 +15,22 @@ class ServiceService
     protected $servicesRepository;
 
     /**
+     * @var ServicesTranslateRepositoryInterface
+     */
+    protected $servicesTransRepository;
+
+    /**
      * ServiceService constructor.
      * @param ServicesRepositoryInterface $servicesRepository
+     * @param ServicesTranslateRepositoryInterface $servicesTransRepository
      */
     public function __construct(
-        ServicesRepositoryInterface $servicesRepository
-    ) {
+        ServicesRepositoryInterface $servicesRepository,
+        ServicesTranslateRepositoryInterface $servicesTransRepository
+    )
+    {
         $this->servicesRepository = $servicesRepository;
+        $this->servicesTransRepository = $servicesTransRepository;
     }
 
     public function getAllService()
@@ -39,8 +49,8 @@ class ServiceService
                 unset($data['image']);
             }
 
-            $data = formatDataBaseOnTable('services', $data);
-            $result = $this->servicesRepository->create($data);
+            $dataBaseService = formatDataBaseOnTable('services', $data);
+            $result = $this->servicesRepository->create($dataBaseService);
             if ($result) {
                 $newName = uploadImage($result->id, $file, 'service');
                 $this->servicesRepository->update(
@@ -48,9 +58,20 @@ class ServiceService
                     ['image' => config('upload.service') . $result->id . '/' . $newName
                     ]);
             }
+
+            // Save translate data
+            $dataTranslates = $data['trans'];
+            foreach ($dataTranslates as $key => $value) {
+                $dataServiceTrans = $value;
+                $dataServiceTrans['locale'] = $key;
+                $dataServiceTrans['services_id'] = $result->id;
+                $this->servicesTransRepository->create($dataServiceTrans);
+            }
+
             DB::commit();
             return true;
         } catch (Exception $e) {
+            dd($e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -66,8 +87,13 @@ class ServiceService
                 $data['image'] = config('upload.service') . $id . '/' . $newName;
             }
 
-            $data = formatDataBaseOnTable('services', $data);
-            $this->servicesRepository->update($id, $data);
+            $dataBaseService = formatDataBaseOnTable('services', $data);
+            $this->servicesRepository->update($id, $dataBaseService);
+
+            $dataTranslates = $data['trans'];
+            foreach ($dataTranslates as $key => $value) {
+                $this->servicesTransRepository->updateTrans('services_id', $id, $key, $value);
+            }
             DB::commit();
             return true;
         } catch (Exception $e) {
