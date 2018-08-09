@@ -118,31 +118,31 @@
                 <h4>Our Blog</h4>
                 <!-- Three columns -->
                 <div class="row">
-                    @foreach($blogs as $blog)
-                    <div class="span3 col-lg-3">
-                        <div class="home-post">
-                            <div class="post-image">
-                                <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $blog->title }}" />
-                            </div>
-                            <div class="post-meta">
-                                <i class="icon-file icon-2x"></i>
-                                <span class="date">{{ timeFormatTextDate($blog->publish_date) }}</span>
-                                <span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>
-                            </div>
-                            <div class="entry-content">
-                                <h5>
-                                    <strong>
-                                        <a href="{{ route('blogs.detail', $blog->slug) }}">
-                                            {{ $blog->title }}
-                                        </a>
-                                    </strong>
-                                </h5>
-                                {!! (strlen($blog->description) > 150) ? substr($blog->description, 0, 147) . ' ... ' : $blog->description !!}
-                                <a href="{{ route('blogs.detail', $blog->slug) }}" class="more">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                    {{--@foreach($blogs as $blog)--}}
+                    {{--<div class="span3 col-lg-3">--}}
+                        {{--<div class="home-post">--}}
+                            {{--<div class="post-image">--}}
+                                {{--<img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $blog->title }}" />--}}
+                            {{--</div>--}}
+                            {{--<div class="post-meta">--}}
+                                {{--<i class="icon-file icon-2x"></i>--}}
+                                {{--<span class="date">{{ timeFormatTextDate($blog->publish_date) }}</span>--}}
+                                {{--<span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>--}}
+                            {{--</div>--}}
+                            {{--<div class="entry-content">--}}
+                                {{--<h5>--}}
+                                    {{--<strong>--}}
+                                        {{--<a href="{{ route('blogs.detail', $blog->slug) }}">--}}
+                                            {{--{{ $blog->title }}--}}
+                                        {{--</a>--}}
+                                    {{--</strong>--}}
+                                {{--</h5>--}}
+                                {{--{!! (strlen($blog->description) > 150) ? substr($blog->description, 0, 147) . ' ... ' : $blog->description !!}--}}
+                                {{--<a href="{{ route('blogs.detail', $blog->slug) }}" class="more">Read more</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--@endforeach--}}
                 </div>
                 <div class="blankdivider30"></div>
                 <div class="aligncenter">

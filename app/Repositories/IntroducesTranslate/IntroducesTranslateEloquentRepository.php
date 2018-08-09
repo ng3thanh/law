@@ -2,8 +2,8 @@
 
 namespace App\Repositories\IntroducesTranslate;
 
-use App\Models\ClientsTranslate;
-use App\Models\IntroduceTranslate;
+use App\Models\ClientsTranslation;
+use App\Models\IntroduceTranslation;
 use App\Repositories\Base\BaseEloquentRepository;
 
 class IntroducesTranslateEloquentRepository extends BaseEloquentRepository implements IntroducesTranslateRepositoryInterface
@@ -14,6 +14,6 @@ class IntroducesTranslateEloquentRepository extends BaseEloquentRepository imple
      */
     public function getModel()
     {
-        return IntroduceTranslate::class;
+        return IntroduceTranslation::class;
     }
 }

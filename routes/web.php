@@ -24,6 +24,9 @@ Route::middleware('guest')->namespace('Web')->group(function () {
         Route::get('list/', 'BlogsController@index')->name('blogs.index');
         Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
     });
+
+    Route::get('change-language/{language}', 'MainController@changeLanguage')->name('user.change-language');
+
 });
 
 Route::prefix('admin')->namespace('Admin')->group(function () {

@@ -2,8 +2,8 @@
 
 namespace App\Repositories\ServicesTranslate;
 
-use App\Models\ClientsTranslate;
-use App\Models\ServicesTranslate;
+use App\Models\ClientsTranslation;
+use App\Models\ServicesTranslation;
 use App\Repositories\Base\BaseEloquentRepository;
 
 class ServicesTranslateEloquentRepository extends BaseEloquentRepository implements ServicesTranslateRepositoryInterface
@@ -14,6 +14,6 @@ class ServicesTranslateEloquentRepository extends BaseEloquentRepository impleme
      */
     public function getModel()
     {
-        return ServicesTranslate::class;
+        return ServicesTranslation::class;
     }
 }

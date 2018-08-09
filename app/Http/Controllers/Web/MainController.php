@@ -50,6 +50,7 @@ class MainController extends Controller
      */
     public function index()
     {
+        app()->setLocale(session()->get('website_language'));
         $clients = $this->clientService->getClientLimit(config('constant.number.client.paginate.web'));
         $services = $this->serviceService->getServiceLimit(config('constant.number.service.paginate.web'));
         $blogs = $this->blogService->getServiceLimit(config('constant.number.blog.paginate.main'));
@@ -121,5 +122,11 @@ class MainController extends Controller
     public function destroy(Feedbacks $feedbacks)
     {
         //
+    }
+
+    public function changeLanguage($language)
+    {
+        session()->put('website_language', $language);
+        return redirect()->back();
     }
 }

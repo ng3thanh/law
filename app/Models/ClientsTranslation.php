@@ -5,18 +5,18 @@ namespace App\Models;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
-class IntroduceTranslate extends Model
+class ClientsTranslation extends Model
 {
     use Translatable;
 
-    public $translatedAttributes = ['name', 'content'];
+    public $translatedAttributes = ['name'];
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'introduces_translate';
+    protected $table = 'clients_translate';
 
     /**
      * @var array

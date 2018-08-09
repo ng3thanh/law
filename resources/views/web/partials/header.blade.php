@@ -17,13 +17,17 @@
             <!-- Navbar Menu -->
             <div id="navbarcollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" title="team" href="{{ $url }}#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" title="services" href="{{ $url }}#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" title="works" href="{{ $url }}#works">Works</a></li>
-                    <li class="nav-item"><a class="nav-link" title="blog" href="{{ $url }}#blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" title="contact" href="{{ $url }}#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" title="team" href="{{ $url }}#about">{{ __('homepage.about') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" title="services" href="{{ $url }}#services">{{ __('homepage.services') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" title="works" href="{{ $url }}#works">{{ __('homepage.works') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" title="blog" href="{{ $url }}#blog">{{ __('homepage.blog') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" title="contact" href="{{ $url }}#contact">{{ __('homepage.contact') }}</a></li>
                 </ul>
-                <ul class="langs navbar-text"><a href="#" class="active">VN</a><span> </span><a href="#">EN</a></ul>
+                <ul class="langs navbar-text">
+                    <a href="{!! route('user.change-language', ['vi']) !!}" class="active">VN</a>
+                    <span> </span>
+                    <a href="{!! route('user.change-language', ['en']) !!}">EN</a>
+                </ul>
             </div>
         </div>
     </nav>

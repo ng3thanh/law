@@ -2,7 +2,7 @@
 
 namespace App\Repositories\ClientsTranslate;
 
-use App\Models\ClientsTranslate;
+use App\Models\ClientsTranslation;
 use App\Repositories\Base\BaseEloquentRepository;
 
 class ClientsTranslateEloquentRepository extends BaseEloquentRepository implements ClientsTranslateRepositoryInterface
@@ -13,6 +13,6 @@ class ClientsTranslateEloquentRepository extends BaseEloquentRepository implemen
      */
     public function getModel()
     {
-        return ClientsTranslate::class;
+        return ClientsTranslation::class;
     }
 }

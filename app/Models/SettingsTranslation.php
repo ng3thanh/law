@@ -4,20 +4,19 @@ namespace App\Models;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ServicesTranslate extends Model
+class SettingsTranslation extends Model
 {
     use Translatable;
 
-    public $translatedAttributes = ['name', 'slug', 'description', 'content'];
+    public $translatedAttributes = ['name', 'value'];
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'services_translate';
+    protected $table = 'settings_translate';
 
     /**
      * @var array
@@ -29,3 +28,4 @@ class ServicesTranslate extends Model
      */
     public $timestamps = true;
 }
+
