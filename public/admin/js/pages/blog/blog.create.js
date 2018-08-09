@@ -1,12 +1,19 @@
 var BlogCreate = function () {
     var datepicker = $('.datepicker');
-    var title = $("#title");
-    var slug = $("#slug");
+    var titleEn = $("#title-en");
+    var slugEn = $("#slug-en");
+    var titleVn = $("#title-vn");
+    var slugVn = $("#slug-vn");
 
     function changeSlug() {
-        title.change(function(){
-            var newSlug = stringToSlug(title.val());
-            slug.val(newSlug);
+        titleEn.change(function(){
+            var newSlug = stringToSlug(titleEn.val());
+            slugEn.val(newSlug);
+        });
+
+        titleVn.change(function(){
+            var newSlug = stringToSlug(titleVn.val());
+            slugVn.val(newSlug);
         });
     }
 

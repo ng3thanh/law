@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Blogs\BlogsRepositoryInterface;
+use App\Repositories\BlogsTranslate\BlogsTranslateRepositoryInterface;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -15,13 +16,21 @@ class BlogService
     protected $blogsRepository;
 
     /**
+     * @var BlogsTranslateRepositoryInterface
+     */
+    protected $blogsTransRepository;
+
+    /**
      * BlogService constructor.
      * @param BlogsRepositoryInterface $blogsRepository
+     * @param BlogsTranslateRepositoryInterface $blogsTransRepository
      */
     public function __construct(
-        BlogsRepositoryInterface $blogsRepository
+        BlogsRepositoryInterface $blogsRepository,
+        BlogsTranslateRepositoryInterface $blogsTransRepository
     ) {
         $this->blogsRepository = $blogsRepository;
+        $this->blogsTransRepository = $blogsTransRepository;
     }
 
     /**
@@ -89,6 +98,7 @@ class BlogService
         $data = $this->blogsRepository->getBlogPreviousDate($blog->id, $blog->publish_date);
         return $data;
     }
+
     /**
      * Create new blog
      *
@@ -100,28 +110,42 @@ class BlogService
         try {
             DB::beginTransaction();
 
+            // Get image
             if (isset($data['image'])) {
                 $file = $data['image'];
                 unset($data['image']);
             }
 
+            // Save data of base blog
             $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
             $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
             $data['author'] = Sentinel::getUser()->username;
             $dataMainBlog = formatDataBaseOnTable('blogs', $data);
             $result = $this->blogsRepository->create($dataMainBlog);
 
-//            $dataTranslate =
+            // Update image to base blog
             if ($result) {
                 $newName = uploadImage($result->id, $file, 'blog');
                 $this->blogsRepository->update(
                     $result->id,
-                    ['image' => config('upload.blog') . $result->id . '/' . $newName
-                ]);
+                    [
+                        'image' => config('upload.blog') . $result->id . '/' . $newName
+                    ]);
             }
+
+            // Save translate data
+            $dataTranslates = $data['trans'];
+            foreach ($dataTranslates as $key => $value) {
+                $dataBlogTrans = $value;
+                $dataBlogTrans['locale'] = $key;
+                $dataBlogTrans['blogs_id'] = $result->id;
+                $this->blogsTransRepository->create($dataBlogTrans);
+            }
+
             DB::commit();
             return true;
         } catch (Exception $e) {
+            dd($e->getMessage());
             DB::rollBack();
             return false;
         }

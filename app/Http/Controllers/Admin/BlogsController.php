@@ -54,8 +54,7 @@ class BlogsController extends Controller
      * @param BlogPostRequest $request
      * @return $this|\Illuminate\Http\RedirectResponse
      */
-    public function store(BlogPostRequest $request)
-    {
+    public function store(BlogPostRequest $request) {
         $data = $request->except('_token');
         $result = $this->blogService->createBlog($data);
         if ($result) {

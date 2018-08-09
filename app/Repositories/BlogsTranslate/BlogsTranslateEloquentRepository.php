@@ -2,7 +2,7 @@
 
 namespace App\Repositories\BlogsTranslate;
 
-use App\Models\BlogsTranslate;
+use App\Models\BlogsTranslation;
 use App\Repositories\Base\BaseEloquentRepository;
 
 class BlogsTranslateEloquentRepository extends BaseEloquentRepository implements BlogsTranslateRepositoryInterface
@@ -13,6 +13,6 @@ class BlogsTranslateEloquentRepository extends BaseEloquentRepository implements
      */
     public function getModel()
     {
-        return BlogsTranslate::class;
+        return BlogsTranslation::class;
     }
 }

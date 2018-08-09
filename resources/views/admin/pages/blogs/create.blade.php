@@ -34,29 +34,29 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title" name="trans[en][title]" data-rule-required="true" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
-                                            @include('elements.error_line', ['attribute' => 'title'])
+                                            <input type="text" id="title-en" name="trans[en][title]" data-rule-required="true" class="form-control" placeholder="Title ..." value="{{ old('title') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.en.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug" name="trans[en][slug]" data-rule-required="true" class="form-control" value="{{ old('slug') }}">
-                                            @include('elements.error_line', ['attribute' => 'slug'])
+                                            <input type="text" id="slug-en" name="trans[en][slug]" data-rule-required="true" class="form-control" value="{{ old('slug') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.en.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
                                             <textarea class="form-control" id="des_ckediter" name="trans[en][description]" data-rule-required="true" rows="8" cols="80">{{ old('description') }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'description'])
+                                            @include('elements.error_line', ['attribute' => 'trans.en.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
                                             <textarea class="form-control" id="content_ckediter" name="trans[en][content]" data-rule-required="true" rows="10" cols="80">{{ old('content') }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'content'])
+                                            @include('elements.error_line', ['attribute' => 'trans.en.content'])
                                         </div>
                                     </div>
                                 </div>
@@ -65,29 +65,29 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title" name="trans[vn][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ old('title') }}">
-                                            @include('elements.error_line', ['attribute' => 'title'])
+                                            <input type="text" id="title-vn" name="trans[vn][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ old('title') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug" name="trans[vn][slug]" class="form-control" data-rule-required="true" value="{{ old('slug') }}">
-                                            @include('elements.error_line', ['attribute' => 'slug'])
+                                            <input type="text" id="slug-vn" name="trans[vn][slug]" class="form-control" data-rule-required="true" value="{{ old('slug') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
                                             <textarea class="form-control" id="des_ckediter_vn" name="trans[vn][description]" data-rule-required="true" rows="8" cols="80">{{ old('description') }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'description'])
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
                                             <textarea class="form-control" id="content_ckediter_vn" name="trans[vn][content]" data-rule-required="true" rows="10" cols="80">{{ old('content') }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'content'])
+                                            @include('elements.error_line', ['attribute' => 'trans.vn.content'])
                                         </div>
                                     </div>
                                 </div>
