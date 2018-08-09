@@ -14,19 +14,20 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::middleware('guest')->namespace('Web')->group(function () {
-    Route::get('/', 'MainController@index')->name('main');
+    Route::group(['middleware' => 'locale'], function() {
+        Route::get('/', 'MainController@index')->name('main');
 
-    // Send contact
-    Route::post('feedback', 'FeedbacksController@store')->name('feedbacks.store');
+        // Send contact
+        Route::post('feedback', 'FeedbacksController@store')->name('feedbacks.store');
 
-    // Blogs
-    Route::prefix('blogs')->group(function () {
-        Route::get('list/', 'BlogsController@index')->name('blogs.index');
-        Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
+        // Blogs
+        Route::prefix('blogs')->group(function () {
+            Route::get('list/', 'BlogsController@index')->name('blogs.index');
+            Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
+        });
+
+        Route::get('change-language/{language}', 'MainController@changeLanguage')->name('user.change-language');
     });
-
-    Route::get('change-language/{language}', 'MainController@changeLanguage')->name('user.change-language');
-
 });
 
 Route::prefix('admin')->namespace('Admin')->group(function () {

@@ -24,9 +24,9 @@
                     <li class="nav-item"><a class="nav-link" title="contact" href="{{ $url }}#contact">{{ __('homepage.contact') }}</a></li>
                 </ul>
                 <ul class="langs navbar-text">
-                    <a href="{!! route('user.change-language', ['vi']) !!}" class="active">VN</a>
+                    <a href="{!! route('user.change-language', ['vi']) !!}" class="{{ checkLanguage('vi') }}">VN</a>
                     <span> </span>
-                    <a href="{!! route('user.change-language', ['en']) !!}">EN</a>
+                    <a href="{!! route('user.change-language', ['en']) !!}" class="{{ checkLanguage('en') }}">EN</a>
                 </ul>
             </div>
         </div>

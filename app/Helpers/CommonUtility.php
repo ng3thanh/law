@@ -217,3 +217,18 @@ if (!function_exists('dateFormat')) {
         return date($format, strtotime($date));
     }
 }
+
+if (!function_exists('checkLanguage')) {
+    /**
+     * @param $input
+     * @param string $language
+     * @param string $format
+     * @return string
+     */
+    function checkLanguage($language = 'en', $format = 'active')
+    {
+        $input = app()->getLocale();
+        $return = ($input == $language) ? $format : '';
+        return $return;
+    }
+}
