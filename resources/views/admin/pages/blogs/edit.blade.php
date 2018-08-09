@@ -16,10 +16,10 @@
     $descriptionEn = isset($oldEnDescription) ? $oldEnDescription : $blog->translations[0]->description;
     $contentEn = isset($oldEnContent) ? $oldEnContent : $blog->translations[0]->content;
 
-    $oldVnTitle = old('trans.vn.title');
-    $oldVnSlug = old('trans.vn.slug');
-    $oldVnDescription = old('trans.vn.description');
-    $oldVnContent = old('trans.vn.content');
+    $oldVnTitle = old('trans.vi.title');
+    $oldVnSlug = old('trans.vi.slug');
+    $oldVnDescription = old('trans.vi.description');
+    $oldVnContent = old('trans.vi.content');
 
     $titleVn = isset($oldVnTitle) ? $oldVnTitle : $blog->translations[1]->title;
     $slugVn = isset($oldVnSlug) ? $oldVnSlug : $blog->translations[1]->slug;
@@ -89,29 +89,29 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title-vn" name="trans[vn][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ $titleVn }}">
-                                            @include('elements.error_line', ['attribute' => 'trans.vn.title'])
+                                            <input type="text" id="title-vn" name="trans[vi][title]" class="form-control" data-rule-required="true" placeholder="Title ..." value="{{ $titleVn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vi.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug-vn" name="trans[vn][slug]" class="form-control" data-rule-required="true" value="{{ $slugVn }}">
-                                            @include('elements.error_line', ['attribute' => 'trans.vn.slug'])
+                                            <input type="text" id="slug-vn" name="trans[vi][slug]" class="form-control" data-rule-required="true" value="{{ $slugVn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vi.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vn][description]" data-rule-required="true" rows="8" cols="80">{{ $descriptionVn }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'trans.vn.description'])
+                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vi][description]" data-rule-required="true" rows="8" cols="80">{{ $descriptionVn }}</textarea>
+                                            @include('elements.error_line', ['attribute' => 'trans.vi.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vn][content]" data-rule-required="true" rows="10" cols="80">{{ $contentVn }}</textarea>
-                                            @include('elements.error_line', ['attribute' => 'trans.vn.content'])
+                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" data-rule-required="true" rows="10" cols="80">{{ $contentVn }}</textarea>
+                                            @include('elements.error_line', ['attribute' => 'trans.vi.content'])
                                         </div>
                                     </div>
                                 </div>

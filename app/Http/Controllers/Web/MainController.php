@@ -52,8 +52,7 @@ class MainController extends Controller
     {
         $clients = $this->clientService->getClientLimit(config('constant.number.client.paginate.web'));
         $services = $this->serviceService->getServiceLimit(config('constant.number.service.paginate.web'));
-        $blogs = $this->blogService->getServiceLimit(config('constant.number.blog.paginate.main'));
-
+        $blogs = $this->blogService->getBlogLimit(config('constant.number.blog.paginate.main'));
         return view('web.home', compact('clients','services', 'blogs'));
     }
 

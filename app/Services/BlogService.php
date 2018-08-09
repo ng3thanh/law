@@ -200,7 +200,7 @@ class BlogService
      * @param $limit
      * @return mixed
      */
-    public function getServiceLimit($limit)
+    public function getBlogLimit($limit)
     {
         $data = $this->blogsRepository->getDataLimit($limit)->get();
         return $data;

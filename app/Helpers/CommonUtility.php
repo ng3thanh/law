@@ -225,10 +225,17 @@ if (!function_exists('checkLanguage')) {
      * @param string $format
      * @return string
      */
-    function checkLanguage($language = 'en', $format = 'active')
+    function checkLanguage($language = 'en', $type = 'active')
     {
         $input = app()->getLocale();
-        $return = ($input == $language) ? $format : '';
+        $return = '';
+
+        if ($type == 'active') {
+            $return = ($input == $language) ? 'active' : '';
+        } elseif($type == 'boolean') {
+            $return = ($input == $language) ? true : false;
+        }
+
         return $return;
     }
 }
