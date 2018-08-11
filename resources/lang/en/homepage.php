@@ -12,5 +12,10 @@ return [
     'more_blog' => 'More blog post',
     'feedback_label' => 'Get in Touch',
     'feedback_message' => 'Reque facer nostro et ius, cu persius mnesarchum disputando eam, clita prompta et mel vidisse phaedrum pri et. Facilisis posidonium ex his. Mutat iudico vis in, mea aeque tamquam scripserit an, mea eu ignota viderer probatus. Lorem legere consetetur ei eum. Sumo aeque assentior te eam, pri nominati posidonium consttuam',
-    'feedback_message_success' => 'Your message has been sent. Thank you!'
+    'feedback_message_success' => 'Your message has been sent. Thank you!',
+    'your_name' => 'Your name',
+    'your_email' => 'Your email',
+    'your_subject' => 'Subject',
+    'your_message' => 'Message',
+    'send_feedback' => 'Send message',
 ];

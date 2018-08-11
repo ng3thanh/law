@@ -109,4 +109,24 @@ class SettingsController extends Controller
             return redirect()->back()->with('error', 'Having error when change slide');
         }
     }
+
+    /**
+     * Get introduce
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function introduceIndex() {
+        $introduce = $this->settingService->getIntroduce();
+        return view('admin.pages.settings.introduces.index', compact('introduce'));
+    }
+
+    public function introduceUpdate(Request $request, $id)
+    {
+        $data = $request->except('_token', '_method');
+        $result = $this->settingService->updateIntroduce($id, $data);
+        if ($result) {
+            return redirect()->route('introduce.index')->with('success', 'Update data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when update data')->withInput();
+        }
+    }
 }

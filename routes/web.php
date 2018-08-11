@@ -41,9 +41,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('contact/index', 'ContactsController@index')->name('contact.index');
         Route::get('contact/show/{id}', 'ContactsController@show')->name('contact.show');
 
-        // Introduce
-        Route::resource('introduce', 'ServicesController');
-
         // Services
         Route::resource('services', 'ServicesController');
 
@@ -67,7 +64,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         // Introduce
         Route::get('introduce/index', 'SettingsController@introduceIndex')->name('introduce.index');
-        Route::post('introduce/new', 'SettingsController@introduceStore')->name('introduce.store');
+        Route::post('introduce/update/{id}', 'SettingsController@introduceUpdate')->name('introduce.update');
     });
 });
 

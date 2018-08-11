@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\Footers\FootersRepositoryInterface;
+use App\Repositories\Introduces\IntroducesRepositoryInterface;
+use App\Repositories\IntroducesTranslate\IntroducesTranslateRepositoryInterface;
 use App\Repositories\Slides\SlidesRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -20,17 +22,31 @@ class SettingsService
     protected $footersRepository;
 
     /**
+     * @var IntroducesRepositoryInterface
+     */
+    protected $introducesRepository;
+
+    /**
+     * @var IntroducesTranslateRepositoryInterface
+     */
+    protected $introducesTranslateRepository;
+    /**
      * SettingsService constructor.
      *
      * @param SlidesRepositoryInterface $slidesRepository
      * @param FootersRepositoryInterface $footersRepository
+     * @param IntroducesRepositoryInterface $introducesRepository
      */
     public function __construct(
         SlidesRepositoryInterface $slidesRepository,
-        FootersRepositoryInterface $footersRepository
+        FootersRepositoryInterface $footersRepository,
+        IntroducesRepositoryInterface $introducesRepository,
+        IntroducesTranslateRepositoryInterface $introducesTranslateRepository
     ) {
         $this->slidesRepository = $slidesRepository;
         $this->footersRepository = $footersRepository;
+        $this->introducesRepository = $introducesRepository;
+        $this->introducesTranslateRepository = $introducesTranslateRepository;
     }
 
     /**
@@ -121,13 +137,23 @@ class SettingsService
         }
     }
 
+    /**
+     * Get footer info
+     *
+     * @return mixed
+     */
     public function getFooterInfo()
     {
-        $data = null;
-//        $data = $this->footersRepository->getAll()->groupBy('type');
+        $data = $this->footersRepository->getAll()->groupBy('type');
         return $data;
     }
 
+    /**
+     * Update footer settings
+     *
+     * @param $data
+     * @return bool
+     */
     public function updateFooterSetting($data)
     {
         try {
@@ -147,11 +173,58 @@ class SettingsService
         }
     }
 
+    /**
+     * Add new footer settings
+     *
+     * @param $data
+     * @return bool
+     */
     public function addNewFooterSetting($data)
     {
         try {
             DB::beginTransaction();
             $this->footersRepository->create($data);
+            DB::commit();
+            return true;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    /**
+     * Get introduce
+     *
+     * @return mixed
+     */
+    public function getIntroduce()
+    {
+        $introduce = $this->introducesRepository->getAll()->first();
+        return $introduce;
+    }
+
+    /**
+     * @param $id
+     * @param $data
+     * @return bool
+     */
+    public function updateIntroduce($id, $data)
+    {
+        try {
+            DB::beginTransaction();
+
+            if (isset($data['image'])) {
+                $newName = uploadImage($id, $data['image'], 'introduce');
+                $data['image'] = config('upload.introduce') . $id . '/' . $newName;
+            }
+
+            $dataBaseIntroduce = formatDataBaseOnTable('introduces', $data);
+            $this->introducesRepository->update($id, $dataBaseIntroduce);
+            $dataTranslates = $data['trans'];
+            foreach ($dataTranslates as $key => $value) {
+                $this->introducesTranslateRepository->updateTrans('introduce_id', $id, $key, $value);
+            }
+
             DB::commit();
             return true;
         } catch (Exception $e) {

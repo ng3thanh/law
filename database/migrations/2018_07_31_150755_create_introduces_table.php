@@ -17,7 +17,7 @@ class CreateIntroducesTable extends Migration
             $table->increments('id');
             $table->string('name', 255);
             $table->text('content');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

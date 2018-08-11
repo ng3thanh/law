@@ -20,14 +20,14 @@ class CreateIntroducesTranslate extends Migration
 
         Schema::create('introduces_translate', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('introduces_id')->unsigned();
+            $table->integer('introduce_id')->unsigned();
             $table->string('locale')->index();
 
             $table->string('name', 255);
             $table->text('content');
 
-            $table->unique(['introduces_id','locale']);
-            $table->foreign('introduces_id')->references('id')->on('introduces')->onDelete('cascade');
+            $table->unique(['introduce_id','locale']);
+            $table->foreign('introduce_id')->references('id')->on('introduces')->onDelete('cascade');
         });
     }
 

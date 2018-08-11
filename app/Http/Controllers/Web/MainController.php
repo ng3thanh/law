@@ -7,6 +7,7 @@ use App\Models\Feedbacks;
 use App\Services\BlogService;
 use App\Services\ClientService;
 use App\Services\ServiceService;
+use App\Services\SettingsService;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -27,20 +28,28 @@ class MainController extends Controller
     protected $serviceService;
 
     /**
+     * @var SettingsService
+     */
+    protected $settingsService;
+
+    /**
      * MainController constructor.
      *
      * @param BlogService $blogService
      * @param ClientService $clientService
      * @param ServiceService $serviceService
+     * @param SettingsService $settingsService
      */
     public function __construct(
         BlogService $blogService,
         ClientService $clientService,
-        ServiceService $serviceService
+        ServiceService $serviceService,
+        SettingsService $settingsService
     ) {
         $this->blogService = $blogService;
         $this->clientService = $clientService;
         $this->serviceService = $serviceService;
+        $this->settingsService = $settingsService;
     }
 
     /**
@@ -53,7 +62,8 @@ class MainController extends Controller
         $clients = $this->clientService->getClientLimit(config('constant.number.client.paginate.web'));
         $services = $this->serviceService->getServiceLimit(config('constant.number.service.paginate.web'));
         $blogs = $this->blogService->getBlogLimit(config('constant.number.blog.paginate.main'));
-        return view('web.home', compact('clients','services', 'blogs'));
+        $introduce = $this->settingsService->getIntroduce();
+        return view('web.home', compact('clients','services', 'blogs', 'introduce'));
     }
 
     /**

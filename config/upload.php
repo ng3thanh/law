@@ -5,4 +5,5 @@ return [
     'slide' => 'upload/slides/',
     'service' => 'upload/services/',
     'client' => 'upload/clients/',
+    'introduce' => 'upload/introduces/',
 ];
