@@ -10,10 +10,6 @@ class Clients extends Model
 {
     use SoftDeletes;
 
-    use Translatable;
-
-    public $translatedAttributes = ['name'];
-
     /**
      * The table associated with the model.
      *

@@ -16,7 +16,6 @@ class SettingsController extends Controller
 
     /**
      * SettingsController constructor.
-     * @param SlideService $slideService
      * @param SettingsService $settingService
      */
     public function __construct(

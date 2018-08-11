@@ -123,7 +123,8 @@ class SettingsService
 
     public function getFooterInfo()
     {
-        $data = $this->footersRepository->getAll()->groupBy('type');
+        $data = null;
+//        $data = $this->footersRepository->getAll()->groupBy('type');
         return $data;
     }
 
