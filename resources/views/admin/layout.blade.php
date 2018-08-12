@@ -21,7 +21,8 @@
         @include('admin.partials.breadcrumb')
         @yield('content')
     </div>
-
+    @include('admin.partials.connect.facebook')
+    @include('admin.partials.connect.phone')
     @include('admin.partials.footer')
     @include('admin.partials.control_sidebar')
 </div>
