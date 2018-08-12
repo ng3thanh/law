@@ -57,28 +57,28 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title-en" name="trans[en][title]" data-rule-required="true" max="200" maxlength="200" class="form-control" placeholder="Title ..." value="{{ $titleEn }}">
+                                            <input type="text" id="title-en" name="trans[en][title]" data-rule-required="true" maxlength="200" class="form-control" placeholder="Title ..." value="{{ $titleEn }}">
                                             @include('elements.error_line', ['attribute' => 'trans.en.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug-en" name="trans[en][slug]" data-rule-required="true" max="200" maxlength="200" class="form-control" value="{{ $slugEn }}">
+                                            <input type="text" id="slug-en" name="trans[en][slug]" data-rule-required="true" maxlength="200" class="form-control" value="{{ $slugEn }}">
                                             @include('elements.error_line', ['attribute' => 'trans.en.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter" name="trans[en][description]" max="1000" maxlength="1000" data-rule-required="true" rows="4" cols="80">{{ $descriptionEn }}</textarea>
+                                            <textarea class="form-control" id="des_ckediter" name="trans[en][description]" maxlength="1000" data-rule-required="true" rows="4" cols="80">{{ $descriptionEn }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.en.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" max="20000" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ $contentEn }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ $contentEn }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.en.content'])
                                         </div>
                                     </div>
@@ -88,28 +88,28 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Title <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="title-vn" name="trans[vi][title]" class="form-control" max="200" maxlength="200" data-rule-required="true" placeholder="Title ..." value="{{ $titleVn }}">
+                                            <input type="text" id="title-vn" name="trans[vi][title]" class="form-control" maxlength="200" data-rule-required="true" placeholder="Title ..." value="{{ $titleVn }}">
                                             @include('elements.error_line', ['attribute' => 'trans.vi.title'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Slug <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="slug-vn" name="trans[vi][slug]" class="form-control" max="200" maxlength="200" data-rule-required="true" value="{{ $slugVn }}">
+                                            <input type="text" id="slug-vn" name="trans[vi][slug]" class="form-control" maxlength="200" data-rule-required="true" value="{{ $slugVn }}">
                                             @include('elements.error_line', ['attribute' => 'trans.vi.slug'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vi][description]" max="1000" maxlength="1000" data-rule-required="true" rows="4" cols="80">{{ $descriptionVn }}</textarea>
+                                            <textarea class="form-control" id="des_ckediter_vn" name="trans[vi][description]" maxlength="1000" data-rule-required="true" rows="4" cols="80">{{ $descriptionVn }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.vi.description'])
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" max="20000" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ $contentVn }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ $contentVn }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.vi.content'])
                                         </div>
                                     </div>
