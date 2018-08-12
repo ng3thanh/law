@@ -12,12 +12,11 @@
     </head>
 
     <body>
+        @include('web.partials.connect.facebook')
         @include('web.partials.header')
         @yield('content')
         @include('web.partials.footer')
         @include('web.partials.connect.phone')
-        @include('web.partials.connect.facebook')
-        <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
         @include('web.assets.js')
         @yield('script')
     </body>
