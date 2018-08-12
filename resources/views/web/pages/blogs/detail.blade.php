@@ -12,7 +12,7 @@
                 <div class="container">
                     <div class="post-single">
                         <div class="post-thumbnail">
-                            <img src="{{ asset('web/img/blog-post-3.jpeg') }}" alt="..." class="img-fluid">
+                            <img src="{{ asset("$blog->image") }}" alt="{{ $blog->title }}" class="img-fluid">
                         </div>
                         <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
@@ -103,7 +103,7 @@
                             <a href="{{ route('blogs.detail', $rBlog->slug) }}">
                                 <div class="item d-flex align-items-center">
                                     <div class="image">
-                                        <img src="{{ asset('web/img/small-thumbnail-1.jpg') }}" alt="..." class="img-fluid">
+                                        <img src="{{ asset("$rBlog->image") }}" alt="..." class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <strong>{{ $rBlog->title }}</strong>
