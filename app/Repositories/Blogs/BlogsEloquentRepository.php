@@ -53,10 +53,12 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
      */
     public function findBySlug($slug)
     {
-        $result = $this->model
+        $locale = app()->getLocale();
+        $result = $this->model->join('blogs_translate', 'blogs_translate.blogs_id', '=', 'blogs.id')
             ->where('publish_date', '<=', date('Y-m-d H:i:s'))
             ->where('end_date', '>=', date('Y-m-d H:i:s'))
-            ->where('slug', $slug)
+            ->where('blogs_translate.slug', $slug)
+            ->where('blogs_translate.locale', $locale)
             ->first();
         return $result;
     }
