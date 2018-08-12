@@ -2,7 +2,15 @@
 
 @section('title', 'Blogs')
 @section('css')
-
+    <style>
+        #homepage #header-wrapper.header-slider {
+            background: #444 url({{ asset("$slide->image") }}) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
 @endsection
 @section('content')
     <div id="homepage">
