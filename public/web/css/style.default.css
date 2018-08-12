@@ -3236,3 +3236,17 @@ a.text-dark:focus, a.text-dark:hover {
 #homepage .aligncenter {
   text-align: center;
 }
+
+#phone-call-web {
+   position: fixed;
+   width: 40px;
+   height: 40px;
+   bottom: 20px;
+   left: 20px;
+}
+
+#fb-root {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
