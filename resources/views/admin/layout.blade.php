@@ -12,6 +12,7 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
+@include('admin.partials.connect.facebook')
 <div class="wrapper">
     @include('admin.partials.header')
     @include('admin.partials.sidebar')
@@ -21,7 +22,6 @@
         @include('admin.partials.breadcrumb')
         @yield('content')
     </div>
-    @include('admin.partials.connect.facebook')
     @include('admin.partials.connect.phone')
     @include('admin.partials.footer')
     @include('admin.partials.control_sidebar')
