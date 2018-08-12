@@ -18,7 +18,7 @@
         <div id="header-wrapper" class="header-slider">
             <header class="clearfix">
                 <div class="logo">
-                    <img src="{{ asset('web/img/logo-image.png') }}" alt="" />
+                    <img src="{{ asset('web/img/1234.png') }}" alt="" />
                 </div>
                 <div class="container">
                     <div class="row">
