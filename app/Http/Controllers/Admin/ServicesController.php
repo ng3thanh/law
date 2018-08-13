@@ -67,17 +67,6 @@ class ServicesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Services  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Services $service)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Services  $service
@@ -114,6 +103,11 @@ class ServicesController extends Controller
      */
     public function destroy(Services $service)
     {
-        //
+        $result = $this->serviceService->deleteService($service->id);
+        if ($result) {
+            return redirect()->route('blog.index')->with('success', 'Delete data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when delete data')->withInput();
+        }
     }
 }

@@ -113,6 +113,11 @@ class BlogsController extends Controller
      */
     public function destroy(Blogs $blog)
     {
-        //
+        $result = $this->blogService->deleteBlog($blog->id);
+        if ($result) {
+            return redirect()->route('blog.index')->with('success', 'Delete data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when delete data')->withInput();
+        }
     }
 }

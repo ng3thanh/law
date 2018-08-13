@@ -66,17 +66,6 @@ class ClientsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Clients  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Clients $client)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Clients  $client
@@ -113,6 +102,11 @@ class ClientsController extends Controller
      */
     public function destroy(Clients $client)
     {
-        //
+        $result = $this->clientService->deleteClient($client->id);
+        if ($result) {
+            return redirect()->route('blog.index')->with('success', 'Delete data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when delete data')->withInput();
+        }
     }
 }

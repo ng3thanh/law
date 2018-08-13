@@ -113,4 +113,20 @@ class ServiceService
         $data = $this->servicesRepository->countAll();
         return $data;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function deleteService($id)
+    {
+        $delete = $this->servicesRepository->delete($id);
+        return $delete;
+    }
+
+    public function findServiceBySlug($slug)
+    {
+        $service = $this->servicesRepository->findBySlug($slug);
+        return $service;
+    }
 }

@@ -87,4 +87,14 @@ class ClientService
         $data = $this->clientsRepository->countAll();
         return $data;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function deleteClient($id)
+    {
+        $delete = $this->clientsRepository->delete($id);
+        return $delete;
+    }
 }

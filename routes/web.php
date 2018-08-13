@@ -26,6 +26,10 @@ Route::middleware('guest')->namespace('Web')->group(function () {
             Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
         });
 
+        Route::prefix('services')->group(function () {
+            Route::get('{slug}', 'ServicesController@show')->name('services.detail');
+        });
+
         Route::get('change-language/{language}', 'MainController@changeLanguage')->name('user.change-language');
     });
 });

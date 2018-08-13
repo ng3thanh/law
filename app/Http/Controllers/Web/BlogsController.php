@@ -36,31 +36,10 @@ class BlogsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blogs  $blog
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($slug)
     {
@@ -69,39 +48,5 @@ class BlogsController extends Controller
         $blogPrevious = $this->blogService->findBlogPrevious($blog);
         $randomBlog = $this->blogService->randomBlog(config('constant.number.blog.random'));
         return view('web.pages.blogs.detail', compact('blog', 'randomBlog', 'blogNext', 'blogPrevious'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Blogs  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Blogs $blog)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blogs  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Blogs $blog)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Blogs  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Blogs $blog)
-    {
-        //
     }
 }

@@ -12,30 +12,30 @@
                 <div class="container">
                     <div class="post-single">
                         <div class="post-thumbnail">
-                            <img src="{{ asset("$blog->image") }}" alt="{{ $blog->title }}" class="img-fluid">
+                            <img src="{{ asset("$service->image") }}" alt="{{ $service->title }}" class="img-fluid">
                         </div>
                         <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
                                 <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
                             </div>
-                            <h1>{{ $blog->title }} <a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+                            <h1>{{ $service->title }} <a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                             <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar">
                                         <img src="{{ asset('web/img/avatar-1.jpg') }}" alt="..." class="img-fluid">
                                     </div>
                                     <div class="title">
-                                        <span>{{ $blog->author }}</span>
+                                        <span>{{ $service->author }}</span>
                                     </div>
                                 </a>
                                 <div class="d-flex align-items-center flex-wrap">
-                                    <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($blog->publish_date) }}</div>
-                                    <div class="views"><i class="icon-eye"></i> {{ $blog->view }}</div>
+                                    <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($service->publish_date) }}</div>
+                                    <div class="views"><i class="icon-eye"></i> 500</div>
                                     <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                                 </div>
                             </div>
                             <div class="post-body">
-                                {!! $blog->content !!}
+                                {!! $service->content !!}
                             </div>
                             <div class="post-tags">
                                 <a href="#" class="tag">#Business</a>
@@ -44,19 +44,19 @@
                                 <a href="#" class="tag">#Economy</a>
                             </div>
                             <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
-                                <a href="{{ isset($blogPrevious) ? route('blogs.detail', $blogPrevious->slug) : '#' }}" class="prev-post text-left d-flex align-items-center">
+                                <a href="{{ isset($servicePrevious) ? route('blogs.detail', $servicePrevious->slug) : '#' }}" class="prev-post text-left d-flex align-items-center">
                                     <div class="icon prev">
                                         <i class="fa fa-angle-left"></i>
                                     </div>
                                     <div class="text">
                                         <strong class="text-primary">Previous Post </strong>
-                                        <h6>{{ isset($blogPrevious) ? $blogPrevious->title : 'No post' }}</h6>
+                                        <h6>{{ isset($servicePrevious) ? $servicePrevious->title : 'No post' }}</h6>
                                     </div>
                                 </a>
-                                <a href="{{ isset($blogNext) ? route('blogs.detail', $blogNext->slug) : '#' }}" class="next-post text-right d-flex align-items-center justify-content-end">
+                                <a href="{{ isset($serviceNext) ? route('blogs.detail', $serviceNext->slug) : '#' }}" class="next-post text-right d-flex align-items-center justify-content-end">
                                     <div class="text">
                                         <strong class="text-primary">Next Post </strong>
-                                        <h6>{{ isset($blogNext) ? $blogNext->title : 'No post' }}</h6>
+                                        <h6>{{ isset($serviceNext) ? $serviceNext->title : 'No post' }}</h6>
                                     </div>
                                     <div class="icon next">
                                         <i class="fa fa-angle-right">   </i>
@@ -103,12 +103,12 @@
                             <a href="{{ route('blogs.detail', $rBlog->slug) }}">
                                 <div class="item d-flex align-items-center">
                                     <div class="image">
-                                        <img src="{{ asset("$rBlog->image") }}" alt="{{ $rBlog->title }}" class="img-fluid">
+                                        <img src="{{ asset("$rBlog->image") }}" alt="..." class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <strong>{{ $rBlog->title }}</strong>
                                         <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> {{ $rBlog->view }}</div>
+                                            <div class="views"><i class="icon-eye"></i> 500</div>
                                             <div class="comments"><i class="icon-comment"></i>12</div>
                                         </div>
                                     </div>

@@ -4,83 +4,35 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Services;
-use Illuminate\Http\Request;
+use App\Services\ServiceService;
 
 class ServicesController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @var ServiceService
      */
-    public function index()
-    {
-        //
-    }
+    protected $serviceService;
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * ServicesController constructor.
+     * @param ServiceService $serviceService
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function __construct(
+        ServiceService $serviceService
+    ) {
+        $this->serviceService = $serviceService;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Services  $products
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Services $products)
+    public function show($slug)
     {
-        //
+        $service = $this->serviceService->findServiceBySlug($slug);
+        return view('services.detail', compact('service'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Services  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Services $products)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Services  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Services $products)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Services  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Services $products)
-    {
-        //
-    }
 }

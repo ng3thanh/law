@@ -207,9 +207,23 @@ class BlogService
     }
 
 
+    /**
+     * Count blog
+     * @return mixed
+     */
     public function countBlog()
     {
         $data = $this->blogsRepository->countAll();
         return $data;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function deleteBlog($id)
+    {
+        $delete = $this->blogsRepository->delete($id);
+        return $delete;
     }
 }
