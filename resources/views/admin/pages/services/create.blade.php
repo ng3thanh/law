@@ -124,31 +124,17 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('admin/js/utilities/jquery.validate.messages.js') }}"></script>
-    <script src="{{ asset('admin/js/utilities/form.validate.js') }}"></script>
-    <script src="{{ asset('admin/js/pages/services/service.create.js') }}"></script>
     <script>
         $(function () {
-            CKEDITOR.replace('des_ckediter', {
-                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
-                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
-                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
-                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
-                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
-                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
-            });
-            var contentEditor = CKEDITOR.replace( 'content_ckediter', {
-                filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
-                filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
-                filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
-                filebrowserUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
-                filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
-                filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
-            });
-            CKFinder.setupCKEditor(contentEditor);
+            var titleEn = $("#name-en");
+            var slugEn = $("#slug-en");
+            var titleVn = $("#name-vi");
+            var slugVn = $("#slug-vi");
 
-            CKEDITOR.replace('des_ckediter_vn', {
+            CKEDITOR.replace('des_ckediter');
+            CKEDITOR.replace('des_ckediter_vn');
+
+            var contentEditor = CKEDITOR.replace( 'content_ckediter', {
                 filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
                 filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
                 filebrowserFlashBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Flash') }}',
@@ -165,9 +151,12 @@
                 filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
                 filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
             });
+
+            CKFinder.setupCKEditor(contentEditor);
             CKFinder.setupCKEditor(contentEditorVn);
-            ServiceCreate.init();
             FormUtil.validate('#create-new-service');
+            slugCommon.convertSlug(titleEn, slugEn);
+            slugCommon.convertSlug(titleVn, slugVn);
         });
     </script>
 @endsection

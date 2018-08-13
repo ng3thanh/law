@@ -54,3 +54,8 @@
 
 <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ asset('admin/ckfinder/ckfinder.js') }}"></script>
+
+<script src="{{ asset('admin/js/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('admin/js/utilities/jquery.validate.messages.js') }}"></script>
+<script src="{{ asset('admin/js/utilities/form.validate.js') }}"></script>
+<script src="{{ asset('admin/js/utilities/common.js') }}"></script>

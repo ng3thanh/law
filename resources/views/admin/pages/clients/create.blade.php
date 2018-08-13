@@ -60,13 +60,18 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/js/pages/clients/client.create.js') }}"></script>
     <script>
         $(function () {
             CKEDITOR.replace('des_ckediter');
+            var titleEn = $("#name-en");
+            var slugEn = $("#slug-en");
+            var titleVn = $("#name-vi");
+            var slugVn = $("#slug-vi");
             var contentEditor = CKEDITOR.replace( 'content_ckediter' );
+
             CKFinder.setupCKEditor(contentEditor);
-            ServiceCreate.init();
+            slugCommon.convertSlug(titleEn, slugEn);
+            slugCommon.convertSlug(titleVn, slugVn);
         });
     </script>
 @endsection

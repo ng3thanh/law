@@ -171,10 +171,6 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('admin/js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('admin/js/utilities/jquery.validate.messages.js') }}"></script>
-    <script src="{{ asset('admin/js/utilities/form.validate.js') }}"></script>
-    <script src="{{ asset('admin/js/pages/blog/blog.create.js') }}"></script>
     <script>
         $(function () {
             var datepicker = $('.datepicker');
