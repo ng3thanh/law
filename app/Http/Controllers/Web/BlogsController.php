@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blogs;
 use App\Services\BlogService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 
 class BlogsController extends Controller
 {
@@ -44,6 +43,7 @@ class BlogsController extends Controller
     public function show($slug)
     {
         $blog = $this->blogService->findBlogBySlug($slug);
+        Event::fire('posts.view', $blog);
         $blogNext = $this->blogService->findBlogNext($blog);
         $blogPrevious = $this->blogService->findBlogPrevious($blog);
         $randomBlog = $this->blogService->randomBlog(config('constant.number.blog.random'));
