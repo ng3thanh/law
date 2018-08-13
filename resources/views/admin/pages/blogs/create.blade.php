@@ -150,9 +150,15 @@
     <script src="{{ asset('admin/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('admin/js/utilities/jquery.validate.messages.js') }}"></script>
     <script src="{{ asset('admin/js/utilities/form.validate.js') }}"></script>
-    <script src="{{ asset('admin/js/pages/blog/blog.create.js') }}"></script>
+    <script src="{{ asset('admin/js/utilities/common.js') }}"></script>
     <script>
         $(function () {
+            var datepicker = $('.datepicker');
+            var titleEn = $("#title-en");
+            var slugEn = $("#slug-en");
+            var titleVn = $("#title-vn");
+            var slugVn = $("#slug-vn");
+
             var contentEditor = CKEDITOR.replace( 'content_ckediter', {
                 filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
                 filebrowserImageBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html?type=Images') }}',
@@ -161,7 +167,6 @@
                 filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
                 filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
             });
-            CKFinder.setupCKEditor(contentEditor);
 
             var contentEditorVn = CKEDITOR.replace( 'content_ckediter_vn', {
                 filebrowserBrowseUrl: '{{ asset('admin/ckfinder/ckfinder.html') }}',
@@ -171,9 +176,14 @@
                 filebrowserImageUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
                 filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
             });
+
+            datepicker.datepicker({ autoclose: true });
+            CKFinder.setupCKEditor(contentEditor);
             CKFinder.setupCKEditor(contentEditorVn);
-            BlogCreate.init();
+
             FormUtil.validate('#create-new-blog');
+            slugCommon.convertSlug(titleEn, slugEn);
+            slugCommon.convertSlug(titleVn, slugVn);
         });
     </script>
 @endsection
