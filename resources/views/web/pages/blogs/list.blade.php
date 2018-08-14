@@ -34,7 +34,7 @@
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar">
-                                                <img src="{{ asset('web/img/avatar-3.jpg') }}" alt="..." class="img-fluid">
+                                                <img src="{{ asset('web/img/admin_logo.png') }}" alt="Admin" class="img-fluid">
                                             </div>
                                             <div class="title">
                                                 <span>{{ $blog->author }}</span>
