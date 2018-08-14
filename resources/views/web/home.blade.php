@@ -94,25 +94,7 @@
                 <h4>{{ __('homepage.clients') }}</h4>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 20px">
-                        <div id="portfolio-wrap">
-                            @foreach ($clients as $key => $client)
-                            <!-- portfolio item -->
-                            <div class="portfolio-item grid print photography">
-                                <div class="portfolio">
-                                    <a href='{{ asset("$client->image") }}' data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
-                                        <img src='{{ asset("$client->image") }}' alt="" />
-                                        <div class="portfolio-overlay">
-                                            <div class="thumb-info">
-                                                <h5>{{ $client->name }}</h5>
-                                                <i class="icon-plus icon-2x"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- end portfolio item -->
-                            @endforeach
-                        </div>
+                        <img src='{{ asset("$client->image") }}' alt="{{ $client->name }}" width="100%" />
                     </div>
                 </div>
             </div>

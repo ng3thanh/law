@@ -24,16 +24,16 @@
                             @foreach($blogs as $blog)
                                 <tr class="body-table">
                                     <td>{{ $number++ }}</td>
-                                    <td class="text-left">
-                                        <a href="#" target="_blank">
+                                    <td class="text-left m-w-200">
+                                        <a href="{{ route('blogs.detail', $blog->slug) }}" target="_blank">
                                             <span class="short-text">{{ $blog->title }}</span>
                                         </a>
                                     </td>
                                     <td>
                                         <img class="img-thumbnail" src='{{ asset("$blog->image") }}' width="50px" height="">
                                     </td>
-                                    <td>
-                                        <span class="short-text">{!! $blog->description !!}</span>
+                                    <td class="text-left m-w-400">
+                                        <span class="short-text">{!! (strlen($blog->description) > 150) ? substr($blog->description, 0, 147) . ' ... ' : $blog->description !!}</span>
                                     </td>
                                     <td>
                                         {{ date('d/m/Y H:i', strtotime($blog->publish_date)) }}

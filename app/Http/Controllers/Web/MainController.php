@@ -60,11 +60,11 @@ class MainController extends Controller
     public function index()
     {
         $slide = $this->settingsService->getSlideShowing();
-        $clients = $this->clientService->getClientLimit(config('constant.number.client.paginate.web'));
+        $client = $this->clientService->getClientLimit(config('constant.number.client.paginate.web'))->first();
         $services = $this->serviceService->getServiceLimit(config('constant.number.service.paginate.web'));
         $blogs = $this->blogService->getBlogLimit(config('constant.number.blog.paginate.main'));
         $introduce = $this->settingsService->getIntroduce();
-        return view('web.home', compact('slide', 'clients','services', 'blogs', 'introduce'));
+        return view('web.home', compact('slide', 'client','services', 'blogs', 'introduce'));
     }
 
     /**

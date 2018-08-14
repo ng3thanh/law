@@ -23,9 +23,9 @@ class ClientService
         $this->clientsRepository = $clientsRepository;
     }
 
-    public function getAllClient()
+    public function getAllClient($limit)
     {
-        $data = $this->clientsRepository->getAllPaginate(config('constant.number.client.paginate.admin'));
+        $data = $this->clientsRepository->getAllPaginate($limit);
         return $data;
     }
 
@@ -33,6 +33,8 @@ class ClientService
     {
         try {
             DB::beginTransaction();
+
+            $this->deleteAllClient();
 
             if (isset($data['image'])) {
                 $file = $data['image'];
@@ -56,25 +58,25 @@ class ClientService
         }
     }
 
-    public function updateClient($id, $data)
-    {
-        try {
-            DB::beginTransaction();
-
-            if (isset($data['image'])) {
-                $newName = uploadImage($id, $data['image'], 'client');
-                $data['image'] = config('upload.client') . $id . '/' . $newName;
-            }
-
-            $data = formatDataBaseOnTable('clients', $data);
-            $this->clientsRepository->update($id, $data);
-            DB::commit();
-            return true;
-        } catch (Exception $e) {
-            DB::rollBack();
-            return false;
-        }
-    }
+//    public function updateClient($id, $data)
+//    {
+//        try {
+//            DB::beginTransaction();
+//
+//            if (isset($data['image'])) {
+//                $newName = uploadImage($id, $data['image'], 'client');
+//                $data['image'] = config('upload.client') . $id . '/' . $newName;
+//            }
+//
+//            $data = formatDataBaseOnTable('clients', $data);
+//            $this->clientsRepository->update($id, $data);
+//            DB::commit();
+//            return true;
+//        } catch (Exception $e) {
+//            DB::rollBack();
+//            return false;
+//        }
+//    }
 
     public function getClientLimit($limit)
     {
@@ -82,19 +84,27 @@ class ClientService
         return $data;
     }
 
-    public function countClient()
-    {
-        $data = $this->clientsRepository->countAll();
-        return $data;
-    }
+//    public function countClient()
+//    {
+//        $data = $this->clientsRepository->countAll();
+//        return $data;
+//    }
+//
+//    /**
+//     * @param $id
+//     * @return mixed
+//     */
+//    public function deleteClient($id)
+//    {
+//        $delete = $this->clientsRepository->delete($id);
+//        return $delete;
+//    }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function deleteClient($id)
+    public function deleteAllClient()
     {
-        $delete = $this->clientsRepository->delete($id);
-        return $delete;
+        $clients = $this->clientsRepository->getAll();
+        foreach ($clients as $client) {
+            $this->clientsRepository->delete($client->id);
+        }
     }
 }
