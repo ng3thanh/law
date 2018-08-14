@@ -109,7 +109,13 @@
                     <div class="span3 col-lg-3">
                         <div class="home-post">
                             <div class="post-image">
-                                <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $blog->title }}" />
+                                @foreach($blog->translations as $trans)
+                                    @if(checkLanguage($trans->locale, 'boolean'))
+                                        <a href="{{ route('blogs.detail', $trans->slug) }}">
+                                            <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $trans->title }}" />
+                                        </a>
+                                    @endif
+                                @endforeach
                             </div>
                             <div class="post-meta">
                                 <i class="icon-file icon-2x"></i>
