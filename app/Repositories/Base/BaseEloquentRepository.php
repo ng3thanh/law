@@ -62,6 +62,17 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Get all paginate with trash
+     * @param $limit
+     * @return mixed
+     */
+    public function getAllPaginateWithTrash($limit)
+    {
+        $result = $this->model->withTrashed()->paginate($limit);
+        return $result;
+    }
+
+    /**
      * Get random data
      * @param $number
      * @return mixed

@@ -61,7 +61,7 @@ class BlogService
      */
     public function getAllBlog($limit)
     {
-        $data = $this->blogsRepository->getAllPaginate($limit);
+        $data = $this->blogsRepository->getAllPaginateWithTrash($limit);
         return $data;
     }
 
@@ -72,7 +72,7 @@ class BlogService
      */
     public function getAllBlogInWeb($limit)
     {
-        $data = $this->blogsRepository->getAllBlogPaginate($limit);
+        $data = $this->blogsRepository->getAllPaginate($limit);
         return $data;
     }
 
@@ -94,7 +94,7 @@ class BlogService
      */
     public function findBlogNext($blog)
     {
-        $data = $this->blogsRepository->getBlogNextDate($blog->id, $blog->publish_date);
+        $data = $this->blogsRepository->getBlogNextDate($blog->id, $blog->created_at);
         return $data;
     }
 
@@ -104,7 +104,7 @@ class BlogService
      */
     public function findBlogPrevious($blog)
     {
-        $data = $this->blogsRepository->getBlogPreviousDate($blog->id, $blog->publish_date);
+        $data = $this->blogsRepository->getBlogPreviousDate($blog->id, $blog->created_at);
         return $data;
     }
 
