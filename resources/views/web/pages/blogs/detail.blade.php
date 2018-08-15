@@ -22,7 +22,7 @@
                             <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar">
-                                        <img src="{{ asset('web/img/avatar-1.jpg') }}" alt="..." class="img-fluid">
+                                        <img src="{{ asset('web/img/admin_logo.png') }}" alt="..." class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <span>{{ $blog->author }}</span>
@@ -31,7 +31,6 @@
                                 <div class="d-flex align-items-center flex-wrap">
                                     <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($blog->publish_date) }}</div>
                                     <div class="views"><i class="icon-eye"></i> {{ $blog->view }}</div>
-                                    <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                                 </div>
                             </div>
                             <div class="post-body">
@@ -109,7 +108,6 @@
                                         <strong>{{ $rBlog->title }}</strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> {{ $rBlog->view }}</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
                                         </div>
                                     </div>
                                 </div>

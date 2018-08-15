@@ -14,25 +14,26 @@ class ViewBlogHandler
         $this->session = $session;
     }
 
-    public function handle(Blogs $post)
+    public function handle(Blogs $blog)
     {
-        if (!$this->isPostViewed($post))
+        dd($blog);
+        if (!$this->isPostViewed($blog))
         {
-            $post->increment('view');
-            $this->storePost($post);
+            $blog->increment('view');
+            $this->storePost($blog);
         }
     }
 
-    private function isPostViewed($post)
+    private function isPostViewed($blog)
     {
-        $viewed = $this->session->get('viewed_posts', []);
+        $viewed = $this->session->get('viewed_blogs', []);
 
-        return array_key_exists($post->id, $viewed);
+        return array_key_exists($blog->id, $viewed);
     }
 
-    private function storePost($post)
+    private function storePost($blog)
     {
-        $key = 'viewed_posts.' . $post->id;
+        $key = 'viewed_blogs.' . $blog->id;
 
         $this->session->put($key, time());
     }

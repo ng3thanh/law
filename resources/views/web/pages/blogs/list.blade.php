@@ -43,8 +43,8 @@
                                         <div class="date">
                                             <i class="icon-clock"></i> {{ timeElapsedString($blog->publish_date) }}
                                         </div>
-                                        <div class="comments meta-last">
-                                            <i class="icon-comment"></i>12
+                                        <div class="views meta-last">
+                                            <i class="icon-eye"></i> {{ $blog->view }}
                                         </div>
                                     </footer>
                                 </div>
