@@ -25,12 +25,6 @@
     $slugVn = isset($oldVnSlug) ? $oldVnSlug : $blog->translations[1]->slug;
     $descriptionVn = isset($oldVnDescription) ? $oldVnDescription : $blog->translations[1]->description;
     $contentVn = isset($oldVnContent) ? $oldVnContent : $blog->translations[1]->content;
-
-    $oldPlDate = old('publish_date');
-    $oldEnDate = old('end_date');
-    $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y', strtotime($blog->publish_date));
-    $endDate = isset($oldEnDate) ? $oldEnDate : date('m/d/Y', strtotime($blog->end_date));
-
 @endphp
 @section('content')
     <section class="content">
@@ -124,26 +118,6 @@
                                         <img class="img-thumbnail" src='{{ asset("$blog->image") }}' width="200px" height=""><br><br>
                                         <input type="file" class="form-control" name="image">
                                         @include('elements.error_line', ['attribute' => 'image'])
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label"> Publish date <span class="span-red">*</span></label>
-                                    <div class="col-sm-9 input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="publish_date" value="{{ $publishDate }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label"> End date <span class="span-red">*</span></label>
-                                    <div class="col-sm-9 input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="end_date" value="{{ $endDate }}">
                                     </div>
                                 </div>
 

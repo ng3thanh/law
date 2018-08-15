@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Blogs\BlogsRepositoryInterface;
 use App\Repositories\BlogsTranslate\BlogsTranslateRepositoryInterface;
+use App\Repositories\Tags\TagsRepositoryInterface;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -21,16 +22,24 @@ class BlogService
     protected $blogsTransRepository;
 
     /**
+     * @var TagsRepositoryInterface
+     */
+    protected $tagsRepository;
+
+    /**
      * BlogService constructor.
      * @param BlogsRepositoryInterface $blogsRepository
      * @param BlogsTranslateRepositoryInterface $blogsTransRepository
+     * @param TagsRepositoryInterface $tagsRepository
      */
     public function __construct(
         BlogsRepositoryInterface $blogsRepository,
-        BlogsTranslateRepositoryInterface $blogsTransRepository
+        BlogsTranslateRepositoryInterface $blogsTransRepository,
+        TagsRepositoryInterface $tagsRepository
     ) {
         $this->blogsRepository = $blogsRepository;
         $this->blogsTransRepository = $blogsTransRepository;
+        $this->tagsRepository = $tagsRepository;
     }
 
     /**
@@ -117,8 +126,6 @@ class BlogService
             }
 
             // Save data of base blog
-            $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
-            $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
             $data['author'] = Sentinel::getUser()->username;
             $dataMainBlog = formatDataBaseOnTable('blogs', $data);
             $result = $this->blogsRepository->create($dataMainBlog);
@@ -166,9 +173,6 @@ class BlogService
                 $newName = uploadImage($id, $data['image'], 'blog');
                 $data['image'] = config('upload.blog') . $id . '/' . $newName;
             }
-
-            $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
-            $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
 
             $dataBaseBlog = formatDataBaseOnTable('blogs', $data);
             $this->blogsRepository->update($id, $dataBaseBlog);
@@ -225,5 +229,17 @@ class BlogService
     {
         $delete = $this->blogsRepository->delete($id);
         return $delete;
+    }
+
+    /**
+     * Get all tags of blog
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getAllTagsOfBlog($id)
+    {
+        $tags = $this->tagsRepository->getAllTagsOfBlog($id);
+        return $tags;
     }
 }

@@ -29,7 +29,7 @@
                                     </div>
                                 </a>
                                 <div class="d-flex align-items-center flex-wrap">
-                                    <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($blog->publish_date) }}</div>
+                                    <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($blog->created_at) }}</div>
                                     <div class="views"><i class="icon-eye"></i> {{ $blog->view }}</div>
                                 </div>
                             </div>
@@ -37,10 +37,9 @@
                                 {!! $blog->content !!}
                             </div>
                             <div class="post-tags">
-                                <a href="#" class="tag">#Business</a>
-                                <a href="#" class="tag">#Tricks</a>
-                                <a href="#" class="tag">#Financial</a>
-                                <a href="#" class="tag">#Economy</a>
+                                @foreach($tags as $key => $value)
+                                    <a href="#" class="tag">#{{ $value->tag }}</a>
+                                @endforeach
                             </div>
                             <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
                                 <a href="{{ isset($blogPrevious) ? route('blogs.detail', $blogPrevious->slug) : '#' }}" class="prev-post text-left d-flex align-items-center">
@@ -122,11 +121,9 @@
                         <h3 class="h6">Tags</h3>
                     </header>
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+                        @foreach($tags as $key => $value)
+                            <li class="list-inline-item"><a href="#" class="tag">#{{ $value->tag }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>

@@ -43,10 +43,10 @@ class BlogsController extends Controller
     public function show($slug)
     {
         $blog = $this->blogService->findBlogBySlug($slug);
-        Event::fire('posts.view', $blog);
+        $tags = $this->blogService->getAllTagsOfBlog($blog->id);
         $blogNext = $this->blogService->findBlogNext($blog);
         $blogPrevious = $this->blogService->findBlogPrevious($blog);
         $randomBlog = $this->blogService->randomBlog(config('constant.number.blog.random'));
-        return view('web.pages.blogs.detail', compact('blog', 'randomBlog', 'blogNext', 'blogPrevious'));
+        return view('web.pages.blogs.detail', compact('blog', 'randomBlog', 'blogNext', 'blogPrevious', 'tags'));
     }
 }

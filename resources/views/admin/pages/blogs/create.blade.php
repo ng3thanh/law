@@ -5,10 +5,6 @@
 @section('css')
 @endsection
 
-@php
-    $oldPlDate = old('publish_date');
-    $publishDate = isset($oldPlDate) ? $oldPlDate : date('m/d/Y');
-@endphp
 @section('content')
     <section class="content">
         <div class="box box-primary">
@@ -99,26 +95,6 @@
                                     <div class="col-sm-9 input-group">
                                         <input type="file" class="form-control" data-rule-required="true" name="image">
                                         @include('elements.error_line', ['attribute' => 'image'])
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label"> Publish date <span class="span-red">*</span></label>
-                                    <div class="col-sm-9 input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="publish_date" value="{{ $publishDate }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label"> End date <span class="span-red">*</span></label>
-                                    <div class="col-sm-9 input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right datepicker" data-rule-required="true" name="end_date" value="{{ old('end_date') }}">
                                     </div>
                                 </div>
 

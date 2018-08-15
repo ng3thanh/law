@@ -17,8 +17,7 @@
                                 <th>Title</th>
                                 <th>Image</th>
                                 <th>Description</th>
-                                <th>Publish date</th>
-                                <th>End date</th>
+                                <th>Created date</th>
                                 <th>Action</th>
                             </tr>
                             @foreach($blogs as $blog)
@@ -36,10 +35,7 @@
                                         <span class="short-text">{!! (strlen($blog->description) > 150) ? substr($blog->description, 0, 147) . ' ... ' : $blog->description !!}</span>
                                     </td>
                                     <td>
-                                        {{ date('d/m/Y H:i', strtotime($blog->publish_date)) }}
-                                    </td>
-                                    <td>
-                                        {{ date('d/m/Y H:i', strtotime($blog->end_date)) }}
+                                        {{ date('d/m/Y H:i', strtotime($blog->created_at)) }}
                                     </td>
                                     <td>
                                         <div class="btn-group">
@@ -56,7 +52,6 @@
                                 $blogs->appends([
                                     "title" => Request::get('title'),
                                     "status" => Request::get('status'),
-                                    "publish_date" => Request::get('publish_date'),
                                     "end_date" => Request::get('end_date'),
                                     "menu" => Request::get('menu')
                                 ])->links()
