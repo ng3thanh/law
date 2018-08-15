@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Services\BlogService;
-use Illuminate\Support\Facades\Event;
+use Carbon\Carbon;
 
 class BlogsController extends Controller
 {
@@ -42,11 +42,22 @@ class BlogsController extends Controller
      */
     public function show($slug)
     {
+        // Get slug data
         $blog = $this->blogService->findBlogBySlug($slug);
+
+        // Save view list
+        $blog->addViewWithExpiryDate(Carbon::now()->addMinute(10));
+        $view = $blog->getViews();
+        if ($blog->view != $view) {
+            $blog = $this->blogService->saveViewBlog($blog, $view);
+        }
+
+        // Get others data in pages
         $tags = $this->blogService->getAllTagsOfBlog($blog->id);
         $blogNext = $this->blogService->findBlogNext($blog);
         $blogPrevious = $this->blogService->findBlogPrevious($blog);
         $randomBlog = $this->blogService->randomBlog(config('constant.number.blog.random'));
+
         return view('web.pages.blogs.detail', compact('blog', 'randomBlog', 'blogNext', 'blogPrevious', 'tags'));
     }
 }

@@ -162,6 +162,7 @@ return [
         Centaur\CentaurServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
+        CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
     ],
 
     /*

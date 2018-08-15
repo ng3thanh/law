@@ -23,9 +23,7 @@ Route::middleware('guest')->namespace('Web')->group(function () {
         // Blogs
         Route::prefix('blogs')->group(function () {
             Route::get('list/', 'BlogsController@index')->name('blogs.index');
-            Route::group(['middleware' => 'filter'], function() {
-                Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
-            });
+            Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
         });
 
         Route::prefix('services')->group(function () {

@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use CyrildeWit\EloquentViewable\Viewable;
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blogs extends Model
 {
+    use Viewable;
+
     use SoftDeletes;
 
     use Translatable;

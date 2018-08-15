@@ -242,4 +242,17 @@ class BlogService
         $tags = $this->tagsRepository->getAllTagsOfBlog($id);
         return $tags;
     }
+
+    public function saveViewBlog($blog, $view)
+    {
+        try {
+            DB::beginTransaction();
+            $data = $this->blogsRepository->update($blog->blogs_id, ['view' => $view]);
+            DB::commit();
+            return $data;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return $blog;
+        }
+    }
 }
