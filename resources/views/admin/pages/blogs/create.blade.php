@@ -3,6 +3,7 @@
 @section('title', 'Create new blog')
 
 @section('css')
+    {{--<link rel="stylesheet" href="{{ asset('admin/css/select2.min.css') }}">--}}
 @endsection
 
 @section('content')
@@ -53,6 +54,20 @@
                                         <div class="col-sm-9 input-group">
                                             <textarea class="form-control" id="content_ckediter" name="trans[en][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ old('trans.en.content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.en.content'])
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"> Tags <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            <select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                                                <option>Alabama</option>
+                                                <option>Alaska</option>
+                                                <option>California</option>
+                                                <option>Delaware</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Washington</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -123,9 +138,12 @@
 @endsection
 
 @section('script')
+    {{--<script src="{{ asset('admin/js/select2.full.min.js') }}"></script>--}}
     <script>
         $(function () {
-            var datepicker = $('.datepicker');
+            //Initialize Select2 Elements
+            // $('.select2').select2();
+
             var titleEn = $("#title-en");
             var slugEn = $("#slug-en");
             var titleVn = $("#title-vn");
@@ -149,7 +167,6 @@
                 filebrowserFlashUploadUrl: '{{ asset('admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
             });
 
-            datepicker.datepicker({ autoclose: true });
             CKFinder.setupCKEditor(contentEditor);
             CKFinder.setupCKEditor(contentEditorVn);
 
