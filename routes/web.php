@@ -50,6 +50,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         // Blogs
         Route::resource('blog', 'BlogsController');
+        Route::post('blog/restore/{id}', 'BlogsController@restore')->name('blog.restore');
         Route::get('blog/copy/{id}', 'BlogsController@copy')->name('blog.copy');
 
         // Clients

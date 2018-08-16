@@ -89,3 +89,7 @@
 .m-w-500{
 	max-width: 500px;
 }
+
+.deleted_tr{
+	background-color: #f5f5f5;
+}

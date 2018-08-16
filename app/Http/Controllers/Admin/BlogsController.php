@@ -120,4 +120,20 @@ class BlogsController extends Controller
             return redirect()->back()->with('error', 'Having error when delete data')->withInput();
         }
     }
+
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $result = $this->blogService->restoreBlog($id);
+        if ($result) {
+            return redirect()->route('blog.index')->with('success', 'Restore data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when restore data')->withInput();
+        }
+    }
 }

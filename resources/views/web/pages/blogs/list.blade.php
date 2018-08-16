@@ -22,9 +22,9 @@
                                 </div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
+                                        <div class="date meta-last">{{ dateFormat($blog->created_at, "F j| Y") }}</div>
                                         <div class="category">
-                                            <a href="#">Business</a>
+                                            <a href="#">{{ breakStringToArray($blog->tags)[0] ?? '' }}</a>
                                         </div>
                                     </div>
                                     <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}">

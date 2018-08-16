@@ -82,6 +82,13 @@ interface BaseRepositoryInterface
     public function delete($id);
 
     /**
+     * Restore
+     * @param $id
+     * @return mixed
+     */
+    public function restore($id);
+
+    /**
      * @return mixed
      */
     public function countAll();

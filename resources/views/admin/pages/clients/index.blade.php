@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'Service list')
+@section('title', 'Client list')
 
 @section('css')
 @endsection
@@ -11,7 +11,9 @@
             <div class="col-xs-12">
                 <div class="box" style="padding:20px">
                     <div class="box-body table-responsive no-padding text-center">
-                        <img class="img-thumbnail" src='{{ asset("$client->image") }}'>
+                        @if($client)
+                            <img class="img-thumbnail" src='{{ asset("$client->image") }}'>
+                        @endif
                     </div>
                     <!-- /.box-body -->
                 </div>

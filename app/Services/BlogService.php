@@ -224,6 +224,15 @@ class BlogService
     }
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function restoreBlog($id)
+    {
+        $delete = $this->blogsRepository->restore($id);
+        return $delete;
+    }
+    /**
      * Get all tags of blog
      *
      * @param $id
