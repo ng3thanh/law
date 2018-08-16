@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ old('trans.en.content') }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" maxlength="20000" rows="10" cols="80">{{ old('trans.en.content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.en.content'])
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ old('trans.vi.content') }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" maxlength="20000" rows="10" cols="80">{{ old('trans.vi.content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.vi.content'])
                                         </div>
                                     </div>

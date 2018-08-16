@@ -3,6 +3,7 @@
 @section('title', 'Edit blog')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap-tagsinput.css') }}">
 @endsection
 
 @php
@@ -10,21 +11,25 @@
     $oldEnSlug = old('trans.en.slug');
     $oldEnDescription = old('trans.en.description');
     $oldEnContent = old('trans.en.content');
+    $oldEnTags = old('trans.en.tags');
 
     $titleEn = isset($oldEnTitle) ? $oldEnTitle : $blog->translations[0]->title;
     $slugEn = isset($oldEnSlug) ? $oldEnSlug : $blog->translations[0]->slug;
     $descriptionEn = isset($oldEnDescription) ? $oldEnDescription : $blog->translations[0]->description;
     $contentEn = isset($oldEnContent) ? $oldEnContent : $blog->translations[0]->content;
+    $tagEn = isset($oldEnTags) ? $oldEnTags : $blog->translations[0]->tags;
 
     $oldVnTitle = old('trans.vi.title');
     $oldVnSlug = old('trans.vi.slug');
     $oldVnDescription = old('trans.vi.description');
     $oldVnContent = old('trans.vi.content');
+    $oldVnTags = old('trans.vn.tags');
 
     $titleVn = isset($oldVnTitle) ? $oldVnTitle : $blog->translations[1]->title;
     $slugVn = isset($oldVnSlug) ? $oldVnSlug : $blog->translations[1]->slug;
     $descriptionVn = isset($oldVnDescription) ? $oldVnDescription : $blog->translations[1]->description;
     $contentVn = isset($oldVnContent) ? $oldVnContent : $blog->translations[1]->content;
+    $tagVn = isset($oldVnTags) ? $oldVnTags : $blog->translations[1]->tags;
 @endphp
 @section('content')
     <section class="content">
@@ -73,8 +78,15 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ $contentEn }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter" name="trans[en][content]" maxlength="20000" rows="10" cols="80">{{ $contentEn }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.en.content'])
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"> Tag <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            <input type="text" id="tag-en" name="trans[en][tags]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ $tagEn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.en.tags'])
                                         </div>
                                     </div>
                                 </div>
@@ -104,8 +116,15 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ $contentVn }}</textarea>
+                                            <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" maxlength="20000" rows="10" cols="80">{{ $contentVn }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.vi.content'])
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"> Tag <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            <input type="text" id="tag-vn" name="trans[vi][tags]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ $tagVn }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vi.tags'])
                                         </div>
                                     </div>
                                 </div>
@@ -147,6 +166,7 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('admin/js/bootstrap-tagsinput.js') }}"></script>
     <script>
         $(function () {
             var datepicker = $('.datepicker');
@@ -180,6 +200,14 @@
             FormUtil.validate('#update-blog');
             slugCommon.convertSlug(titleEn, slugEn);
             slugCommon.convertSlug(titleVn, slugVn);
+
+            $('#update-blog').on('keyup keypress', function(e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
         });
     </script>
 @endsection
