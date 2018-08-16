@@ -3,7 +3,7 @@
 @section('title', 'Create new blog')
 
 @section('css')
-    {{--<link rel="stylesheet" href="{{ asset('admin/css/select2.min.css') }}">--}}
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap-tagsinput.css') }}">
 @endsection
 
 @section('content')
@@ -57,17 +57,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label"> Tags <span class="span-red">*</span></label>
+                                        <label class="col-sm-3 control-label"> Tag <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
-                                            </select>
+                                            <input type="text" id="tag-en" name="trans[en][tag]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ old('trans.en.tag') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.en.tag'])
                                         </div>
                                     </div>
                                 </div>
@@ -99,6 +92,13 @@
                                         <div class="col-sm-9 input-group">
                                             <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" maxlength="20000" data-rule-required="true" rows="10" cols="80">{{ old('trans.vi.content') }}</textarea>
                                             @include('elements.error_line', ['attribute' => 'trans.vi.content'])
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"> Tag <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            <input type="text" id="tag-vn" name="trans[vi][tag]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ old('trans.vi.tag') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vi.tag'])
                                         </div>
                                     </div>
                                 </div>
@@ -138,12 +138,9 @@
 @endsection
 
 @section('script')
-    {{--<script src="{{ asset('admin/js/select2.full.min.js') }}"></script>--}}
+    <script src="{{ asset('admin/js/bootstrap-tagsinput.js') }}"></script>
     <script>
         $(function () {
-            //Initialize Select2 Elements
-            // $('.select2').select2();
-
             var titleEn = $("#title-en");
             var slugEn = $("#slug-en");
             var titleVn = $("#title-vn");
@@ -173,6 +170,14 @@
             FormUtil.validate('#create-new-blog');
             slugCommon.convertSlug(titleEn, slugEn);
             slugCommon.convertSlug(titleVn, slugVn);
+
+            $('#create-new-blog').on('keyup keypress', function(e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
         });
     </script>
 @endsection

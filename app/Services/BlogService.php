@@ -118,7 +118,7 @@ class BlogService
     {
         try {
             DB::beginTransaction();
-
+            dd($data);
             // Get image
             if (isset($data['image'])) {
                 $file = $data['image'];
