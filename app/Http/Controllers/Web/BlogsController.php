@@ -40,24 +40,23 @@ class BlogsController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($slug)
+    public function show($id, $slug)
     {
         // Get slug data
-        $blog = $this->blogService->findBlogBySlug($slug);
+        $blog = $this->blogService->findBlogBySlugId($id);
 
         // Save view list
         $blog->addViewWithExpiryDate(Carbon::now()->addMinute(10));
         $view = $blog->getViews();
+
         if ($blog->view != $view) {
             $blog = $this->blogService->saveViewBlog($blog, $view);
         }
 
-        // Get others data in pages
-        $tags = $this->blogService->getAllTagsOfBlog($blog->id);
         $blogNext = $this->blogService->findBlogNext($blog);
         $blogPrevious = $this->blogService->findBlogPrevious($blog);
         $randomBlog = $this->blogService->randomBlog(config('constant.number.blog.random'));
 
-        return view('web.pages.blogs.detail', compact('blog', 'randomBlog', 'blogNext', 'blogPrevious', 'tags'));
+        return view('web.pages.blogs.detail', compact('blog', 'randomBlog', 'blogNext', 'blogPrevious'));
     }
 }

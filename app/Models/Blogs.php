@@ -15,7 +15,7 @@ class Blogs extends Model
 
     use Translatable;
 
-    public $translatedAttributes = ['title', 'slug', 'description', 'content'];
+    public $translatedAttributes = ['title', 'slug', 'description', 'content', 'tags'];
 
     /**
      * The table associated with the model.

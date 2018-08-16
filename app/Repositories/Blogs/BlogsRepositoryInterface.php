@@ -7,11 +7,11 @@ use App\Repositories\Base\BaseRepositoryInterface;
 interface BlogsRepositoryInterface extends BaseRepositoryInterface
 {
     /**
-     * Find by slug
-     * @param $slug
+     * Find by id related slug
+     * @param $id
      * @return mixed
      */
-    public function findBySlug($slug);
+    public function findByIdRelatedSlug($id);
 
     /**
      * @param $id

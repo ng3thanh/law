@@ -17,15 +17,15 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
     }
 
     /**
-     * Find by slug
-     * @param $slug
+     * Find by id related slug
+     * @param $id
      * @return mixed
      */
-    public function findBySlug($slug)
+    public function findByIdRelatedSlug($id)
     {
         $locale = app()->getLocale();
         $result = $this->model->join('blogs_translate', 'blogs_translate.blogs_id', '=', 'blogs.id')
-            ->where('blogs_translate.slug', $slug)
+            ->where('blogs_translate.blogs_id', $id)
             ->where('blogs_translate.locale', $locale)
             ->first();
         return $result;

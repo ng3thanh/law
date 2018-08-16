@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Repositories\Blogs\BlogsRepositoryInterface;
 use App\Repositories\BlogsTranslate\BlogsTranslateRepositoryInterface;
-use App\Repositories\Tags\TagsRepositoryInterface;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -21,25 +20,18 @@ class BlogService
      */
     protected $blogsTransRepository;
 
-    /**
-     * @var TagsRepositoryInterface
-     */
-    protected $tagsRepository;
 
     /**
      * BlogService constructor.
      * @param BlogsRepositoryInterface $blogsRepository
      * @param BlogsTranslateRepositoryInterface $blogsTransRepository
-     * @param TagsRepositoryInterface $tagsRepository
      */
     public function __construct(
         BlogsRepositoryInterface $blogsRepository,
-        BlogsTranslateRepositoryInterface $blogsTransRepository,
-        TagsRepositoryInterface $tagsRepository
+        BlogsTranslateRepositoryInterface $blogsTransRepository
     ) {
         $this->blogsRepository = $blogsRepository;
         $this->blogsTransRepository = $blogsTransRepository;
-        $this->tagsRepository = $tagsRepository;
     }
 
     /**
@@ -77,14 +69,14 @@ class BlogService
     }
 
     /**
-     * Find blog by slug
+     * Find blog by id
      *
-     * @param $slug
+     * @param $id
      * @return mixed
      */
-    public function findBlogBySlug($slug)
+    public function findBlogBySlugId($id)
     {
-        $data = $this->blogsRepository->findBySlug($slug);
+        $data = $this->blogsRepository->findByIdRelatedSlug($id);
         return $data;
     }
 
@@ -118,7 +110,7 @@ class BlogService
     {
         try {
             DB::beginTransaction();
-            dd($data);
+
             // Get image
             if (isset($data['image'])) {
                 $file = $data['image'];

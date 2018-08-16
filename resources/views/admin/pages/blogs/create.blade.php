@@ -59,8 +59,8 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Tag <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="tag-en" name="trans[en][tag]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ old('trans.en.tag') }}">
-                                            @include('elements.error_line', ['attribute' => 'trans.en.tag'])
+                                            <input type="text" id="tag-en" name="trans[en][tags]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ old('trans.en.tags') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.en.tags'])
                                         </div>
                                     </div>
                                 </div>
@@ -97,8 +97,8 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label"> Tag <span class="span-red">*</span></label>
                                         <div class="col-sm-9 input-group">
-                                            <input type="text" id="tag-vn" name="trans[vi][tag]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ old('trans.vi.tag') }}">
-                                            @include('elements.error_line', ['attribute' => 'trans.vi.tag'])
+                                            <input type="text" id="tag-vn" name="trans[vi][tags]" class="form-control" maxlength="200" data-rule-required="true" data-role="tagsinput" value="{{ old('trans.vi.tags') }}">
+                                            @include('elements.error_line', ['attribute' => 'trans.vi.tags'])
                                         </div>
                                     </div>
                                 </div>

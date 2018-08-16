@@ -111,7 +111,7 @@
                             <div class="post-image">
                                 @foreach($blog->translations as $trans)
                                     @if(checkLanguage($trans->locale, 'boolean'))
-                                        <a href="{{ route('blogs.detail', $trans->slug) }}">
+                                        <a href="{{ route('blogs.detail', ['id' => $trans->id, 'slug' => $trans->slug]) }}">
                                             <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $trans->title }}" />
                                         </a>
                                     @endif
@@ -127,13 +127,13 @@
                                     @if(checkLanguage($trans->locale, 'boolean'))
                                         <h5>
                                             <strong>
-                                                <a href="{{ route('blogs.detail', $trans->slug) }}">
+                                                <a href="{{ route('blogs.detail', ['id' => $trans->id, 'slug' => $trans->slug]) }}">
                                                     {{ $trans->title }}
                                                 </a>
                                             </strong>
                                         </h5>
                                         {!! (strlen($trans->description) > 150) ? substr($trans->description, 0, 147) . ' ... ' : $trans->description !!}
-                                        <a href="{{ route('blogs.detail', $trans->slug) }}" class="more">{{ __('homepage.read_more') }}</a>
+                                        <a href="{{ route('blogs.detail', ['id' => $trans->id, 'slug' => $trans->slug]) }}" class="more">{{ __('homepage.read_more') }}</a>
                                     @endif
                                 @endforeach
                             </div>

@@ -16,7 +16,7 @@
                         <!-- post -->
                             <div class="post col-xl-4">
                                 <div class="post-thumbnail">
-                                    <a href="{{ route('blogs.detail', $blog->slug) }}">
+                                    <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
                                         <img src='{{ asset("$blog->image") }}' alt="{{ $blog->title }}" class="img-fluid" width="100%">
                                     </a>
                                 </div>
@@ -27,7 +27,7 @@
                                             <a href="#">Business</a>
                                         </div>
                                     </div>
-                                    <a href="{{ route('blogs.detail', $blog->slug) }}">
+                                    <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
                                         <h3 class="h4">{{ $blog->title }}</h3>
                                     </a>
                                     <p class="text-muted">{!! $blog->description !!}</p>

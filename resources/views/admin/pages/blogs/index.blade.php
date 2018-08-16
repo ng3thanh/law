@@ -24,7 +24,7 @@
                                 <tr class="body-table">
                                     <td>{{ $number++ }}</td>
                                     <td class="text-left m-w-200">
-                                        <a href="{{ route('blogs.detail', $blog->slug) }}" target="_blank">
+                                        <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}" target="_blank">
                                             <span class="short-text">{{ $blog->title }}</span>
                                         </a>
                                     </td>
