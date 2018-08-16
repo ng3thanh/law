@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+
+//        'App\Events\BlogCounter' => [
+//            'App\Listeners\CountBlogView',
+//        ],
     ];
 
     /**
@@ -26,6 +30,5 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-        Event::listen('blogs.detail', 'App\Events\ViewPostHandler');
     }
 }

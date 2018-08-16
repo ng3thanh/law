@@ -16,35 +16,35 @@
                         <!-- post -->
                             <div class="post col-xl-4">
                                 <div class="post-thumbnail">
-                                    <a href="{{ route('blogs.detail', $blog->slug) }}">
+                                    <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
                                         <img src='{{ asset("$blog->image") }}' alt="{{ $blog->title }}" class="img-fluid" width="100%">
                                     </a>
                                 </div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
+                                        <div class="date meta-last">{{ dateFormat($blog->created_at, "F j| Y") }}</div>
                                         <div class="category">
-                                            <a href="#">Business</a>
+                                            <a href="#">{{ breakStringToArray($blog->tags)[0] ?? '' }}</a>
                                         </div>
                                     </div>
-                                    <a href="{{ route('blogs.detail', $blog->slug) }}">
+                                    <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
                                         <h3 class="h4">{{ $blog->title }}</h3>
                                     </a>
                                     <p class="text-muted">{!! $blog->description !!}</p>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar">
-                                                <img src="{{ asset('web/img/avatar-3.jpg') }}" alt="..." class="img-fluid">
+                                                <img src="{{ asset('web/img/admin_logo.png') }}" alt="Admin" class="img-fluid">
                                             </div>
                                             <div class="title">
                                                 <span>{{ $blog->author }}</span>
                                             </div>
                                         </a>
                                         <div class="date">
-                                            <i class="icon-clock"></i> {{ timeElapsedString($blog->publish_date) }}
+                                            <i class="icon-clock"></i> {{ timeElapsedString($blog->created_at) }}
                                         </div>
-                                        <div class="comments meta-last">
-                                            <i class="icon-comment"></i>12
+                                        <div class="views meta-last">
+                                            <i class="icon-eye"></i> {{ $blog->view }}
                                         </div>
                                     </footer>
                                 </div>

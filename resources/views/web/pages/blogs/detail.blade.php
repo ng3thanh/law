@@ -22,29 +22,27 @@
                             <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar">
-                                        <img src="{{ asset('web/img/avatar-1.jpg') }}" alt="..." class="img-fluid">
+                                        <img src="{{ asset('web/img/admin_logo.png') }}" alt="..." class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <span>{{ $blog->author }}</span>
                                     </div>
                                 </a>
                                 <div class="d-flex align-items-center flex-wrap">
-                                    <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($blog->publish_date) }}</div>
-                                    <div class="views"><i class="icon-eye"></i> {{ $blog->view }}</div>
-                                    <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                                    <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($blog->created_at) }}</div>
+                                    <div class="views meta-last"><i class="icon-eye"></i> {{ $blog->view }}</div>
                                 </div>
                             </div>
                             <div class="post-body">
                                 {!! $blog->content !!}
                             </div>
                             <div class="post-tags">
-                                <a href="#" class="tag">#Business</a>
-                                <a href="#" class="tag">#Tricks</a>
-                                <a href="#" class="tag">#Financial</a>
-                                <a href="#" class="tag">#Economy</a>
+                                @foreach(breakStringToArray($blog->tags) as $key => $value)
+                                    <a href="#" class="tag">#{{ $value }}</a>
+                                @endforeach
                             </div>
                             <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
-                                <a href="{{ isset($blogPrevious) ? route('blogs.detail', $blogPrevious->slug) : '#' }}" class="prev-post text-left d-flex align-items-center">
+                                <a href="{{ isset($blogPrevious) ? route('blogs.detail', ['id' => $blogPrevious->id, 'slug' => $blogPrevious->slug]) : '#' }}" class="prev-post text-left d-flex align-items-center">
                                     <div class="icon prev">
                                         <i class="fa fa-angle-left"></i>
                                     </div>
@@ -53,7 +51,7 @@
                                         <h6>{{ isset($blogPrevious) ? $blogPrevious->title : 'No post' }}</h6>
                                     </div>
                                 </a>
-                                <a href="{{ isset($blogNext) ? route('blogs.detail', $blogNext->slug) : '#' }}" class="next-post text-right d-flex align-items-center justify-content-end">
+                                <a href="{{ isset($blogNext) ? route('blogs.detail', ['id' => $blogNext->id, 'slug' => $blogNext->slug]) : '#' }}" class="next-post text-right d-flex align-items-center justify-content-end">
                                     <div class="text">
                                         <strong class="text-primary">Next Post </strong>
                                         <h6>{{ isset($blogNext) ? $blogNext->title : 'No post' }}</h6>
@@ -100,7 +98,7 @@
                     </header>
                     <div class="blog-posts">
                         @foreach ($randomBlog as $rBlog)
-                            <a href="{{ route('blogs.detail', $rBlog->slug) }}">
+                            <a href="{{ route('blogs.detail', ['id' => $rBlog->id, 'slug' => $rBlog->slug]) }}">
                                 <div class="item d-flex align-items-center">
                                     <div class="image">
                                         <img src="{{ asset("$rBlog->image") }}" alt="{{ $rBlog->title }}" class="img-fluid">
@@ -109,7 +107,6 @@
                                         <strong>{{ $rBlog->title }}</strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> {{ $rBlog->view }}</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
                                         </div>
                                     </div>
                                 </div>
@@ -124,11 +121,9 @@
                         <h3 class="h6">Tags</h3>
                     </header>
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+                        @foreach(breakStringToArray($blog->tags) as $key => $value)
+                            <li class="list-inline-item"><a href="#" class="tag">#{{ $value }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>

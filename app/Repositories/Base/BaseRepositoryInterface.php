@@ -24,6 +24,13 @@ interface BaseRepositoryInterface
     public function getAllPaginate($limit);
 
     /**
+     * Get all paginate with trash
+     * @param $limit
+     * @return mixed
+     */
+    public function getAllPaginateWithTrash($limit);
+
+    /**
      * Get random data
      * @param $number
      * @return mixed
@@ -73,6 +80,13 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function delete($id);
+
+    /**
+     * Restore
+     * @param $id
+     * @return mixed
+     */
+    public function restore($id);
 
     /**
      * @return mixed

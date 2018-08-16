@@ -6,4 +6,5 @@ return [
     'service' => 'upload/services/',
     'client' => 'upload/clients/',
     'introduce' => 'upload/introduces/',
+    'logo' => 'upload/logo/',
 ];

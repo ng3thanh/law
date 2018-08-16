@@ -23,13 +23,11 @@ Route::middleware('guest')->namespace('Web')->group(function () {
         // Blogs
         Route::prefix('blogs')->group(function () {
             Route::get('list/', 'BlogsController@index')->name('blogs.index');
-            Route::group(['middleware' => 'filter'], function() {
-                Route::get('{slug}', 'BlogsController@show')->name('blogs.detail');
-            });
+            Route::get('{id}/{slug}', 'BlogsController@show')->name('blogs.detail');
         });
 
         Route::prefix('services')->group(function () {
-            Route::get('{slug}', 'ServicesController@show')->name('services.detail');
+            Route::get('{id}/{slug}', 'ServicesController@show')->name('services.detail');
         });
 
         Route::get('change-language/{language}', 'MainController@changeLanguage')->name('user.change-language');
@@ -52,6 +50,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         // Blogs
         Route::resource('blog', 'BlogsController');
+        Route::post('blog/restore/{id}', 'BlogsController@restore')->name('blog.restore');
         Route::get('blog/copy/{id}', 'BlogsController@copy')->name('blog.copy');
 
         // Clients
@@ -71,6 +70,10 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         // Introduce
         Route::get('introduce/index', 'SettingsController@introduceIndex')->name('introduce.index');
         Route::post('introduce/update/{id}', 'SettingsController@introduceUpdate')->name('introduce.update');
+
+        // Logo
+        Route::get('logo/index', 'SettingsController@logoIndex')->name('logo.index');
+        Route::post('logo/update', 'SettingsController@logoUpdate')->name('logo.update');
     });
 });
 

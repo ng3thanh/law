@@ -18,14 +18,14 @@ class ServicesEloquentRepository extends BaseEloquentRepository implements Servi
 
     /**
      * Find by slug
-     * @param $slug
+     * @param $id
      * @return mixed
      */
-    public function findBySlug($slug)
+    public function findBySlugRelatedId($id)
     {
         $locale = app()->getLocale();
         $result = $this->model->join('services_translate', 'services_translate.services_id', '=', 'services.id')
-            ->where('services_translate.slug', $slug)
+            ->where('services_translate.services_id', $id)
             ->where('services_translate.locale', $locale)
             ->first();
         return $result;

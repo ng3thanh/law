@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
          $this->call(SentinelDatabaseSeeder::class);
          $this->call(FooterDatabaseSeeder::class);
          $this->call(IntroduceDatabaseSeeder::class);
+         $this->call(LogoDatabaseSeeder::class);
     }
 }

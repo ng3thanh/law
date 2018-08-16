@@ -33,9 +33,9 @@ class ClientsController extends Controller
     public function index()
     {
         $limit = config('constant.number.client.paginate.admin');
-        $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
-        $clients = $this->clientService->getAllClient();
-        return view('admin.pages.clients.index', compact('clients', 'number'));
+//        $number = (RequestParameter::get('page','1') - 1)* $limit + 1;
+        $client = $this->clientService->getAllClient($limit)->first();
+        return view('admin.pages.clients.index', compact('client'));
     }
 
     /**

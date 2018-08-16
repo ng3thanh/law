@@ -220,10 +220,9 @@ if (!function_exists('dateFormat')) {
 
 if (!function_exists('checkLanguage')) {
     /**
-     * @param $input
      * @param string $language
-     * @param string $format
-     * @return string
+     * @param string $type
+     * @return bool|string
      */
     function checkLanguage($language = 'en', $type = 'active')
     {
@@ -237,5 +236,18 @@ if (!function_exists('checkLanguage')) {
         }
 
         return $return;
+    }
+}
+
+if (!function_exists('breakStringToArray')) {
+    /**
+     * @param $string
+     * @param string $character
+     * @return array
+     */
+    function breakStringToArray($string, $character = ',')
+    {
+        $array = explode($character, $string);
+        return $array;
     }
 }

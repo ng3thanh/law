@@ -60,7 +60,8 @@ class MainController extends Controller
     public function index()
     {
         $blogCount = $this->blogService->countBlog();
-        $clientCount = $this->clientService->countClient();
+//        $clientCount = $this->clientService->countClient();
+        $clientCount = 0;
         $serviceCount = $this->serviceService->countService();
         $contactCount = $this->feedbackService->countFeedback();
         return view('admin.dashboard', compact('blogCount', 'clientCount', 'serviceCount', 'contactCount'));

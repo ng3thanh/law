@@ -62,6 +62,17 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Get all paginate with trash
+     * @param $limit
+     * @return mixed
+     */
+    public function getAllPaginateWithTrash($limit)
+    {
+        $result = $this->model->withTrashed()->orderBy('deleted_at')->paginate($limit);
+        return $result;
+    }
+
+    /**
      * Get random data
      * @param $number
      * @return mixed
@@ -145,6 +156,22 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
         $result = $this->find($id);
         if ($result) {
             $result->delete();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Restore
+     * @param $id
+     * @return mixed
+     */
+    public function restore($id)
+    {
+        $result = $this->model->where('id', $id)->withTrashed()->first();
+        if ($result) {
+            $result->restore();
             return true;
         }
 

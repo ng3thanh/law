@@ -20,6 +20,7 @@ class BlogService
      */
     protected $blogsTransRepository;
 
+
     /**
      * BlogService constructor.
      * @param BlogsRepositoryInterface $blogsRepository
@@ -52,7 +53,7 @@ class BlogService
      */
     public function getAllBlog($limit)
     {
-        $data = $this->blogsRepository->getAllPaginate($limit);
+        $data = $this->blogsRepository->getAllPaginateWithTrash($limit);
         return $data;
     }
 
@@ -63,19 +64,19 @@ class BlogService
      */
     public function getAllBlogInWeb($limit)
     {
-        $data = $this->blogsRepository->getAllBlogPaginate($limit);
+        $data = $this->blogsRepository->getAllPaginate($limit);
         return $data;
     }
 
     /**
-     * Find blog by slug
+     * Find blog by id
      *
-     * @param $slug
+     * @param $id
      * @return mixed
      */
-    public function findBlogBySlug($slug)
+    public function findBlogBySlugId($id)
     {
-        $data = $this->blogsRepository->findBySlug($slug);
+        $data = $this->blogsRepository->findByIdRelatedSlug($id);
         return $data;
     }
 
@@ -85,7 +86,7 @@ class BlogService
      */
     public function findBlogNext($blog)
     {
-        $data = $this->blogsRepository->getBlogNextDate($blog->id, $blog->publish_date);
+        $data = $this->blogsRepository->getBlogNextDate($blog->id, $blog->created_at);
         return $data;
     }
 
@@ -95,7 +96,7 @@ class BlogService
      */
     public function findBlogPrevious($blog)
     {
-        $data = $this->blogsRepository->getBlogPreviousDate($blog->id, $blog->publish_date);
+        $data = $this->blogsRepository->getBlogPreviousDate($blog->id, $blog->created_at);
         return $data;
     }
 
@@ -117,8 +118,6 @@ class BlogService
             }
 
             // Save data of base blog
-            $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
-            $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
             $data['author'] = Sentinel::getUser()->username;
             $dataMainBlog = formatDataBaseOnTable('blogs', $data);
             $result = $this->blogsRepository->create($dataMainBlog);
@@ -166,9 +165,6 @@ class BlogService
                 $newName = uploadImage($id, $data['image'], 'blog');
                 $data['image'] = config('upload.blog') . $id . '/' . $newName;
             }
-
-            $data['publish_date'] = date('Y-m-d H:i:s', strtotime($data['publish_date']));
-            $data['end_date'] = date('Y-m-d H:i:s', strtotime($data['end_date']));
 
             $dataBaseBlog = formatDataBaseOnTable('blogs', $data);
             $this->blogsRepository->update($id, $dataBaseBlog);
@@ -225,5 +221,39 @@ class BlogService
     {
         $delete = $this->blogsRepository->delete($id);
         return $delete;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function restoreBlog($id)
+    {
+        $delete = $this->blogsRepository->restore($id);
+        return $delete;
+    }
+    /**
+     * Get all tags of blog
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getAllTagsOfBlog($id)
+    {
+        $tags = $this->tagsRepository->getAllTagsOfBlog($id);
+        return $tags;
+    }
+
+    public function saveViewBlog($blog, $view)
+    {
+        try {
+            DB::beginTransaction();
+            $data = $this->blogsRepository->update($blog->blogs_id, ['view' => $view]);
+            DB::commit();
+            return $data;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return $blog;
+        }
     }
 }
