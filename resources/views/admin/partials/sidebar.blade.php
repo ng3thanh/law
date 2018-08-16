@@ -47,7 +47,7 @@
 
             <li class="header">SIDEBAR MENU</li>
 
-            <li class="treeview {{ $dashboardActive }}">
+            <li class="{{ $dashboardActive }}">
                 <a href="{{ route('dashboard') }}">
                     <i class="fa fa-dashboard"></i>
                     <span> Dashboard</span>
@@ -158,6 +158,11 @@
                     <li>
                         <a href="{{ route('introduce.index') }}">
                             <i class="fa fa-circle-o"></i> Introduce
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logo.index') }}">
+                            <i class="fa fa-circle-o"></i> Logo
                         </a>
                     </li>
                 </ul>

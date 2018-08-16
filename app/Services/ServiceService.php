@@ -123,10 +123,14 @@ class ServiceService
         $delete = $this->servicesRepository->delete($id);
         return $delete;
     }
-
-    public function findServiceBySlug($slug)
+    /**
+     * Find by slug
+     * @param $id
+     * @return mixed
+     */
+    public function findServiceBySlugId($id)
     {
-        $service = $this->servicesRepository->findBySlug($slug);
+        $service = $this->servicesRepository->findBySlugRelatedId($id);
         return $service;
     }
 }

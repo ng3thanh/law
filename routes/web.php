@@ -27,7 +27,7 @@ Route::middleware('guest')->namespace('Web')->group(function () {
         });
 
         Route::prefix('services')->group(function () {
-            Route::get('{slug}', 'ServicesController@show')->name('services.detail');
+            Route::get('{id}/{slug}', 'ServicesController@show')->name('services.detail');
         });
 
         Route::get('change-language/{language}', 'MainController@changeLanguage')->name('user.change-language');
@@ -70,6 +70,10 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         // Introduce
         Route::get('introduce/index', 'SettingsController@introduceIndex')->name('introduce.index');
         Route::post('introduce/update/{id}', 'SettingsController@introduceUpdate')->name('introduce.update');
+
+        // Logo
+        Route::get('logo/index', 'SettingsController@logoIndex')->name('logo.index');
+        Route::post('logo/update', 'SettingsController@logoUpdate')->name('logo.update');
     });
 });
 

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="logo">
-                    <h6 class="text-white">Bootstrap Blog</h6>
+                    <h6 class="text-white">{{ $logo->name }}</h6>
                 </div>
                 <div class="contact-details">
                     @foreach($footer[1] as $key => $value)

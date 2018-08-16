@@ -29,10 +29,10 @@ class ServicesController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($slug)
+    public function show($id, $slug)
     {
-        $service = $this->serviceService->findServiceBySlug($slug);
-        return view('services.detail', compact('service'));
+        $service = $this->serviceService->findServiceBySlugId($id);
+        return view('web.pages.services.detail', compact('service'));
     }
 
 }

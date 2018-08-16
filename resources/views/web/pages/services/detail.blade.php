@@ -2,136 +2,104 @@
 
 @section('title', 'Blogs')
 @section('css')
+    <style>
+        .service-detail {
+            padding-top: 100px;
+        }
 
+        .service-detail .service-footer {
+            font-size: 0.8em;
+        }
+
+        .service-detail .service-footer .author {
+            margin: 0 10px 0 50px;
+        }
+
+        .service-detail .service-footer .author .avatar{
+            max-width: 40px;
+            min-width: 40px;
+            height: 40px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .service-detail .service-footer .title, .service-detail .service-footer .date {
+            font-weight: 400;
+            color: #999;
+            text-transform: capitalize;
+            letter-spacing: 0.05em;
+        }
+
+        .service-detail .panel.panel-default {
+            border-top-width: 3px;
+        }
+
+        .service-detail .panel {
+            box-shadow: 0 1px 1px -1px rgba(0,0,0,.14),0 1px 2px 0 rgba(0,0,0,.098),0 1px 3px 0 rgba(0,0,0,.084);
+            border: 0;
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+        .service-detail .panel-body {
+            padding: 15px 0 15px 0;
+        }
+        .service-detail .thumb96 {
+            width: 96px!important;
+            height: 96px!important;
+        }
+        .service-detail .service-name {
+            margin: 15px 0 15px 0;
+        }
+
+        .service-detail .service-content {
+            padding: 10px 30px 10px 30px;
+        }
+    </style>
 @endsection
-@section('content')
-    <div class="container header-padding-top">
-        <div class="row">
-            <!-- Latest Posts -->
-            <main class="post blog-post col-lg-8">
-                <div class="container">
-                    <div class="post-single">
-                        <div class="post-thumbnail">
-                            <img src="{{ asset("$service->image") }}" alt="{{ $service->title }}" class="img-fluid">
-                        </div>
-                        <div class="post-details">
-                            <div class="post-meta d-flex justify-content-between">
-                                <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
-                            </div>
-                            <h1>{{ $service->title }} <a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
-                            <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
-                                <a href="#" class="author d-flex align-items-center flex-wrap">
-                                    <div class="avatar">
-                                        <img src="{{ asset('web/img/avatar-1.jpg') }}" alt="..." class="img-fluid">
-                                    </div>
-                                    <div class="title">
-                                        <span>{{ $service->author }}</span>
-                                    </div>
-                                </a>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($service->publish_date) }}</div>
-                                    <div class="views"><i class="icon-eye"></i> 500</div>
-                                    <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                </div>
-                            </div>
-                            <div class="post-body">
-                                {!! $service->content !!}
-                            </div>
-                            <div class="post-tags">
-                                <a href="#" class="tag">#Business</a>
-                                <a href="#" class="tag">#Tricks</a>
-                                <a href="#" class="tag">#Financial</a>
-                                <a href="#" class="tag">#Economy</a>
-                            </div>
-                            <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
-                                <a href="{{ isset($servicePrevious) ? route('blogs.detail', $servicePrevious->slug) : '#' }}" class="prev-post text-left d-flex align-items-center">
-                                    <div class="icon prev">
-                                        <i class="fa fa-angle-left"></i>
-                                    </div>
-                                    <div class="text">
-                                        <strong class="text-primary">Previous Post </strong>
-                                        <h6>{{ isset($servicePrevious) ? $servicePrevious->title : 'No post' }}</h6>
-                                    </div>
-                                </a>
-                                <a href="{{ isset($serviceNext) ? route('blogs.detail', $serviceNext->slug) : '#' }}" class="next-post text-right d-flex align-items-center justify-content-end">
-                                    <div class="text">
-                                        <strong class="text-primary">Next Post </strong>
-                                        <h6>{{ isset($serviceNext) ? $serviceNext->title : 'No post' }}</h6>
-                                    </div>
-                                    <div class="icon next">
-                                        <i class="fa fa-angle-right">   </i>
-                                    </div>
-                                </a>
-                            </div>
 
-                            <div class="add-comment">
-                                <header>
-                                    <h3 class="h6">Leave a reply</h3>
-                                </header>
-                                <form action="{{ route('feedbacks.store') }}" class="commenting-form" method="post" role="form">
-                                    {{ csrf_field() }}
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <input type="text" name="name" id="username" placeholder="Name" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <input type="email" name="mail" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <input type="text" name="subject" id="usersubject" placeholder="Subject of your comment" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <textarea name="content" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <button type="submit" class="btn btn-secondary">Submit Comment</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+@section('content')
+    <div class="container bootstrap snippet">
+        <div class="row ng-scope service-detail">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <div class="pv-lg">
+                            <img class="center-block img-responsive img-circle img-thumbnail thumb96" src='{{ asset("$service->image") }}' alt="{{ $service->name or '' }}">
                         </div>
-                    </div>
-                </div>
-            </main>
-            <aside class="col-lg-4">
-                <div class="widget latest-posts">
-                    <header>
-                        <h3 class="h6">Random Posts</h3>
-                    </header>
-                    <div class="blog-posts">
-                        @foreach ($randomBlog as $rBlog)
-                            <a href="{{ route('blogs.detail', $rBlog->slug) }}">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image">
-                                        <img src="{{ asset("$rBlog->image") }}" alt="..." class="img-fluid">
-                                    </div>
-                                    <div class="title">
-                                        <strong>{{ $rBlog->title }}</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
+                        <h3 class="m0 text-bold service-name">{{ $service->name or '' }}</h3>
+                        <div class="service-footer d-flex align-items-center flex-column flex-sm-row">
+                            <a href="#" class="author d-flex align-items-center flex-wrap">
+                                <div class="avatar">
+                                    <img src="{{ asset('web/img/admin_logo.png') }}" alt="..." class="img-fluid">
+                                </div>
+                                <div class="title">
+                                    <span>Admin</span>
                                 </div>
                             </a>
-                        @endforeach
+                            <div class="d-flex align-items-center flex-wrap">
+                                <div class="date meta-last"><i class="icon-clock"></i> {{ timeElapsedString($service->created_at) }}</div>
+                            </div>
+                        </div>
+                        <div class="mv-lg">
+                            {!! $service->description or '' !!}
+                        </div>
                     </div>
                 </div>
-
-                <!-- Widget [Tags Cloud Widget]-->
-                <div class="widget tags">
-                    <header>
-                        <h3 class="h6">Tags</h3>
-                    </header>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-                        <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
-                    </ul>
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row pv-lg">
+                            <div class="col-lg-8">
+                                <span class="service-content">
+                                    {!! $service->content !!}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </aside>
+            </div>
         </div>
     </div>
 @endsection

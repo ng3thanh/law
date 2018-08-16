@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Footers\FootersRepositoryInterface;
 use App\Repositories\Introduces\IntroducesRepositoryInterface;
 use App\Repositories\IntroducesTranslate\IntroducesTranslateRepositoryInterface;
+use App\Repositories\Logo\LogoRepositoryInterface;
 use App\Repositories\Slides\SlidesRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -30,23 +31,32 @@ class SettingsService
      * @var IntroducesTranslateRepositoryInterface
      */
     protected $introducesTranslateRepository;
+
+    /**
+     * @var LogoRepositoryInterface
+     */
+    protected $logoRepository;
+
     /**
      * SettingsService constructor.
-     *
      * @param SlidesRepositoryInterface $slidesRepository
      * @param FootersRepositoryInterface $footersRepository
      * @param IntroducesRepositoryInterface $introducesRepository
+     * @param IntroducesTranslateRepositoryInterface $introducesTranslateRepository
+     * @param LogoRepositoryInterface $logoRepository
      */
     public function __construct(
         SlidesRepositoryInterface $slidesRepository,
         FootersRepositoryInterface $footersRepository,
         IntroducesRepositoryInterface $introducesRepository,
-        IntroducesTranslateRepositoryInterface $introducesTranslateRepository
+        IntroducesTranslateRepositoryInterface $introducesTranslateRepository,
+        LogoRepositoryInterface $logoRepository
     ) {
         $this->slidesRepository = $slidesRepository;
         $this->footersRepository = $footersRepository;
         $this->introducesRepository = $introducesRepository;
         $this->introducesTranslateRepository = $introducesTranslateRepository;
+        $this->logoRepository = $logoRepository;
     }
 
     /**
@@ -224,6 +234,33 @@ class SettingsService
             foreach ($dataTranslates as $key => $value) {
                 $this->introducesTranslateRepository->updateTrans('introduce_id', $id, $key, $value);
             }
+
+            DB::commit();
+            return true;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    public function getLogo()
+    {
+        $logo = $this->logoRepository->getAll()->first();
+        return $logo;
+    }
+
+    public function updateLogo($data)
+    {
+        try {
+            DB::beginTransaction();
+
+            if (isset($data['image'])) {
+                $newName = uploadImage(1, $data['image'], 'logo');
+                $data['image'] = config('upload.logo') . '1/' . $newName;
+            }
+
+            $dataBaseIntroduce = formatDataBaseOnTable('logo', $data);
+            $this->logoRepository->update(1, $dataBaseIntroduce);
 
             DB::commit();
             return true;

@@ -44,7 +44,6 @@
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('services.edit', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('services.destroy', $service->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

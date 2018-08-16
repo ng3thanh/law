@@ -7,7 +7,7 @@
         <div class="container">
             <!-- Navbar Brand -->
             <div class="navbar-header d-flex align-items-center justify-content-between">
-                <a href="{{ route('main') }}" class="navbar-brand">Bootstrap Blog</a>
+                <a href="{{ route('main') }}" class="navbar-brand">{{ $logo->name }}</a>
                 <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
                     <span></span>
                     <span></span>

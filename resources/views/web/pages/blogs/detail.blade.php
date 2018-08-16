@@ -30,7 +30,7 @@
                                 </a>
                                 <div class="d-flex align-items-center flex-wrap">
                                     <div class="date"><i class="icon-clock"></i> {{ timeElapsedString($blog->created_at) }}</div>
-                                    <div class="views"><i class="icon-eye"></i> {{ $blog->view }}</div>
+                                    <div class="views meta-last"><i class="icon-eye"></i> {{ $blog->view }}</div>
                                 </div>
                             </div>
                             <div class="post-body">

@@ -18,7 +18,7 @@
         <div id="header-wrapper" class="header-slider">
             <header class="clearfix">
                 <div class="logo">
-                    <img src="{{ asset('web/img/1234.png') }}" alt="" />
+                    <img src='{{ asset("$logo->image") }}' alt="{{ $logo->name or '' }}" />
                 </div>
                 <div class="container">
                     <div class="row">
@@ -27,17 +27,17 @@
                                 <ul class="slides">
                                     <li>
                                         <p class="home-slide-content">
-                                            <strong>creative</strong> and passion
+                                            {!! $logo->content1 or '' !!}
                                         </p>
                                     </li>
                                     <li>
                                         <p class="home-slide-content">
-                                            Eat and drink <strong>design</strong>
+                                            {!! $logo->content2 or '' !!}
                                         </p>
                                     </li>
                                     <li>
                                         <p class="home-slide-content">
-                                            We loves <strong>simplicity</strong>
+                                            {!! $logo->content3 or '' !!}
                                         </p>
                                     </li>
                                 </ul>
@@ -55,13 +55,13 @@
                 <div class="row">
                     <div class="col-lg-4 offset-1">
                         <div>
-                            <h2>{{ $introduce->name }}</h2>
-                            {!! $introduce->content !!}
+                            <h2>{{ $introduce->name or '' }}</h2>
+                            {!! $introduce->content or '' !!}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="text-center">
-                            <img src="{{ asset("$introduce->image") }}" alt="" />
+                            <img src="{{ asset("$introduce->image") }}" alt="{{ $introduce->name or '' }}" />
                         </div>
                     </div>
                 </div>
@@ -78,9 +78,13 @@
                     @foreach ($services as $service)
                     <div class="service-box-hover col-lg-3">
                         <div class="service-box">
-                            <img src='{{ asset("$service->image") }}' alt="{{ $service->name }}" />
-                            <h2>{{ $service->name }}</h2>
-                            {!! $service->description !!}
+                            <img src='{{ asset("$service->image") }}' alt="{{ $service->name or '' }}" />
+                            <h2>
+                                <a href="{{ route('services.detail', ['id' => $service->id, 'slug' => $service->slug]) }}">
+                                    {{ $service->name or '' }}
+                                </a>
+                            </h2>
+                            {!! $service->description or '' !!}
                         </div>
                     </div>
                     @endforeach
@@ -94,7 +98,7 @@
                 <h4>{{ __('homepage.clients') }}</h4>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 20px">
-                        <img src='{{ asset("$client->image") }}' alt="{{ $client->name }}" width="100%" />
+                        <img src='{{ asset("$client->image") }}' alt="{{ $client->name or '' }}" width="100%" />
                     </div>
                 </div>
             </div>

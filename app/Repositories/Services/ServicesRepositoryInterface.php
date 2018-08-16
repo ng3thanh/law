@@ -6,5 +6,10 @@ use App\Repositories\Base\BaseRepositoryInterface;
 
 interface ServicesRepositoryInterface extends BaseRepositoryInterface
 {
-    public function findBySlug($slug);
+    /**
+     * Find by slug
+     * @param $id
+     * @return mixed
+     */
+    public function findBySlugRelatedId($id);
 }

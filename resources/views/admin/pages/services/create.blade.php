@@ -45,14 +45,14 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                             <div class="col-sm-9 input-group">
-                                                <textarea class="form-control" data-rule-required="true" id="des_ckediter" name="trans[en][description]" rows="8" cols="80">{{ old('trans.en.description') }}</textarea>
+                                                <textarea class="form-control" id="des_ckediter" name="trans[en][description]" rows="8" cols="80">{{ old('trans.en.description') }}</textarea>
                                                 @include('elements.error_line', ['attribute' => 'trans.en.description'])
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                             <div class="col-sm-9 input-group">
-                                                <textarea class="form-control" data-rule-required="true" id="content_ckediter" name="trans[en][content]" rows="10" cols="80">{{ old('trans.en.content') }}</textarea>
+                                                <textarea class="form-control" id="content_ckediter" name="trans[en][content]" rows="10" cols="80">{{ old('trans.en.content') }}</textarea>
                                                 @include('elements.error_line', ['attribute' => 'trans.en.content'])
                                             </div>
                                         </div>
@@ -76,14 +76,14 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label"> Description <span class="span-red">*</span></label>
                                             <div class="col-sm-9 input-group">
-                                                <textarea class="form-control" data-rule-required="true" id="des_ckediter_vn" name="trans[vi][description]" rows="8" cols="80">{{ old('trans.vi.description') }}</textarea>
+                                                <textarea class="form-control" id="des_ckediter_vn" name="trans[vi][description]" rows="8" cols="80">{{ old('trans.vi.description') }}</textarea>
                                                 @include('elements.error_line', ['attribute' => 'trans.vi.description'])
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label"> Content <span class="span-red">*</span></label>
                                             <div class="col-sm-9 input-group">
-                                                <textarea class="form-control" data-rule-required="true" id="content_ckediter_vn" name="trans[vi][content]" rows="10" cols="80">{{ old('trans.vi.content') }}</textarea>
+                                                <textarea class="form-control" id="content_ckediter_vn" name="trans[vi][content]" rows="10" cols="80">{{ old('trans.vi.content') }}</textarea>
                                                 @include('elements.error_line', ['attribute' => 'trans.vi.content'])
                                             </div>
                                         </div>

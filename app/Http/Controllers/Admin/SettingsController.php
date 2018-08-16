@@ -119,12 +119,43 @@ class SettingsController extends Controller
         return view('admin.pages.settings.introduces.index', compact('introduce'));
     }
 
+    /**
+     * Update introduce
+     * @param Request $request
+     * @param $id
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function introduceUpdate(Request $request, $id)
     {
         $data = $request->except('_token', '_method');
         $result = $this->settingService->updateIntroduce($id, $data);
         if ($result) {
             return redirect()->route('introduce.index')->with('success', 'Update data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when update data')->withInput();
+        }
+    }
+
+    /**
+     * Get Logo
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function logoIndex() {
+        $logo = $this->settingService->getLogo();
+        return view('admin.pages.settings.logo.index', compact('logo'));
+    }
+
+    /**
+     * Update logo
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function logoUpdate(Request $request)
+    {
+        $data = $request->except('_token');
+        $result = $this->settingService->updateLogo($data);
+        if ($result) {
+            return redirect()->route('logo.index')->with('success', 'Update data successfully!');
         } else {
             return redirect()->back()->with('error', 'Having error when update data')->withInput();
         }
