@@ -1291,6 +1291,13 @@ main.posts-listing .post-footer {
   height: auto !important;
 }
 
+@media screen and (max-width: 480px) {
+  .blog-post .post-body img {
+    max-width: 400px;
+    height: auto !important;
+  }
+}
+
 .blog-post .post-body h2,
 .blog-post .post-body h3,
 .blog-post .post-body h4,
