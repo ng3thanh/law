@@ -1286,6 +1286,11 @@ main.posts-listing .post-footer {
   margin-top: 40px;
 }
 
+.blog-post .post-body img {
+  max-width: 700px;
+  height: auto;
+}
+
 .blog-post .post-body h2,
 .blog-post .post-body h3,
 .blog-post .post-body h4,
