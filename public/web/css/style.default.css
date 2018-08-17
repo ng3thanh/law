@@ -1288,7 +1288,7 @@ main.posts-listing .post-footer {
 
 .blog-post .post-body img {
   max-width: 700px;
-  height: auto;
+  height: auto !important;
 }
 
 .blog-post .post-body h2,
