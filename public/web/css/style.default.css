@@ -2946,6 +2946,11 @@ a.text-dark:focus, a.text-dark:hover {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
+#homepage section#services .service-box a{
+  color: #020202;
+}
+
 #homepage section#services .service-box-hover:hover {
   background: #3d3838;
 }
