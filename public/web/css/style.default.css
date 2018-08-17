@@ -449,7 +449,7 @@ div[class*="-btn"] {
 .nav-header {
   position: fixed;
   width: 100%;
-  z-index: 9998;
+  /*z-index: 9998;*/
 }
 
 .header-padding-top {
@@ -3130,7 +3130,6 @@ a.text-dark:focus, a.text-dark:hover {
 
 #homepage #contact-form {
   position: relative;
-  z-index: 999;
 }
 
 #homepage #contact-form input[type=text], #homepage .contactForm textarea {

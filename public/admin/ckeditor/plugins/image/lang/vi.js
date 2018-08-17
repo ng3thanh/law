@@ -21,8 +21,5 @@ CKEDITOR.plugins.setLang( 'image', 'vi', {
 	vSpace: 'Khoảng đệm dọc',
 	validateBorder: 'Chiều rộng của đường viền phải là một số nguyên dương',
 	validateHSpace: 'Khoảng đệm ngang phải là một số nguyên dương',
-	validateVSpace: 'Khoảng đệm dọc phải là một số nguyên dương',
-    alignLeft: 'Trái',
-    alignRight: 'Phải',
-    alignCenter: 'Giữa',
+	validateVSpace: 'Khoảng đệm dọc phải là một số nguyên dương'
 } );

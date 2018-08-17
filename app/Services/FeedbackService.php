@@ -38,9 +38,8 @@ class FeedbackService
             DB::commit();
             return true;
         } catch (Exception $e) {
-            dd($e->getMessage());
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
-            logger(__METHOD__ . $e->getMessage());
             return false;
         }
     }

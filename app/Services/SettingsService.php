@@ -108,6 +108,7 @@ class SettingsService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -142,6 +143,7 @@ class SettingsService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -178,6 +180,7 @@ class SettingsService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -197,6 +200,7 @@ class SettingsService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -238,6 +242,7 @@ class SettingsService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -265,6 +270,7 @@ class SettingsService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }

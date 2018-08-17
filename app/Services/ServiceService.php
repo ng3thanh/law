@@ -71,7 +71,7 @@ class ServiceService
             DB::commit();
             return true;
         } catch (Exception $e) {
-            dd($e->getMessage());
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -97,6 +97,7 @@ class ServiceService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
