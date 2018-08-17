@@ -894,7 +894,6 @@
 								},
 								{
 									id: 'cmbAlign',
-									requiredContent: 'img{float}',
 									type: 'select',
 									widths: [ '35%', '65%' ],
 									style: 'width:90px',
@@ -902,8 +901,9 @@
 									'default': '',
 									items: [
 										[ editor.lang.common.notSet, '' ],
-										[ editor.lang.common.left, 'left' ],
-										[ editor.lang.common.right, 'right' ]
+										[ editor.lang.common.alignLeft, 'left' ],
+										[ editor.lang.common.alignRight, 'right' ],
+                                        [ editor.lang.common.alignCenter , 'center']
 										// Backward compatible with v2 on setup when specified as attribute value,
 										// while these values are no more available as select options.
 										//	[ editor.lang.image.alignAbsBottom , 'absBottom'],
@@ -919,40 +919,61 @@
 										commitInternally.call( this, 'advanced:txtdlgGenStyle' );
 									},
 									setup: function( type, element ) {
-										if ( type == IMAGE ) {
-											var value = element.getStyle( 'float' );
-											switch ( value ) {
-												// Ignore those unrelated values.
-												case 'inherit':
-												case 'none':
-													value = '';
-											}
-
-											!value && ( value = ( element.getAttribute( 'align' ) || '' ).toLowerCase() );
-											this.setValue( value );
-										}
+                                        if (type == IMAGE) {
+                                            var value = element.getStyle('float');
+                                            switch (value) {
+                                                case 'inherit':
+                                                case 'none':
+                                                    value = '';
+                                            }!value && (value = (element.getAttribute('align') || '').toLowerCase());
+                                            this.setValue(value);
+                                        }
 									},
-									commit: function( type, element ) {
+									commit: function( type, element, value ) {
 										var value = this.getValue();
-										if ( type == IMAGE || type == PREVIEW ) {
-											if ( value )
-												element.setStyle( 'float', value );
-											else
-												element.removeStyle( 'float' );
-
-											if ( type == IMAGE ) {
-												value = ( element.getAttribute( 'align' ) || '' ).toLowerCase();
-												switch ( value ) {
-													// we should remove it only if it matches "left" or "right",
-													// otherwise leave it intact.
-													case 'left':
-													case 'right':
-														element.removeAttribute( 'align' );
-												}
-											}
-										} else if ( type == CLEANUP ) {
-											element.removeStyle( 'float' );
-										}
+                                        if (type == IMAGE || type == PREVIEW) {
+                                            if (value) {
+                                                switch (value) {
+                                                    case 'left':
+                                                        element.setStyle('float', value);
+                                                        break;
+                                                    case 'right':
+                                                        element.setStyle('float', value);
+                                                        break;
+                                                    case 'center':
+                                                        element.setStyle('display','block');
+                                                        element.setStyle('margin-left','auto');
+                                                        element.setStyle('margin-right','auto');
+                                                        break;
+                                                    default:
+                                                        element.setStyle('float', value);
+                                                }
+                                            } else {
+                                                element.removeStyle('float');
+                                                element.removeStyle('display');
+                                                element.removeStyle('margin-right');
+                                                element.removeStyle('margin-left');
+                                            }
+                                            if (!value && type == IMAGE) {
+                                                value = (element.getAttribute('align') || '').toLowerCase();
+                                                console.log(value);
+                                                switch (value) {
+                                                    case 'left':
+                                                        break;
+                                                    case 'right':
+                                                        break;
+                                                    case 'center':
+                                                        break;
+                                                    default:
+                                                        element.removeAttribute('align');
+                                                }
+                                            }
+                                        } else if (type == CLEANUP){
+                                            element.removeStyle('float');
+                                            element.removeStyle('display');
+                                            element.removeStyle('margin-right');
+                                            element.removeStyle('margin-left');
+                                        }
 									}
 								} ]
 							} ]
