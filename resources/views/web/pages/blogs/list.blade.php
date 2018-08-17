@@ -30,7 +30,10 @@
                                     <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
                                         <h3 class="h4">{{ $blog->title }}</h3>
                                     </a>
-                                    <p class="text-muted">{!! $blog->description !!}</p>
+                                    <p class="text-muted">
+                                        {!! (strlen($blog->description) > 350) ? substr($blog->description, 0, 347) . ' ... ' : $blog->description !!}
+                                    </p>
+                                    <a href="{{ route('blogs.detail', ['id' => $blog->id, 'slug' => $blog->slug]) }}" class="more">{{ __('homepage.continue_reading') }}</a>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar">

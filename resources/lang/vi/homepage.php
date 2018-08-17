@@ -18,4 +18,5 @@ return [
     'your_subject' => 'Tiêu đề',
     'your_message' => 'Nội dung',
     'send_feedback' => 'Gửi phản hồi',
+    'continue_reading' => 'Đọc tiếp ->',
 ];
