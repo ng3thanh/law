@@ -449,7 +449,7 @@ div[class*="-btn"] {
 .nav-header {
   position: fixed;
   width: 100%;
-  /*z-index: 9998;*/
+  z-index: 9998;
 }
 
 .header-padding-top {

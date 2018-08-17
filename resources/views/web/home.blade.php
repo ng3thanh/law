@@ -70,7 +70,7 @@
         </section>
         <!-- end section: team -->
         <!-- section: services -->
-        <section id="services" class="section black">
+        <section id="services" class="section">
             <div class="container">
                 <h4>{{ __('homepage.services') }}</h4>
                 <!-- Four columns -->
