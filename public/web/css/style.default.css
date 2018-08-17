@@ -2647,8 +2647,9 @@ a.text-dark:focus, a.text-dark:hover {
   margin-bottom: 0px;
   text-align: center;
   line-height: 1;
-  color:#000;
+  color: #000;
 }
+
 #homepage #main-flexslider.flexslider {
   margin:0;
   background:none;
@@ -2718,6 +2719,11 @@ a.text-dark:focus, a.text-dark:hover {
   font-weight: 700;
   letter-spacing: -1px;
 }
+
+#homepage section#blog h4 {
+  color: #fff;
+}
+
 #homepage section.inner {
   padding: 50px 0 50px;
 }
@@ -2991,7 +2997,7 @@ a.text-dark:focus, a.text-dark:hover {
 /* === section blog === */
 
 #homepage section#blog {
-  background: #f2f2f2;
+  background: #1f1e1d;
 }
 
 #homepage .home-post {
@@ -3033,7 +3039,7 @@ a.text-dark:focus, a.text-dark:hover {
   padding:20px;
   overflow:hidden;
   color:#fcfcfc;
-  background:#000;
+  background:#575552;
   margin-top: 0px;
 }
 #homepage .home-post .post-meta i {
@@ -3244,8 +3250,8 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 #homepage .btn.btn-theme {
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
 }
 
 #homepage .btn.btn-theme:hover {
