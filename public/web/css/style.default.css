@@ -2647,7 +2647,7 @@ a.text-dark:focus, a.text-dark:hover {
   margin-bottom: 0px;
   text-align: center;
   line-height: 1;
-  color:#fff;
+  color:#000;
 }
 #homepage #main-flexslider.flexslider {
   margin:0;
