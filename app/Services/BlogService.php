@@ -144,6 +144,7 @@ class BlogService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -177,6 +178,7 @@ class BlogService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
         }
@@ -244,6 +246,12 @@ class BlogService
         return $tags;
     }
 
+    /**
+     * Save view blog
+     * @param $blog
+     * @param $view
+     * @return mixed
+     */
     public function saveViewBlog($blog, $view)
     {
         try {
@@ -252,6 +260,7 @@ class BlogService
             DB::commit();
             return $data;
         } catch (Exception $e) {
+            logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return $blog;
         }
