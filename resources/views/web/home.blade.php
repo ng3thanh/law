@@ -137,7 +137,7 @@
                                             </strong>
                                         </h5>
                                         {!! (strlen($trans->description) > 150) ? substr($trans->description, 0, 147) . ' ... ' : $trans->description !!}
-                                        <a href="{{ route('blogs.detail', ['id' => $trans->id, 'slug' => $trans->slug]) }}" class="more">{{ __('homepage.read_more') }}</a>
+                                        <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}" class="more">{{ __('homepage.read_more') }}</a>
                                     @endif
                                 @endforeach
                             </div>
