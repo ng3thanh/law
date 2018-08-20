@@ -115,7 +115,7 @@
                             <div class="post-image">
                                 @foreach($blog->translations as $trans)
                                     @if(checkLanguage($trans->locale, 'boolean'))
-                                        <a href="{{ route('blogs.detail', ['id' => $trans->id, 'slug' => $trans->slug]) }}">
+                                        <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
                                             <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $trans->title }}" />
                                         </a>
                                     @endif
@@ -131,7 +131,7 @@
                                     @if(checkLanguage($trans->locale, 'boolean'))
                                         <h5>
                                             <strong>
-                                                <a href="{{ route('blogs.detail', ['id' => $trans->id, 'slug' => $trans->slug]) }}">
+                                                <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
                                                     {{ $trans->title }}
                                                 </a>
                                             </strong>
