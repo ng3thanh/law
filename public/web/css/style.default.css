@@ -1107,6 +1107,7 @@ main.posts-listing {
 
 main.posts-listing .post {
   margin-bottom: 50px;
+  padding: 10px 20px;
 }
 
 main.posts-listing .post-footer {
