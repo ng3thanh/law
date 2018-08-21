@@ -123,8 +123,13 @@
                                         <i class="icon-file icon-2x"></i>
                                         <span class="date">{{ timeFormatTextDate($blog->created_at) }}</span>
                                         <span class="tags">
-                                            @if(isset(breakStringToArray($trans->tags)[0]))
-                                                <a href="#">{{ strtoupper(breakStringToArray($trans->tags)[0]) }}</a>
+                                            @php $tag = breakStringToArray($trans->tags)[0]; @endphp
+                                            @if(isset($tag))
+                                                @if(strlen($tag) < 11)
+                                                    <a href="#">{{ strtoupper($tag) }}</a>
+                                                @else
+                                                    <a href="#">BLOGS</a>
+                                                @endif
                                             @endif
                                         </span>
                                     </div>
