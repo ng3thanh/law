@@ -3023,9 +3023,13 @@ a.text-dark:focus, a.text-dark:hover {
 }
 #homepage .home-post .entry-content {
   padding:20px;
+  font-size: 13px;
+  font-weight: 300;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1.6em;
 }
 #homepage .home-post .entry-content h5 a {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.5em;
 }
 #homepage .home-post .entry-content h5 a:hover {

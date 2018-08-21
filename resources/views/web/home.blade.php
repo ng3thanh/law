@@ -112,23 +112,23 @@
                     @foreach($blogs as $blog)
                     <div class="span3 col-lg-3">
                         <div class="home-post">
-                            <div class="post-image">
-                                @foreach($blog->translations as $trans)
-                                    @if(checkLanguage($trans->locale, 'boolean'))
+                            @foreach($blog->translations as $trans)
+                                @if(checkLanguage($trans->locale, 'boolean'))
+                                    <div class="post-image">
                                         <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
                                             <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $trans->title }}" />
                                         </a>
-                                    @endif
-                                @endforeach
-                            </div>
-                            <div class="post-meta">
-                                <i class="icon-file icon-2x"></i>
-                                <span class="date">{{ timeFormatTextDate($blog->created_at) }}</span>
-                                <span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>
-                            </div>
-                            <div class="entry-content">
-                                @foreach($blog->translations as $trans)
-                                    @if(checkLanguage($trans->locale, 'boolean'))
+                                    </div>
+                                    <div class="post-meta">
+                                        <i class="icon-file icon-2x"></i>
+                                        <span class="date">{{ timeFormatTextDate($blog->created_at) }}</span>
+                                        <span class="tags">
+                                            @if(isset(breakStringToArray($trans->tags)[0]))
+                                                <a href="#">{{ strtoupper(breakStringToArray($trans->tags)[0]) }}</a>
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <div class="entry-content">
                                         <h5>
                                             <strong>
                                                 <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
@@ -136,11 +136,11 @@
                                                 </a>
                                             </strong>
                                         </h5>
-                                        {!! (strlen($trans->description) > 150) ? substr($trans->description, 0, 147) . ' ... ' : $trans->description !!}
+                                        {!! (strlen($trans->description) > 200) ? substr($trans->description, 0, 197) . ' ... ' : $trans->description !!}
                                         <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}" class="more">{{ __('homepage.read_more') }}</a>
-                                    @endif
-                                @endforeach
-                            </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     @endforeach
