@@ -18,5 +18,6 @@ return [
     'your_subject' => 'Subject',
     'your_message' => 'Message',
     'send_feedback' => 'Send message',
-    'continue_reading' => 'Continue reading ->',
+    'continue_reading' => 'Continue reading',
+    'blog_list' => 'BLOG LIST',
 ];

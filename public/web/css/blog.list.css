@@ -18,12 +18,17 @@
     padding: 10px;
 }
 
+#blog-list #blog .post .pre-content .blog-image {
+    text-align: center;
+}
+
 #blog-list #blog .post .pre-content .blog-detail .blog-title .h4{
     font-size: 18px;
     font-weight: bold;
-    word-spacing: 0.1em;
+    word-spacing: 0.05em;
     line-height: 1.4em;
     padding-top: 10px;
+    margin:  0 10px 20px 10px;
 }
 
 #blog-list #blog .post .pre-content .blog-detail .blog-created {
@@ -35,9 +40,8 @@
 }
 
 #blog-list #blog .post .pre-content .blog-detail .blog-content {
-
-}
-
-#blog-list #blog .post .pre-content .blog-detail .blog-more {
-
+    font-size: 13px;
+    word-spacing: 0.07em;
+    line-height: 1.8em;
+    margin: 0 10px 20px 10px;
 }
