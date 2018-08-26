@@ -32,7 +32,7 @@
                 <ul class="list-unstyled">
                     @foreach($footer[3] as $key => $value)
                         <li class="list-unstyled">
-                            <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;<a href="{{ $value->value }}">{{ $value->value }}</a><br>
+                            <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;<a href="{{ $value->value }}" class="text-capitalize">{{ $value->name }}</a><br>
                         </li>
                     @endforeach
                 </ul>

@@ -1292,19 +1292,26 @@ main.posts-listing .post-footer {
   height: auto !important;
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width:415px) {
   .blog-post .post-body img {
     max-width: 380px;
     height: auto !important;
   }
 }
 
-/*@media screen and (max-width: 480px) {*/
-  /*.blog-post .post-body img {*/
-    /*max-width: 400px;*/
-    /*height: auto !important;*/
-  /*}*/
-/*}*/
+@media (max-width:375px) {
+  .blog-post .post-body img {
+    max-width: 350px;
+    height: auto !important;
+  }
+}
+
+@media (max-width:320px) {
+  .blog-post .post-body img {
+    max-width: 290px;
+    height: auto !important;
+  }
+}
 
 .blog-post .post-body h2,
 .blog-post .post-body h3,
