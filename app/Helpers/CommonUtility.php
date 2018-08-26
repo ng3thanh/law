@@ -152,7 +152,11 @@ if (!function_exists('uploadImage')) {
     function uploadImage($id, $file, $location)
     {
         $newName = $location . '_' . $id . '_main_image.' . $file->getClientOriginalExtension();
-        $file->move(config('upload.'. $location) . $id . '/', $newName);
+        $folder = config('upload.'. $location);
+        if (!is_dir($folder)) {
+            mkdir($folder, 0777, true);
+        }
+        $file->move($folder . $id . '/', $newName);
         return $newName;
     }
 }

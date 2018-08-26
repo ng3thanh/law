@@ -260,8 +260,13 @@ class SettingsService
             DB::beginTransaction();
 
             if (isset($data['image'])) {
-                $newName = uploadImage(1, $data['image'], 'logo');
-                $data['image'] = config('upload.logo') . '1/' . $newName;
+                $newName = uploadImage('logo', $data['image'], 'logo');
+                $data['image'] = config('upload.logo') . 'logo/' . $newName;
+            }
+
+            if (isset($data['favicon'])) {
+                $newName = uploadImage('favicon', $data['favicon'], 'logo');
+                $data['favicon'] = config('upload.logo') . 'favicon/' . $newName;
             }
 
             $dataBaseIntroduce = formatDataBaseOnTable('logo', $data);

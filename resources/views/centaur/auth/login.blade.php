@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 2 | Log in</title>
+        <title>Admin | Log in</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
         <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
@@ -11,10 +11,10 @@
         <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css') }}">
         <!-- Ionicons -->
         <link rel="stylesheet" href="{{ asset('admin/css/ionicons.min.css') }}">
-
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
-
+        <link rel="shortcut icon" href='{{ asset("$logo->favicon") }}' type="image/x-icon">
+        <link rel="icon" href='{{ asset("$logo->favicon") }}' type="image/x-icon">
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -22,7 +22,7 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>Admin</b>LTE</a>
+                <a href="#"><b>Admin</b> Management</a>
             </div>
 
             <div class="login-box-body">

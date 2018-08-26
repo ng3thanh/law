@@ -59,6 +59,16 @@
                                             @include('elements.error_line', ['attribute' => 'image'])
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"> Favicon <span class="span-red">*</span></label>
+                                        <div class="col-sm-9 input-group">
+                                            @if(isset($logo->favicon))
+                                                <img class="img-thumbnail" src='{{ asset("$logo->favicon") }}' width="50px" height=""><br><br>
+                                            @endif
+                                            <input type="file" class="form-control" name="favicon">
+                                            @include('elements.error_line', ['attribute' => 'favicon'])
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -66,7 +76,7 @@
                         <div class="box-footer col-xs-12" style="margin-top: 20px; padding-top: 20px">
                             <div class="col-xs-8 col-xs-offset-2">
                                 <div class="col-xs-3">
-                                    <button class="btn btn-block btn-default" form="logo-settings" type="submit">Create</button>
+                                    <button class="btn btn-block btn-default" form="logo-settings" type="submit">Update</button>
                                 </div>
                                 <div class="col-xs-offset-1 col-xs-3">
                                     <button class="btn btn-block btn-default" form="logo-settings" type="reset">Reset</button>
