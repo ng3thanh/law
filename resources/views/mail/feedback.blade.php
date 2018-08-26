@@ -1,16 +1,17 @@
 <div>
     Hello Ms.Phuong,
-
-    You received 1 feedback from <i>{{ $data['name'] }}</i>
-
-    <b> Sender info: </b>
-    ( {{ $data['phone'] or 'No phone' }} ),
-    ( {{ $data['mail'] or 'No mail' }} ),
-
+    <br><br>
+    You received 1 feedback from <i>{{ $data['name'] }}</i>.
+    <br><br>
+    <b> Sender info: </b><br>
+    Phone: {{ $data['phone'] or 'No phone' }} ,<br>
+    Email: {{ $data['mail'] or 'No mail' }} ,
+    <br>
+    <br>
     <b>{{ $data['subject'] }}</b>
     <p>{{ $data['content'] }}</p>
 
-    Thank You,
+    Thank you,
     <br/>
     <i>IBLC Firm</i>
 </div>

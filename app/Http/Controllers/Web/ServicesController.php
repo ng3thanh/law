@@ -32,7 +32,8 @@ class ServicesController extends Controller
     public function show($id, $slug)
     {
         $service = $this->serviceService->findServiceBySlugId($id);
-        return view('web.pages.services.detail', compact('service'));
+        $randomService = $this->serviceService->getServiceLimit(10);
+        return view('web.pages.services.detail', compact('service', 'randomService'));
     }
 
 }

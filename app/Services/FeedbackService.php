@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\Feedback;
 use App\Repositories\Feedbacks\FeedbacksRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Exception;
@@ -36,13 +37,12 @@ class FeedbackService
             $data = formatDataBaseOnTable('feedbacks', $data);
             $this->feedbacksRepository->create($data);
 
-            Mail::send('mail.feedback', $data, function($message){
-                $message->to('ngthanh2093@gmail.com', 'Visitor')->subject('Visitor Feedback!');
-            });
+            Mail::to('ngthanh2093@gmail.com')->send(new Feedback($data));
 
             DB::commit();
             return true;
         } catch (Exception $e) {
+            dd($e->getMessage());
             logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;

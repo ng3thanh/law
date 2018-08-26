@@ -3264,6 +3264,16 @@ a.text-dark:focus, a.text-dark:hover {
   color: #fff;
 }
 
+#homepage #contact-form .btn.btn-theme {
+  background: rgba(227, 231, 228, 1);
+  color: #495057;
+}
+
+#homepage #contact-form .btn.btn-theme:hover {
+  background: #aaa;
+  color: #fff;
+}
+
 #homepage .btn-large {
   padding: 15px 20px;
   font-size: 18px;
