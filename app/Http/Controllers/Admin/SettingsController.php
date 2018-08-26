@@ -51,6 +51,22 @@ class SettingsController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param $id
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function footerDelete($id)
+    {
+        $result = $this->settingService->deleteFooter($id);
+        if ($result) {
+            return redirect()->route('footer.index')->with('success', 'Delete data successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Having error when delete data')->withInput();
+        }
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */

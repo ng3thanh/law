@@ -14,8 +14,8 @@ class ChangeDbSettingLanguage extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('name_en')->after('name')->nullable();
             $table->string('name_vn')->after('name')->nullable();
+            $table->string('value_vn')->after('value')->nullable();
         });
     }
 
@@ -28,7 +28,7 @@ class ChangeDbSettingLanguage extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->dropColumn('name_en');
-            $table->dropColumn('name_vn');
+            $table->dropColumn('value_vn');
         });
     }
 }

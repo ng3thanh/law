@@ -66,6 +66,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('footer/index', 'SettingsController@footerIndex')->name('footer.index');
         Route::post('footer/update', 'SettingsController@footerUpdate')->name('footer.update');
         Route::post('footer/new', 'SettingsController@footerStore')->name('footer.store');
+        Route::post('footer/delete/{id}', 'SettingsController@footerDelete')->name('footer.delete');
 
         // Introduce
         Route::get('introduce/index', 'SettingsController@introduceIndex')->name('introduce.index');

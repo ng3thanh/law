@@ -206,6 +206,12 @@ class SettingsService
         }
     }
 
+    public function deleteFooter($id)
+    {
+        $delete = $this->footersRepository->delete($id);
+        return $delete;
+    }
+
     /**
      * Get introduce
      *
