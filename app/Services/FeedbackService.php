@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Feedbacks\FeedbacksRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 
 class FeedbackService
 {
@@ -34,6 +35,10 @@ class FeedbackService
 
             $data = formatDataBaseOnTable('feedbacks', $data);
             $this->feedbacksRepository->create($data);
+
+            Mail::send('mail.feedback', $data, function($message){
+                $message->to('ngthanh2093@gmail.com', 'Visitor')->subject('Visitor Feedback!');
+            });
 
             DB::commit();
             return true;
