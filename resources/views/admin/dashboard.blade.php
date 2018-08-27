@@ -2,6 +2,9 @@
 
 @section('title', 'Dashboard')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('admin/css/morris.css') }}">
+@endsection
 @section('content')
 
     <!-- Main content -->
@@ -66,11 +69,43 @@
             <!-- ./col -->
         </div>
         <!-- /.row -->
+
+        {{--<div class="col-lg-12">--}}
+            {{--<div class="nav-tabs-custom">--}}
+                {{--<ul class="nav nav-tabs pull-right">--}}
+                    {{--<li class="pull-left header"><i class="fa fa-inbox"></i> Chart</li>--}}
+                {{--</ul>--}}
+                {{--<div class="tab-content no-padding">--}}
+                    {{--<!-- Morris chart - Sales -->--}}
+                    {{--<div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<!-- /.nav-tabs-custom -->--}}
+        {{--</div>--}}
+
+        <input type="hidden" id="data-chart-blog" value="{{ $views }}">
     </section>
     <!-- /.content -->
 
 @endsection
 
 @section('script')
-    {{--<script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>--}}
+    <script src="{{ asset('admin/js/morris.min.js') }}"></script>
+    {{--<script>--}}
+        {{--var data = $("#data-chart-blog").val();--}}
+        {{--console.log(data);--}}
+        {{--Morris.Area({--}}
+            {{--element: 'revenue-chart',--}}
+            {{--data: [--}}
+                {{--{"title": 1,"view":11},--}}
+                {{--{"title": 2,"view":2},--}}
+                {{--{"title": 3,"view":2},--}}
+                {{--{"title": 4,"view":2},--}}
+                {{--{"title": 5,"view":1}]--}}
+            {{--,--}}
+            {{--xkey: ['title'],--}}
+            {{--ykeys: ['view'],--}}
+            {{--labels: ['View']--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection

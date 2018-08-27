@@ -210,18 +210,6 @@ if (!function_exists('timeFormatTextDate')) {
     }
 }
 
-if (!function_exists('dateFormat')) {
-    /**
-     * @param $date
-     * @param string $format
-     * @return false|string
-     */
-    function dateFormat($date, $format = 'Y-m-d H:i:s')
-    {
-        return date($format, strtotime($date));
-    }
-}
-
 if (!function_exists('checkLanguage')) {
     /**
      * @param string $language
@@ -253,5 +241,21 @@ if (!function_exists('breakStringToArray')) {
     {
         $array = explode($character, $string);
         return $array;
+    }
+}
+
+if (!function_exists('cutStringWithLongText')) {
+    /**
+     * @param $string
+     * @param $numberCharacter
+     * @return string
+     */
+    function cutStringWithLongText($string, $numberCharacter)
+    {
+        if(strlen($string) > $numberCharacter) {
+            return substr($string, 0, $numberCharacter - 3) . ' ... ';
+        } else {
+            return $string;
+        }
     }
 }

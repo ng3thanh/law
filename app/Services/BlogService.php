@@ -265,4 +265,21 @@ class BlogService
             return $blog;
         }
     }
+
+    /**
+     * @param $limit
+     * @return mixed
+     */
+    public function getBlogViewJson($limit)
+    {
+        $data = $this->blogsRepository->getDataLimit($limit)->get();
+        $result = [];
+        foreach ($data as $key => $value)
+        {
+            $result[$key]['title'] = cutStringWithLongText($value->title, 50);
+//            $result[$key]['title'] = $value->id;
+            $result[$key]['view'] = $value->view;
+        }
+        return json_encode($result);
+    }
 }

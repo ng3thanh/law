@@ -64,6 +64,7 @@ class MainController extends Controller
         $clientCount = 0;
         $serviceCount = $this->serviceService->countService();
         $contactCount = $this->feedbackService->countFeedback();
-        return view('admin.dashboard', compact('blogCount', 'clientCount', 'serviceCount', 'contactCount'));
+        $views = $this->blogService->getBlogViewJson(20);
+        return view('admin.dashboard', compact('blogCount', 'clientCount', 'serviceCount', 'contactCount', 'views'));
     }
 }
