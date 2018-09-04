@@ -3039,9 +3039,10 @@ a.text-dark:focus, a.text-dark:hover {
 #homepage .home-post .entry-content h5 a {
   font-size: 16px;
   line-height: 1.5em;
+    color: #312f2b;
 }
 #homepage .home-post .entry-content h5 a:hover {
-  color:#312f2b;
+  color:#999;
   text-decoration:none;
 }
 #homepage .home-post .entry-content a.more {

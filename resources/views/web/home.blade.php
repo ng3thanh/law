@@ -18,7 +18,7 @@
         <div id="header-wrapper" class="header-slider">
             <header class="clearfix">
                 <div class="logo">
-                    <img src='{{ asset("$logo->image") }}' alt="{{ $logo->name or '' }}" />
+                    <img src='{{ asset("$logo->image") }}' alt="{{ $logo->name or '' }}" width="30px" height="30px" />
                 </div>
                 <div class="container">
                     <div class="row">
