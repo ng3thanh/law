@@ -2639,6 +2639,10 @@ a.text-dark:focus, a.text-dark:hover {
   margin-bottom:30px;
 }
 
+#homepage #slogan-span {
+    margin-top: 80px;
+}
+
 /* --- Header slider --- */
 #homepage #header-wrapper.header-slider {
   background: #444 url(../img/bg/bg-1.jpg) no-repeat center center fixed;

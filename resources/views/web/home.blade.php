@@ -20,7 +20,7 @@
                 <div class="logo">
                     <img src='{{ asset("$logo->image") }}' alt="{{ $logo->name or '' }}" width="150px"/>
                 </div>
-                <div class="container">
+                <div class="container" id="slogan-span">
                     <div class="row">
                         <div class="col-lg-12">
                             <div id="main-flexslider" class="flexslider">
