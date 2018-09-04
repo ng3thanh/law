@@ -18,7 +18,7 @@
             <div id="navbarcollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" title="team" href="{{ $url }}#about">{{ __('homepage.about') }}</a></li>
-                    <li class="nav-item"><a class="nav-link" title="services" href="{{ $url }}#services">{{ __('homepage.services') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" title="services" href="{{ $url }}#services">{{ __('homepage.services_menu') }}</a></li>
                     <li class="nav-item"><a class="nav-link" title="works" href="{{ $url }}#works">{{ __('homepage.works') }}</a></li>
                     <li class="nav-item"><a class="nav-link" title="blog" href="{{ $url }}#blog">{{ __('homepage.blog') }}</a></li>
                     <li class="nav-item"><a class="nav-link" title="contact" href="{{ $url }}#contact">{{ __('homepage.contact') }}</a></li>

@@ -1,10 +1,11 @@
 <?php
 return [
     'about' => 'Giới thiệu',
-    'services' => 'Dịch vụ',
+    'services_menu' => 'Dịch vụ',
     'works' => 'Khách hàng',
     'blog' => 'Blog',
     'contact' => 'Liên hệ',
+    'services' => 'DỊCH VỤ',
     'we_are' => 'GIỚI THIỆU',
     'clients' => 'KHÁCH HÀNG NỔI BẬT',
     'our_blog' => 'BLOG',

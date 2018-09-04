@@ -1,10 +1,11 @@
 <?php
 return [
     'about' => 'About',
-    'services' => 'Services',
+    'services_menu' => 'Services',
     'works' => 'Clients',
     'blog' => 'Blog',
     'contact' => 'Contact',
+    'services' => 'Services',
     'we_are' => 'Who We Are',
     'clients' => 'Feature clients',
     'our_blog' => 'Our Blog',
@@ -19,5 +20,5 @@ return [
     'your_message' => 'Message',
     'send_feedback' => 'Send message',
     'continue_reading' => 'Continue reading',
-    'blog_list' => 'BLOG LIST',
+    'blog_list' => 'BLOG',
 ];
