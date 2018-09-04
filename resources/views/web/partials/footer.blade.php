@@ -81,7 +81,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>&copy; 2017. All rights reserved. Your great site.</p>
+                    <p>Copyright &copy; 2018. All rights reserved.</p>
                 </div>
             </div>
         </div>
