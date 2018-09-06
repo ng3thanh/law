@@ -219,12 +219,11 @@ if (!function_exists('checkLanguage')) {
     function checkLanguage($language = 'en', $type = 'active')
     {
         $input = app()->getLocale();
-        $return = '';
 
-        if ($type == 'active') {
-            $return = ($input == $language) ? 'active' : '';
-        } elseif($type == 'boolean') {
+        if($type == 'boolean') {
             $return = ($input == $language) ? true : false;
+        } else {
+            $return = ($input == $language) ? $type : '';
         }
 
         return $return;

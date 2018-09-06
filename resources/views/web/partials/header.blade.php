@@ -8,6 +8,10 @@
             <!-- Navbar Brand -->
             <div class="navbar-header d-flex align-items-center justify-content-between">
                 <a href="{{ route('main') }}" class="navbar-brand">{{ $logo->name }}</a>
+                <select id="select-language">
+                    <option {{ checkLanguage('vi', 'selected') }} value="vi">Tiếng Việt</option>
+                    <option {{ checkLanguage('en', 'selected') }} value="en">English</option>
+                </select>
                 <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
                     <span></span>
                     <span></span>
@@ -22,15 +26,6 @@
                     <li class="nav-item"><a class="nav-link" title="works" href="{{ $url }}#works">{{ __('homepage.works') }}</a></li>
                     <li class="nav-item"><a class="nav-link" title="blog" href="{{ $url }}#blog">{{ __('homepage.blog') }}</a></li>
                     <li class="nav-item"><a class="nav-link" title="contact" href="{{ $url }}#contact">{{ __('homepage.contact') }}</a></li>
-                </ul>
-                <ul class="langs navbar-text">
-                    <a href="{!! route('user.change-language', ['vi']) !!}" class="{{ checkLanguage('vi') }}">
-                        <img src="{{ asset('web/img/VN_flag.png') }}" alt="Vietnam flag" />
-                    </a>
-                    &nbsp;&nbsp;
-                    <a href="{!! route('user.change-language', ['en']) !!}" class="{{ checkLanguage('en') }}">
-                        <img src="{{ asset('web/img/US_flag.png') }}" alt="American flag" />
-                    </a>
                 </ul>
             </div>
         </div>
