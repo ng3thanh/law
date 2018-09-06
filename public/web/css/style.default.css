@@ -1590,7 +1590,7 @@ STYLE SWITCHER FOR DEMO
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     margin-right: 1rem;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     color: #fff;
     font-weight: bold;
     letter-spacing: 1.5px;
@@ -1684,6 +1684,18 @@ STYLE SWITCHER FOR DEMO
     color: rgba(255, 255, 255, 0.5);
 }
 
+#select-language {
+    padding: 5px 7px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+#select-language option {
+    display: block;
+    padding: 10px 15px;
+    line-height: 20px;
+    height: 40px;
+}
 /*
  * 2. BUTTONS
  */

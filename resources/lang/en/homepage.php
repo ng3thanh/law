@@ -12,7 +12,7 @@ return [
     'read_more' => 'Read more',
     'more_blog' => 'More blog posts',
     'feedback_label' => 'GET AN INQUIRY',
-    'feedback_message' => 'aeque assentior te eam, pri nominati posidonium consttuam',
+    'feedback_message' => 'Do you have other questions? Just fill out the form below and we’ll get back to you as soon as possible.',
     'feedback_message_success' => 'Your message has been sent. Thank you!',
     'your_name' => 'Your name',
     'your_email' => 'Your email',
