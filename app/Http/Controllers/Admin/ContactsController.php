@@ -45,4 +45,17 @@ class ContactsController extends Controller
         $listFeedback = $this->feedbackService->getFeedbackRelated($id);
         return view('admin.pages.contacts.detail', compact('listFeedback'));
     }
+
+    /**
+     * Delete data
+     * @param Request $request
+     */
+    public function delete(Request $request) {
+        $data = $request->all();
+        if (isset($data['delete'])) {
+            foreach($data['delete'] as $value) {
+                $this->feedbackService->deleteContact($value);
+            }
+        }
+    }
 }

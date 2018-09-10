@@ -9,7 +9,7 @@ interface BaseRepositoryInterface
      * @param $orderBy
      * @return mixed
      */
-    public function getDataOrderBy($orderBy);
+    public function getDataOrderBy($orderBy = 'created_at', $sort = 'asc');
 
     /**
      * Get all

@@ -1029,7 +1029,8 @@ footer.main-footer ul {
 }
 
 footer.main-footer .list-unstyled a {
-    font-size: 0.95em;
+    line-height: 1.5em;
+    font-size: 1em;
 }
 
 footer.main-footer .list-unstyled .info-footer {

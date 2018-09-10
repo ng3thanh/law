@@ -57,7 +57,7 @@ class FeedbackService
 
     public function getPaginateFeedback($limit)
     {
-        $data = $this->feedbacksRepository->getDataOrderBy('created_at')->paginate($limit);
+        $data = $this->feedbacksRepository->getDataOrderBy('created_at', 'desc')->paginate($limit);
         return $data;
     }
 
@@ -71,5 +71,15 @@ class FeedbackService
             $result[$date][] = $value;
         }
         return $result;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function deleteContact($id)
+    {
+        $delete = $this->feedbacksRepository->delete($id);
+        return $delete;
     }
 }

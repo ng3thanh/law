@@ -44,6 +44,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         // Contact
         Route::get('contact/index', 'ContactsController@index')->name('contact.index');
         Route::get('contact/show/{id}', 'ContactsController@show')->name('contact.show');
+        Route::post('contact/delete', 'ContactsController@delete')->name('contact.delete');
 
         // Services
         Route::resource('services', 'ServicesController');
@@ -99,3 +100,29 @@ Route::middleware('guest')->namespace('Auth')->group(function () {
     Route::get('password/reset', 'PasswordController@getRequest')->name('auth.password.request.form');
     Route::post('password/reset', 'PasswordController@postRequest')->name('auth.password.request.attempt');
 });
+
+/*
+ * |---------------------------------------------
+ * |            Custom Error Page
+ * |---------------------------------------------
+ */
+Route::get('/400', [
+    'uses' => 'ErrorHandlerController@error400',
+    'as' => 'errors.400',
+]);
+Route::get('/401', [
+    'uses' => 'ErrorHandlerController@error401',
+    'as' => 'errors.401',
+]);
+Route::get('/404', [
+    'uses' => 'ErrorHandlerController@error404',
+    'as' => 'errors.404',
+]);
+Route::get('/500', [
+    'uses' => 'ErrorHandlerController@error500',
+    'as' => 'errors.500',
+]);
+Route::get('/503', [
+    'uses' => 'ErrorHandlerController@error503',
+    'as' => 'errors.503',
+]);

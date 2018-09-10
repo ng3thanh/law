@@ -35,12 +35,14 @@ abstract class BaseEloquentRepository implements BaseRepositoryInterface
 
     /**
      * Get first data base on order
-     * @param $orderBy
+     *
+     * @param string $orderBy
+     * @param string $sort
      * @return mixed
      */
-    public function getDataOrderBy($orderBy)
+    public function getDataOrderBy($orderBy = 'created_at', $sort = 'asc')
     {
-        return $this->model->orderBy($orderBy);
+        return $this->model->orderBy($orderBy, $sort);
     }
 
     /**
