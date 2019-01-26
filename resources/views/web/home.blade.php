@@ -3,6 +3,7 @@
 @section('title', 'Blogs')
 @section('css')
     <style>
+        @if($slide)
         #homepage #header-wrapper.header-slider {
             background: #444 url({{ asset("$slide->image") }}) no-repeat center center fixed;
             -webkit-background-size: cover;
@@ -10,6 +11,7 @@
             -o-background-size: cover;
             background-size: cover;
         }
+        @endif
     </style>
 @endsection
 @section('content')
@@ -98,7 +100,9 @@
                 <h4>{{ __('homepage.clients') }}</h4>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 20px">
-                        <img src='{{ asset("$client->image") }}' alt="{{ $client->name or '' }}" width="100%" />
+                        @if($client)
+                            <img src='{{ asset("$client->image") }}' alt="{{ $client->name or '' }}" width="100%" />
+                        @endif
                     </div>
                 </div>
             </div>
