@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Logo;
 use App\Models\Settings;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        
+
 //        $footer = Settings::all()->groupBy('type');
 //        $logo = Logo::all()->first();
 //        View::share('footer', $footer);
