@@ -19,10 +19,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $footer = Settings::all()->groupBy('type');
-        $logo = Logo::all()->first();
-        View::share('footer', $footer);
-        View::share('logo', $logo);
+//        $footer = Settings::all()->groupBy('type');
+//        $logo = Logo::all()->first();
+//        View::share('footer', $footer);
+//        View::share('logo', $logo);
     }
 
     /**
