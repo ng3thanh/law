@@ -5,36 +5,42 @@
             <div class="row">
             <div class="col-md-4">
                 <div class="logo">
-                    <h6 class="text-white">{{ $logo->name }}</h6>
+                    <h6 class="text-white">{{ $logo->name or '' }}</h6>
                 </div>
                 <div class="contact-details">
-                    @foreach($footer[1] as $key => $value)
-                        <p>{{ $value->value }}</p>
-                    @endforeach
+                    @if(isset($footer[1]))
+                        @foreach($footer[1] as $key => $value)
+                            <p>{{ $value->value }}</p>
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="menus d-flex">
                     <ul class="list-unstyled">
-                        @foreach($footer[2] as $key => $value)
-                            <li class="list-inline-item info-footer">
-                                <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;
-                                <span class="text-capitalize">{{ $value->name }}: </span>
-                                &nbsp;
-                                {{ $value->value }}
-                                <br>
-                            </li>
-                        @endforeach
+                        @if(isset($footer[2]))
+                            @foreach($footer[2] as $key => $value)
+                                <li class="list-inline-item info-footer">
+                                    <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;
+                                    <span class="text-capitalize">{{ $value->name }}: </span>
+                                    &nbsp;
+                                    {{ $value->value }}
+                                    <br>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
                 <ul class="list-unstyled">
-                    @foreach($footer[3] as $key => $value)
-                        <li class="list-unstyled">
-                            <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;<a href="{{ $value->value }}" class="text-capitalize">{{ $value->name }}</a><br>
-                        </li>
-                    @endforeach
+                    @if(isset($footer[3]))
+                        @foreach($footer[3] as $key => $value)
+                            <li class="list-unstyled">
+                                <i class="fa fa-{{ $value->icon }}"></i> &nbsp;&nbsp;<a href="{{ $value->value }}" class="text-capitalize">{{ $value->name }}</a><br>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>
