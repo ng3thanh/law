@@ -20,7 +20,9 @@
         <div id="header-wrapper" class="header-slider">
             <header class="clearfix">
                 <div class="logo">
-                    <img src='{{ asset("$logo->image") }}' alt="{{ $logo->name or '' }}" width="150px"/>
+                    @if($logo)
+                        <img src='{{ asset("$logo->image") }}' alt="{{ $logo->name or '' }}" width="150px"/>
+                    @endif
                 </div>
                 <div class="container" id="slogan-span">
                     <div class="row">
@@ -54,19 +56,21 @@
         <section id="about" class="section">
             <div class="container">
                 <h4>{{ __('homepage.we_are') }}</h4>
-                <div class="row">
-                    <div class="col-lg-4 offset-1">
-                        <div>
-                            <h2>{{ $introduce->name or '' }}</h2>
-                            {!! $introduce->content or '' !!}
+                @if($introduce)
+                    <div class="row">
+                        <div class="col-lg-4 offset-1">
+                            <div>
+                                <h2>{{ $introduce->name or '' }}</h2>
+                                {!! $introduce->content or '' !!}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="text-center">
+                                <img src="{{ asset("$introduce->image") }}" alt="{{ $introduce->name or '' }}" />
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="text-center">
-                            <img src="{{ asset("$introduce->image") }}" alt="{{ $introduce->name or '' }}" />
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
             <!-- /.container -->
         </section>
