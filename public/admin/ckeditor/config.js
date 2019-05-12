@@ -7,6 +7,4 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-    config.LicenseName = 'novalaw.vn';
-    config.LicenseKey = 'JS3SNUWWC62Y4DGB2QUB2A7RWHSLG';
 };
