@@ -1336,6 +1336,14 @@ main.posts-listing .post-footer {
     margin-bottom: 10px;
 }
 
+.blog-post .service-thumbnail {
+    text-align: center;
+}
+
+.blog-post .service-thumbnail img {
+    max-width: 50%;
+}
+
 .blog-post h1 {
     color: #444;
     line-height: 1.1em;
@@ -1354,7 +1362,8 @@ main.posts-listing .post-footer {
 }
 
 .blog-post .post-body img {
-    max-width: 700px;
+    max-width: 100%;
+    max-height: 100%;
     height: auto !important;
 }
 
