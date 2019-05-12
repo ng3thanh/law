@@ -11,7 +11,7 @@
             <main class="post blog-post col-lg-8">
                 <div class="container">
                     <div class="post-single">
-                        <div class="post-thumbnail">
+                        <div class="post-thumbnail service-thumbnail">
                             <img src="{{ asset("$service->image") }}" alt="{{ $service->name }}" class="img-fluid">
                         </div>
                         <div class="post-details">
@@ -25,7 +25,7 @@
                                         <img src="{{ asset('web/img/admin_logo.png') }}" alt="..." class="img-fluid">
                                     </div>
                                     <div class="name">
-                                        <span>{{ $service->author }}</span>
+                                        <span>{{ $service->author }} &nbsp;</span>
                                     </div>
                                 </a>
                                 <div class="d-flex align-items-center flex-wrap">
@@ -37,9 +37,11 @@
                                 {!! $service->content !!}
                             </div>
                             <div class="post-tags">
-                                @foreach(breakStringToArray($service->tags) as $key => $value)
-                                    <a href="#" class="tag">#{{ $value }}</a>
-                                @endforeach
+                                @if(isset($service->tags))
+                                    @foreach(breakStringToArray($service->tags) as $key => $value)
+                                        <a href="#" class="tag">#{{ $value }}</a>
+                                    @endforeach
+                                @endif
                             </div>
                             <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
                                 <a href="{{ isset($servicePrevious) ? route('blogs.detail', ['id' => $servicePrevious->id, 'slug' => $servicePrevious->slug]) : '#' }}" class="prev-post text-left d-flex align-items-center">

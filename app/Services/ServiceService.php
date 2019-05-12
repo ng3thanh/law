@@ -131,7 +131,7 @@ class ServiceService
      */
     public function findServiceBySlugId($id)
     {
-        $service = $this->servicesRepository->findBySlugRelatedId($id);
+        $service = (object)$this->servicesRepository->findBySlugRelatedId($id);
         return $service;
     }
 }
