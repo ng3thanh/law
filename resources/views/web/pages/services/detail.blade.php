@@ -1,6 +1,6 @@
 @extends('web.layout')
 
-@section('title', 'Service')
+@section('title', 'Nova Law - Service')
 @section('css')
 
 @endsection

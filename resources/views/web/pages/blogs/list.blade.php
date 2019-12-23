@@ -1,6 +1,6 @@
 @extends('web.layout')
 
-@section('title', 'Blogs')
+@section('title', 'Nova Law - Blogs')
 @section('css')
     <link rel="stylesheet" href="{{ asset('web/css/blog.list.css') }}">
 @endsection
