@@ -74,7 +74,7 @@
                     </header>
                     <div class="blog-posts">
                         @foreach ($randomService as $rService)
-                            <a href="{{ route('blogs.detail', ['id' => $rService->id, 'slug' => $rService->slug]) }}">
+                            <a href="{{ route('services.detail', ['id' => $rService->id, 'slug' => $rService->slug]) }}">
                                 <div class="item d-flex align-items-center">
                                     <div class="image">
                                         <img src="{{ asset("$rService->image") }}" alt="{{ $rService->name }}" class="img-fluid">

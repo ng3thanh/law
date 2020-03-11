@@ -163,6 +163,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
         CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
+        App\Providers\ViewServiceProvider::class
     ],
 
     /*

@@ -3068,16 +3068,16 @@ a.text-dark:focus, a.text-dark:hover {
     transition: all 0.3s ease-in-out;
 }
 
-#homepage section#services .service-box a {
-    color: #020202;
-}
-
 #homepage section#services .service-box-hover:hover {
     background: #3d3838;
 }
 
-#homepage section#services .service-box h2 {
+#homepage section#services .service-box-hover:hover .service-box h2{
     color: #f7f7f7;
+}
+
+#homepage section#services .service-box h2 {
+    color: #020202;
     font-weight: 700;
 }
 
@@ -3270,6 +3270,10 @@ a.text-dark:focus, a.text-dark:hover {
 
 #homepage #sendmessage.show, #homepage #errormessage.show, #homepage .show {
     display: block;
+}
+
+#homepage #contact {
+    background: #f2f2f2;
 }
 
 #homepage #contact-form {

@@ -28,6 +28,6 @@ class Feedback extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.feedback')->with(['data' => $this->data]);
+        return $this->subject(env('MAIL_FROM_NAME'))->view('mail.feedback')->with(['data' => $this->data]);
     }
 }

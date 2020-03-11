@@ -45,7 +45,7 @@ class BlogsController extends Controller
         // Get slug data
         $blog = $this->blogService->findBlogBySlugId($id);
 
-        // Save view list
+//        // Save view list
         $blog->addViewWithExpiryDate(Carbon::now()->addMinute(10));
         $view = $blog->getViews();
 

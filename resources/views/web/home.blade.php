@@ -52,10 +52,11 @@
                 </div>
             </header>
         </div>
+
         <!-- section: team -->
         <section id="about" class="section">
             <div class="container">
-                <h4>{{ __('homepage.we_are') }}</h4>
+                {{--<h4>{{ __('homepage.we_are') }}</h4>--}}
                 @if($introduce)
                     <div class="row">
                         <div class="col-lg-4 offset-1">
@@ -75,6 +76,7 @@
             <!-- /.container -->
         </section>
         <!-- end section: team -->
+
         <!-- section: services -->
         <section id="services" class="section">
             <div class="container">
@@ -82,22 +84,78 @@
                 <!-- Four columns -->
                 <div class="row">
                     @foreach ($services as $service)
-                    <div class="service-box-hover col-lg-3">
-                        <div class="service-box">
-                            <img src='{{ asset("$service->image") }}' alt="{{ $service->name or '' }}" />
-                            <h2>
-                                <a href="{{ route('services.detail', ['id' => $service->id, 'slug' => $service->slug]) }}">
-                                    {{ $service->name or '' }}
-                                </a>
-                            </h2>
-                            {!! $service->description or '' !!}
+                        <div class="service-box-hover col-lg-3">
+                            <a href="{{ route('services.detail', ['id' => $service->id, 'slug' => $service->slug]) }}">
+                                <div class="service-box">
+                                    <img src='{{ asset("$service->image") }}' alt="{{ $service->name or '' }}" />
+                                    <h2>
+                                        {{ $service->name or '' }}
+                                    </h2>
+                                    {!! $service->description or '' !!}
+                                </div>
+                            </a>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
         </section>
         <!-- end section: services -->
+
+        <!-- section: blog -->
+        <section id="blog" class="section">
+            <div class="container">
+                <h4>{{ __('homepage.our_blog') }}</h4>
+                <!-- Three columns -->
+                <div class="row">
+                    @foreach($blogs as $blog)
+                        <div class="span3 col-lg-3">
+                            <div class="home-post">
+                                @foreach($blog->translations as $trans)
+                                    @if(checkLanguage($trans->locale, 'boolean'))
+                                        <div class="post-image">
+                                            <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
+                                                <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $trans->title }}" />
+                                            </a>
+                                        </div>
+                                        <div class="post-meta">
+                                            <i class="icon-file icon-2x"></i>
+                                            <span class="date">{{ timeFormatTextDate($blog->created_at) }}</span>
+                                            <span class="tags">
+                                            @php $tag = breakStringToArray($trans->tags)[0]; @endphp
+                                                @if(isset($tag))
+                                                    @if(strlen($tag) < 11)
+                                                        <a href="#">{{ strtoupper($tag) }}</a>
+                                                    @else
+                                                        <a href="#">BLOGS</a>
+                                                    @endif
+                                                @endif
+                                        </span>
+                                        </div>
+                                        <div class="entry-content">
+                                            <h5>
+                                                <strong>
+                                                    <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
+                                                        {{ $trans->title }}
+                                                    </a>
+                                                </strong>
+                                            </h5>
+                                            {!! (strlen($trans->description) > 200) ? substr($trans->description, 0, 197) . ' ... ' : $trans->description !!}
+                                            <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}" class="more">{{ __('homepage.read_more') }}</a>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="blankdivider30"></div>
+                <div class="aligncenter">
+                    <a href="{{ route('blogs.index') }}" class="btn btn-large btn-theme">{{ __('homepage.more_blog') }}</a>
+                </div>
+            </div>
+        </section>
+        <!-- end spacer section -->
+
         <!-- section: works -->
         <section id="works" class="section">
             <div class="container clearfix">
@@ -111,60 +169,8 @@
                 </div>
             </div>
         </section>
-        <!-- section: blog -->
-        <section id="blog" class="section">
-            <div class="container">
-                <h4>{{ __('homepage.our_blog') }}</h4>
-                <!-- Three columns -->
-                <div class="row">
-                    @foreach($blogs as $blog)
-                    <div class="span3 col-lg-3">
-                        <div class="home-post">
-                            @foreach($blog->translations as $trans)
-                                @if(checkLanguage($trans->locale, 'boolean'))
-                                    <div class="post-image">
-                                        <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
-                                            <img class="max-img" src='{{ asset("$blog->image") }}' alt="{{ $trans->title }}" />
-                                        </a>
-                                    </div>
-                                    <div class="post-meta">
-                                        <i class="icon-file icon-2x"></i>
-                                        <span class="date">{{ timeFormatTextDate($blog->created_at) }}</span>
-                                        <span class="tags">
-                                            @php $tag = breakStringToArray($trans->tags)[0]; @endphp
-                                            @if(isset($tag))
-                                                @if(strlen($tag) < 11)
-                                                    <a href="#">{{ strtoupper($tag) }}</a>
-                                                @else
-                                                    <a href="#">BLOGS</a>
-                                                @endif
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <div class="entry-content">
-                                        <h5>
-                                            <strong>
-                                                <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}">
-                                                    {{ $trans->title }}
-                                                </a>
-                                            </strong>
-                                        </h5>
-                                        {!! (strlen($trans->description) > 200) ? substr($trans->description, 0, 197) . ' ... ' : $trans->description !!}
-                                        <a href="{{ route('blogs.detail', ['id' => $trans->blogs_id, 'slug' => $trans->slug]) }}" class="more">{{ __('homepage.read_more') }}</a>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <div class="blankdivider30"></div>
-                <div class="aligncenter">
-                    <a href="{{ route('blogs.index') }}" class="btn btn-large btn-theme">{{ __('homepage.more_blog') }}</a>
-                </div>
-            </div>
-        </section>
-        <!-- end spacer section -->
+
+
         <!-- section: contact -->
         <section id="contact" class="section green">
             <div class="container">

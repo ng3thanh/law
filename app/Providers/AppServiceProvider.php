@@ -18,13 +18,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-
-        if (Schema::hasTable('settings') && Schema::hasTable('logo')) {
-            $footer = Settings::all()->groupBy('type');
-            $logo = Logo::all()->first();
-            View::share('footer', $footer);
-            View::share('logo', $logo);
-        }
     }
 
     /**

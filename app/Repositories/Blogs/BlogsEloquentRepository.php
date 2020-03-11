@@ -35,6 +35,7 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
     {
         $result = $this->model->where('created_at', '>=', $date)
             ->where('id', '!=', $id)
+            ->orderBy('created_at', 'asc')
             ->first();
         return $result;
     }
@@ -43,6 +44,7 @@ class BlogsEloquentRepository extends BaseEloquentRepository implements BlogsRep
     {
         $result = $this->model->where('created_at', '<=', $date)
             ->where('id', '!=', $id)
+            ->orderBy('created_at', 'desc')
             ->first();
         return $result;
     }

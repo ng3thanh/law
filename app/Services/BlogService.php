@@ -200,7 +200,7 @@ class BlogService
      */
     public function getBlogLimit($limit)
     {
-        $data = $this->blogsRepository->getDataLimit($limit)->get();
+        $data = $this->blogsRepository->getDataLimit($limit)->orderBy('created_at', 'desc')->get();
         return $data;
     }
 

@@ -35,14 +35,12 @@ class FeedbackService
             DB::beginTransaction();
 
             $data = formatDataBaseOnTable('feedbacks', $data);
+
             $this->feedbacksRepository->create($data);
-
             Mail::to('ngthanh2093@gmail.com')->send(new Feedback($data));
-
             DB::commit();
             return true;
         } catch (Exception $e) {
-            dd($e->getMessage());
             logger(__METHOD__ . ' - Error: '. $e->getMessage());
             DB::rollBack();
             return false;
