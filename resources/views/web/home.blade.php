@@ -1,6 +1,6 @@
 @extends('web.layout')
 
-@section('title', 'Blogs')
+@section('title', 'Nova Law')
 @section('css')
     <style>
         @if($slide)
