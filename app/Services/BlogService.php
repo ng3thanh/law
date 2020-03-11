@@ -53,7 +53,7 @@ class BlogService
      */
     public function getAllBlog($limit)
     {
-        $data = $this->blogsRepository->getAllPaginateWithTrash($limit);
+        $data = $this->blogsRepository->getAllPaginate($limit);
         return $data;
     }
 
