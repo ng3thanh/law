@@ -4,7 +4,7 @@ namespace App\ViewComposers;
 use Illuminate\View\View;
 use App\Models\Logo;
 
-class HomeComposer
+class LogoComposer
 {
     public $policies = [];
     public $footerProducts = [];
@@ -16,6 +16,7 @@ class HomeComposer
     public function __construct()
     {
         $this->logo = Logo::all()->first();
+//        dd($this->logo->favicon);
     }
 
     /**

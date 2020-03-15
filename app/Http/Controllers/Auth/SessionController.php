@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Logo;
 use Sentinel;
 use Centaur\AuthManager;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class SessionController extends Controller
     {
         $this->middleware('sentinel.guest', ['except' => 'getLogout']);
         $this->authManager = $authManager;
+        $this->logo = Logo::all()->first();
     }
 
     /**
@@ -30,7 +32,7 @@ class SessionController extends Controller
      */
     public function getLogin()
     {
-        return view('Centaur::auth.login');
+        return view('Centaur::auth.login')->with('logo', $this->logo);
     }
 
     /**
@@ -51,7 +53,7 @@ class SessionController extends Controller
         // Attempt the Login
         $result = $this->authManager->authenticate($credentials, $remember);
         $url = route('dashboard');
-
+//        dd($url);
         // Return the appropriate response
         $path = session()->pull('url.intended', $url);
         return $result->dispatch($path);
