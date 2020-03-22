@@ -9,7 +9,6 @@
         <meta name="google-site-verification" content="Ujxlax6W8c8bUrcKyDMMcd0LjYIV7SLRldyi41698QQ" />
         @include('web.assets.css')
         @yield('css')
-        <link rel="shortcut icon" href="{{ asset('web/img/favicon.ico') }}">
     </head>
 
     <body>

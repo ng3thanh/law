@@ -11,4 +11,5 @@
 <!-- theme stylesheet-->
 <link rel="stylesheet" href="{{ asset('web/css/style.default.css') }}">
 <!-- Favicon-->
-<link rel="shortcut icon" href="{{ asset('web/favicon.png') }}">
+<link rel="shortcut icon" href="{{ asset('web/img/favicon.png') }}">
+<link rel="shortcut icon" href="{{ asset('web/img/nova_favicon.ico') }}">
