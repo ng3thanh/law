@@ -1,13 +1,13 @@
 @extends('errors.elayout')
 
-@section('title', '404 Page Not Found')
+@section('title', '403 Forbidden')
 
 @section('content')
     <div class="col-md-12">
         <div class="error-template">
             <h1>Oops!</h1>
-            <h2>404 Not Found</h2>
-            <div class="error-details">Sorry, an error has occured, Requested page not found!</div>
+            <h2>403 Forbidden</h2>
+            <div class="error-details">Sorry, The request could not be satisfied!</div>
             <div class="error-actions">
                 <a href="{{ route('main') }}" class="btn btn-primary btn-lg">
                     <span class="glyphicon glyphicon-home"></span>
