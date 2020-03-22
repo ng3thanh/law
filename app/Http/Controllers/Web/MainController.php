@@ -75,6 +75,5 @@ class MainController extends Controller
     public function changeLanguage($language)
     {
         session()->put('website_language', $language);
-//        return redirect()->back();
     }
 }

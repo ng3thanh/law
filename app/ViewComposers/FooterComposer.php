@@ -6,8 +6,7 @@ use App\Models\Settings;
 
 class FooterComposer
 {
-    public $policies = [];
-    public $footerProducts = [];
+    public $footer = [];
     /**
      * Create a movie composer.
      *
@@ -26,6 +25,6 @@ class FooterComposer
      */
     public function compose(View $view)
     {
-        $view->with('footer', end($this->footer));
+        $view->with('footer', $this->footer);
     }
 }

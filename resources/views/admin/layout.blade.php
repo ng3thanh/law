@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {{--@php(dd($logo))--}}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin | @yield('title')</title>

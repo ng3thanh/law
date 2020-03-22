@@ -6,8 +6,8 @@ use App\Models\Logo;
 
 class LogoComposer
 {
-    public $policies = [];
-    public $footerProducts = [];
+    public $logo = [];
+
     /**
      * Create a movie composer.
      *
@@ -15,8 +15,7 @@ class LogoComposer
      */
     public function __construct()
     {
-        $this->logo = Logo::all()->first();
-//        dd($this->logo->favicon);
+        $this->logo = Logo::orderBy('updated_at', 'desc')->first();
     }
 
     /**
@@ -27,6 +26,6 @@ class LogoComposer
      */
     public function compose(View $view)
     {
-        $view->with('logo', end($this->logo));
+        $view->with('logo', $this->logo);
     }
 }
