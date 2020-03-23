@@ -9,7 +9,7 @@ class FooterComposer
 {
     public $footer = [];
     public $logo = [];
-    
+
     /**
      * Create a movie composer.
      *

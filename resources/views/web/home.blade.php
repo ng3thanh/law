@@ -1,56 +1,11 @@
 @extends('web.layout')
 
 @section('title', 'Nova Law')
-@section('css')
-    <style>
-        @if($slide)
-        #homepage #header-wrapper.header-slider {
-            background: #444 url({{ asset("$slide->image") }}) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-        @endif
-    </style>
-@endsection
 @section('content')
     <div id="homepage">
         <!-- Header area -->
-        <div id="header-wrapper" class="header-slider">
-            <header class="clearfix">
-                <div class="logo">
-                    @if($logo)
-                        <img src='{{ asset("$logo->image") }}' alt="{{ $logo->name or '' }}" width="150px"/>
-                    @endif
-                </div>
-                <div class="container" id="slogan-span">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div id="main-flexslider" class="flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <p class="home-slide-content">
-                                            {!! $logo->content1 or '' !!}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="home-slide-content">
-                                            {!! $logo->content2 or '' !!}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="home-slide-content">
-                                            {!! $logo->content3 or '' !!}
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- end slider -->
-                        </div>
-                    </div>
-                </div>
-            </header>
+        <div class="header-slider">
+            <img src='{{ asset("$slide->image") }}' alt="{{ $slide->name or 'Nova Law' }}"/>
         </div>
 
         <!-- section: team -->
