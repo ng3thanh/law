@@ -2251,7 +2251,7 @@ a {
 
 a:focus, a:hover {
     color: #737373;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 h1,
@@ -2773,7 +2773,7 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 #homepage section.section {
-    padding: 80px 0 80px;
+    padding: 80px 0 30px;
 }
 
 #homepage section#services {
@@ -3085,6 +3085,10 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 #homepage section#services .service-box p {
+    color: #575552;
+}
+
+#homepage section#services .service-box:hover p {
     color: #f7f7f7;
 }
 
@@ -3118,7 +3122,7 @@ a.text-dark:focus, a.text-dark:hover {
     max-width: 100%;
     vertical-align: middle;
     border: 0;
-    margin-top: 67px;
+    margin-top: 20px;
 }
 
 #homepage .home-post .entry-content {

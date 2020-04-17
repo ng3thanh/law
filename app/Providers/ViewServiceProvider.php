@@ -24,6 +24,6 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(['web.partials.footer'], 'App\ViewComposers\FooterComposer');
-        view()->composer(['web.home', 'centaur.auth.login', 'admin.layout', 'errors.elayout'], 'App\ViewComposers\LogoComposer');
+        view()->composer(['web.partials.header', 'web.home', 'centaur.auth.login', 'admin.layout', 'errors.elayout'], 'App\ViewComposers\LogoComposer');
     }
 }
